@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dpm7dfhel3mwg"]
+
+[ext_resource type="PackedScene" uid="uid://b23k32erkbnrh" path="res://Assets/Fish/Clownfish/Clownfish.glb" id="1_drabq"]
+[ext_resource type="Shader" uid="uid://6j4g8rb6srij" path="res://Shaders/outline.gdshader" id="2_ua3lr"]
+[ext_resource type="Shader" uid="uid://c1fj4ewss4ptt" path="res://Shaders/cel-shader-base.gdshader" id="3_drabq"]
+[ext_resource type="Texture2D" uid="uid://cbqevut5eshoa" path="res://Assets/Fish/Clownfish/Clownfish_Body.png" id="4_16vx3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1wnwg"]
+render_priority = 0
+shader = ExtResource("2_ua3lr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ua3lr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_1wnwg")
+shader = ExtResource("3_drabq")
+shader_parameter/color = Color(0.78431374, 0.78431374, 0.78431374, 1)
+shader_parameter/base_texture = ExtResource("4_16vx3")
+shader_parameter/specular = Color(0, 0, 0, 0.5019608)
+shader_parameter/fresnel = Color(0, 0, 0, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Clownfish" unique_id=1594703285 instance=ExtResource("1_drabq")]
+
+[node name="Cube" parent="." index="0" unique_id=2122476087]
+surface_material_override/0 = SubResource("ShaderMaterial_ua3lr")

@@ -25,7 +25,8 @@ window/stretch/aspect="expand"
 folder_colors={
 "res://Assets/": "yellow",
 "res://Scenes/": "pink",
-"res://Scripts/": "blue"
+"res://Scripts/": "blue",
+"res://Shaders/": "purple"
 }
 
 [physics]
@@ -35,3 +36,26 @@ folder_colors={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+
+[shader_globals]
+
+diffuse_curve={
+"type": "sampler2D",
+"value": "res://Shaders/Textures/diffusion_texture.tres"
+}
+fresnel_smoothness={
+"type": "float",
+"value": 0.05
+}
+outline_color={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}
+outline_width={
+"type": "float",
+"value": 4.0
+}
+specular_smoothness={
+"type": "float",
+"value": 0.05
+}
