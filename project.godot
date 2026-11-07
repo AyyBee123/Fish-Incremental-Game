@@ -13,10 +13,17 @@ config_version=5
 config/name="Fish Incremental Game"
 run/main_scene="uid://dbrgxfwe3t0wu"
 config/features=PackedStringArray("4.7", "Forward Plus")
+run/max_fps=500
 config/icon="res://icon.svg"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -24,6 +31,7 @@ window/stretch/aspect="expand"
 
 folder_colors={
 "res://Assets/": "yellow",
+"res://Resources/": "green",
 "res://Scenes/": "pink",
 "res://Scripts/": "blue",
 "res://Shaders/": "purple"
@@ -53,9 +61,17 @@ outline_color={
 }
 outline_width={
 "type": "float",
-"value": 4.0
+"value": 3.0
 }
 specular_smoothness={
 "type": "float",
 "value": 0.05
+}
+highlight_color={
+"type": "color",
+"value": Color(1, 0.8862745, 0, 1)
+}
+highlight_width={
+"type": "float",
+"value": 8.0
 }

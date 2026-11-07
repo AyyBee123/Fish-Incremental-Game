@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b7mten2i55q3b"]
+
+[ext_resource type="Material" uid="uid://c1r25otuebbcr" path="res://Shaders/Materials/highlight.tres" id="1_7e806"]
+[ext_resource type="Shader" uid="uid://6j4g8rb6srij" path="res://Shaders/outline.gdshader" id="1_vinbt"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_7e806")
+shader = ExtResource("1_vinbt")

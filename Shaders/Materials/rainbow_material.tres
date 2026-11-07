@@ -2,11 +2,12 @@
 
 [ext_resource type="Shader" uid="uid://6j4g8rb6srij" path="res://Shaders/outline.gdshader" id="1_rtq6w"]
 [ext_resource type="Shader" uid="uid://dk5rywv3a3emn" path="res://Shaders/rainbow_fish.gdshader" id="2_05xd1"]
-[ext_resource type="Texture2D" uid="uid://cbqevut5eshoa" path="res://Assets/Fish/Clownfish/Clownfish_Body.png" id="3_vodd8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1wnwg"]
 render_priority = 0
 shader = ExtResource("1_rtq6w")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p4eed"]
 
 [sub_resource type="Gradient" id="Gradient_drabq"]
 offsets = PackedFloat32Array(0, 0.083, 0.25, 0.417, 0.583, 0.75, 0.917)
@@ -24,7 +25,7 @@ shader_parameter/rainbow_speed = 0.2
 shader_parameter/rainbow_length = 0.22
 shader_parameter/rainbow_strength = 1.0
 shader_parameter/color = Color(0.78352374, 0.7835233, 0.78352314, 1)
-shader_parameter/base_texture = ExtResource("3_vodd8")
+shader_parameter/base_texture = SubResource("CompressedTexture2D_p4eed")
 shader_parameter/specular = Color(0, 0, 0, 0.5019608)
 shader_parameter/fresnel = Color(0, 0, 0, 0.3019608)
 shader_parameter/uv_scale = Vector2(1, 1)

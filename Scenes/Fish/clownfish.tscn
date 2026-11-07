@@ -1,26 +1,56 @@
 [gd_scene format=3 uid="uid://dpm7dfhel3mwg"]
 
 [ext_resource type="PackedScene" uid="uid://b23k32erkbnrh" path="res://Assets/Fish/Clownfish/Clownfish.glb" id="1_drabq"]
-[ext_resource type="Shader" uid="uid://6j4g8rb6srij" path="res://Shaders/outline.gdshader" id="2_ua3lr"]
+[ext_resource type="Material" uid="uid://b7mten2i55q3b" path="res://Shaders/Materials/outline.tres" id="2_drabq"]
+[ext_resource type="Script" uid="uid://bi2d20nlwc4cg" path="res://Scripts/Fish/fish.gd" id="2_ua3lr"]
 [ext_resource type="Shader" uid="uid://c1fj4ewss4ptt" path="res://Shaders/cel-shader-base.gdshader" id="3_drabq"]
-[ext_resource type="Texture2D" uid="uid://cbqevut5eshoa" path="res://Assets/Fish/Clownfish/Clownfish_Body.png" id="4_16vx3"]
+[ext_resource type="Texture2D" uid="uid://bdabgnt10l3ar" path="res://Assets/Fish/Clownfish/Clownfish_Image.png" id="4_drabq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1wnwg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_drabq"]
 render_priority = 0
-shader = ExtResource("2_ua3lr")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ua3lr"]
-render_priority = 0
-next_pass = SubResource("ShaderMaterial_1wnwg")
+next_pass = ExtResource("2_drabq")
 shader = ExtResource("3_drabq")
-shader_parameter/color = Color(0.78431374, 0.78431374, 0.78431374, 1)
-shader_parameter/base_texture = ExtResource("4_16vx3")
+shader_parameter/color = Color(0.75, 0.75, 0.75, 1)
+shader_parameter/base_texture = ExtResource("4_drabq")
 shader_parameter/specular = Color(0, 0, 0, 0.5019608)
 shader_parameter/fresnel = Color(0, 0, 0, 0.3019608)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
-[node name="Clownfish" unique_id=1594703285 instance=ExtResource("1_drabq")]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_223dg"]
+animation = &"Idle"
 
-[node name="Cube" parent="." index="0" unique_id=2122476087]
-surface_material_override/0 = SubResource("ShaderMaterial_ua3lr")
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_de0y2"]
+animation = &"Swim"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_16vx3"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_223dg")
+blend_point_0/pos = -1.0
+blend_point_0/name = &"Idle"
+blend_point_1/node = SubResource("AnimationNodeAnimation_de0y2")
+blend_point_1/pos = 1.0
+blend_point_1/name = &"Swim"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1wnwg"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_drabq"]
+states/Movement/node = SubResource("AnimationNodeBlendSpace1D_16vx3")
+states/Movement/position = Vector2(526, 100)
+states/Start/position = Vector2(183, 100)
+transitions = ["Start", "Movement", SubResource("AnimationNodeStateMachineTransition_1wnwg")]
+graph_offset = Vector2(-66, -44)
+
+[node name="Clownfish" unique_id=1761693036 instance=ExtResource("1_drabq")]
+script = ExtResource("2_ua3lr")
+
+[node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(850802032) index="0" unique_id=1961372403]
+surface_material_override/0 = SubResource("ShaderMaterial_drabq")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=1009631430]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/..")
+root_motion_track = NodePath("Armature/Skeleton3D:Back_Body")
+tree_root = SubResource("AnimationNodeStateMachine_drabq")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Movement/blend_position = 0.0
