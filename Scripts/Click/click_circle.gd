@@ -1,0 +1,29 @@
+class_name ClickCircle
+extends Area3D
+
+@onready var aquarium: Aquarium = get_tree().current_scene
+@onready var collision_shape: CollisionShape3D = %CollisionShape3D
+
+
+func _physics_process(_delta: float) -> void:
+	update_cursor_position()
+
+
+func update_cursor_position() -> void:
+	var mouse_position = get_viewport().get_mouse_position()
+	
+	var ray_origin = aquarium.camera.project_ray_origin(mouse_position)
+	var ray_direction = aquarium.camera.project_ray_normal(mouse_position)
+	
+	var aquarium_plane = Plane(Vector3(0, 0, 1), 0.0)
+	var intersection = aquarium_plane.intersects_ray(ray_origin, ray_direction)
+	
+	if intersection != null:
+		global_position = intersection
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("click"):
+		for fish in get_overlapping_areas():
+			print(fish)
+			#fish.on_clicked()

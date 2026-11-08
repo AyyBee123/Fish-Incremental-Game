@@ -9,5 +9,4 @@ script = ExtResource("2_cnjxp")
 species_name = "Clownfish"
 model = ExtResource("1_wjol6")
 movement_behaviour = ExtResource("2_w1hh8")
-rotation_speed = 1.5
 metadata/_custom_type_script = "uid://duwvt65xb45i1"
