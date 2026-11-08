@@ -41,21 +41,8 @@ func _physics_process(delta) -> void:
 	update_animation_parameters()
 
 
-func update_rotation(delta: float) -> void:
-	var direction = velocity.normalized()
-	
-	if direction.length() < 0.01: return
-	
-	var target_rotation_y = 0.0
-	
-	if direction.x < 0.0:
-		target_rotation_y = PI
-	
-	var target_rotation_z = atan2(direction.y, abs(direction.x))
-	var weight = 1.0 - exp(-fish_res.species.rotation_speed * delta)
-	
-	rotation.y = lerp_angle(rotation.y, target_rotation_y, weight)
-	rotation.z = lerp_angle(rotation.z, target_rotation_z, weight)
+func on_click() -> void:
+	print(self)
 
 
 func set_target_position(_target_position: Vector3) -> void:
@@ -80,6 +67,23 @@ func get_random_destination() -> Vector3:
 		randf_range(manager.aquarium_min.y, manager.aquarium_max.y),
 		randf_range(manager.aquarium_min.z, manager.aquarium_max.z)
 	)
+
+
+func update_rotation(delta: float) -> void:
+	var direction = velocity.normalized()
+	
+	if direction.length() < 0.01: return
+	
+	var target_rotation_y = 0.0
+	
+	if direction.x < 0.0:
+		target_rotation_y = PI
+	
+	var target_rotation_z = atan2(direction.y, abs(direction.x))
+	var weight = 1.0 - exp(-fish_res.species.rotation_speed * delta)
+	
+	rotation.y = lerp_angle(rotation.y, target_rotation_y, weight)
+	rotation.z = lerp_angle(rotation.z, target_rotation_z, weight)
 
 
 func update_animation_parameters() -> void:

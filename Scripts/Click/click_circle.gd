@@ -25,5 +25,4 @@ func update_cursor_position() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
 		for fish in get_overlapping_areas():
-			print(fish)
-			#fish.on_clicked()
+			fish.get_parent().on_click()
