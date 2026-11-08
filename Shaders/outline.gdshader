@@ -1,6 +1,6 @@
 shader_type spatial;
 
-render_mode cull_front, unshaded, depth_draw_opaque;
+render_mode cull_front, unshaded, depth_draw_never;
 
 global uniform vec4 outline_color;
 global uniform float outline_width;

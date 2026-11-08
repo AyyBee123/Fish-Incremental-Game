@@ -17,7 +17,7 @@ transform = Transform3D(-3.5520557e-08, -1, -3.694646e-08, -0.42261824, -1.84732
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1900666537]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, -80)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, -90)
 fov = 30.0
 
 [node name="Fish Manager" type="Node" parent="." unique_id=398162355]
