@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FishSpeciesResource" format=3 uid="uid://df20jvqg3ut1w"]
+
+[ext_resource type="PackedScene" uid="uid://dpm7dfhel3mwg" path="res://Scenes/Fish/clownfish.tscn" id="1_wjol6"]
+[ext_resource type="Script" uid="uid://duwvt65xb45i1" path="res://Scripts/Resources/Fish Properties/fish_species_resource.gd" id="2_cnjxp"]
+[ext_resource type="Resource" uid="uid://1hv7i7cmfraj" path="res://Resources/Movement Behaviours/base.tres" id="2_w1hh8"]
+
+[resource]
+script = ExtResource("2_cnjxp")
+species_name = "Clownfish"
+model = ExtResource("1_wjol6")
+movement_behaviour = ExtResource("2_w1hh8")
+rotation_speed = 1.5
+metadata/_custom_type_script = "uid://duwvt65xb45i1"

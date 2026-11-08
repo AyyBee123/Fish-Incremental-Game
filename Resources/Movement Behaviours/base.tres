@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MovementBehaviour" format=3 uid="uid://1hv7i7cmfraj"]
+
+[ext_resource type="Script" uid="uid://b06tki4xhwfdu" path="res://Scripts/Resources/Fish Movement/Base/fish_movement_behaviour_resource.gd" id="1_4s7rf"]
+
+[resource]
+script = ExtResource("1_4s7rf")
+metadata/_custom_type_script = "uid://b06tki4xhwfdu"
