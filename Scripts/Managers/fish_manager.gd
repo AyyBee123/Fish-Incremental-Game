@@ -1,7 +1,10 @@
 class_name FishManager
 extends Node
 
-@export var aquarium_margin: Vector2 = Vector2(4.0, 4.0)
+@export var aquarium_margin_left: float = 4.0
+@export var aquarium_margin_right: float = 4.0
+@export var aquarium_margin_up: float = 4.0
+@export var aquarium_margin_down: float = 4.0
 
 @onready var aquarium: Aquarium = get_tree().current_scene
 
@@ -33,15 +36,8 @@ func spawn_fish(fish_instance: FishInstanceResource, pos: Vector3 = Vector3(rand
 
 
 func get_aquarium_bounds() -> void:
-	var corners = [
-		Vector2(0, 0),
-		Vector2(get_viewport().size.x, 0),
-		Vector2(0, get_viewport().size.y),
-		get_viewport().size
-	]
-	
+	var corners = [Vector2(0, 0), Vector2(get_viewport().size.x, 0), Vector2(0, get_viewport().size.y), get_viewport().size]
 	var positions: Array[Vector3] = []
-	
 	var plane = Plane(Vector3.FORWARD, 0)
 	
 	for corner in corners:
@@ -61,10 +57,10 @@ func get_aquarium_bounds() -> void:
 		aquarium_max.x = maxf(aquarium_max.x, point.x)
 		aquarium_max.y = maxf(aquarium_max.y, point.y)
 	
-	aquarium_min.x += aquarium_margin.x
-	aquarium_min.y += aquarium_margin.y
-	aquarium_max.x -= aquarium_margin.x
-	aquarium_max.y -= aquarium_margin.y
+	aquarium_min.x += aquarium_margin_left
+	aquarium_max.x -= aquarium_margin_right
+	aquarium_min.y += aquarium_margin_down
+	aquarium_max.y -= aquarium_margin_up
 
 
 func load_fish_names() -> void:
