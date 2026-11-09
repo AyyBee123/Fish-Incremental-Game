@@ -18,7 +18,7 @@ func _ready() -> void:
 	load_fish_names()
 	get_aquarium_bounds()
 	for i in 1:
-		spawn_fish(create_fish(preload("uid://df20jvqg3ut1w"), fish_names.pick_random()))
+		spawn_fish(create_fish(preload("uid://df20jvqg3ut1w"), fish_names.pick_random()), true)
 
 
 func create_fish(species: FishSpeciesResource, fish_name: String = "Fish") -> FishInstanceResource:
@@ -28,11 +28,13 @@ func create_fish(species: FishSpeciesResource, fish_name: String = "Fish") -> Fi
 	return fish_instance
 
 
-func spawn_fish(fish_instance: FishInstanceResource, pos: Vector3 = Vector3(randf_range(aquarium_min.x, aquarium_max.x), 0, 0)) -> void:
+func spawn_fish(fish_instance: FishInstanceResource, play_anim: bool, pos: Vector3 = Vector3(randf_range(aquarium_min.x, aquarium_max.x), 0, 0)) -> void:
 	var fish: Fish = fish_instance.species.model.instantiate()
 	fish.fish_res = fish_instance
 	add_child(fish)
 	fish.global_position = pos
+	if play_anim:
+		fish.play_spawn_animation()
 
 
 func get_aquarium_bounds() -> void:

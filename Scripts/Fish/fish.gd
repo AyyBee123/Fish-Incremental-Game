@@ -8,15 +8,20 @@ extends Node3D
 
 var velocity: Vector3 = Vector3.ZERO
 var target_position: Vector3
+var wait_id: int = 0
 var has_destination: bool = false
+var is_spawning: bool = false
 
 
 func _ready() -> void:
+	animation_tree["parameters/Movement/blend_position"] = -1.0
 	target_position = global_position
 	wait()
 
 
 func _physics_process(delta) -> void:
+	if is_spawning: return
+	
 	var target_velocity = Vector3.ZERO
 	
 	if has_destination:
@@ -42,6 +47,8 @@ func _physics_process(delta) -> void:
 
 
 func on_click() -> void:
+	if is_spawning: return
+	
 	print(self)
 
 
@@ -56,7 +63,18 @@ func stop_movement() -> void:
 
 
 func wait() -> void:
-	await get_tree().create_timer(randf_range(2.0, 6.0)).timeout
+	wait_id += 1
+	var current_wait_id = wait_id
+	
+	await get_tree().create_timer(randf_range(0.0, 5.0)).timeout
+	
+	# prevent multiple waits from fighting each other
+	if current_wait_id != wait_id:
+		return
+	
+	if is_spawning:
+		return
+	
 	set_target_position(fish_res.species.movement_behaviour.get_next_destination(self))
 
 
@@ -84,6 +102,31 @@ func update_rotation(delta: float) -> void:
 	
 	rotation.y = lerp_angle(rotation.y, target_rotation_y, weight)
 	rotation.z = lerp_angle(rotation.z, target_rotation_z, weight)
+
+
+func play_spawn_animation() -> void:
+	is_spawning = true
+	velocity = Vector3.ZERO
+	has_destination = false
+	
+	var fish_manager: FishManager = aquarium.get_node("%Fish Manager")
+	var center = (fish_manager.aquarium_min.x + fish_manager.aquarium_max.x) / 2.0
+	rotation.y = 0.0 if global_position.x < center else PI
+	
+	var pos = global_position + Vector3(0, randf_range(-10.0, 10.0), 0)
+	global_position.y += 30.0
+	
+	var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+	playback.travel("Spawn")
+	
+	var tween = create_tween()
+	tween.tween_property(self, "global_position", pos, 2.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	
+	await tween.finished
+	
+	is_spawning = false
+	playback.travel("Movement")
+	wait()
 
 
 func update_animation_parameters() -> void:
