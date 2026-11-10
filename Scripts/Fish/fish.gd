@@ -5,7 +5,10 @@ extends Node3D
 
 @onready var animation_tree: AnimationTree = %AnimationTree
 @onready var aquarium: Aquarium = get_tree().current_scene
+@onready var body: Node3D = %Armature
 
+var original_scale: Vector3
+var click_tween: Tween
 var velocity: Vector3 = Vector3.ZERO
 var target_position: Vector3
 var wait_id: int = 0
@@ -14,6 +17,7 @@ var is_spawning: bool = false
 
 
 func _ready() -> void:
+	original_scale = body.scale
 	animation_tree["parameters/Movement/blend_position"] = -1.0
 	target_position = global_position
 	wait()
@@ -48,8 +52,38 @@ func _physics_process(delta) -> void:
 
 func on_click() -> void:
 	if is_spawning: return
+	var value = get_click_value()
+	aquarium.money += value
+	trigger_click_behaviour()
+
+
+func get_click_value() -> float:
+	var base_value = fish_res.species.click_value
 	
-	print(self)
+	var species_increase = fish_res.species.click_increase
+	var species_multiplier = fish_res.species.click_multiplier
+	
+	var individual_increase = fish_res.click_increase
+	var individual_multiplier = fish_res.click_multiplier
+	
+	var global_multiplier = aquarium.global_click_multiplier
+	
+	return (base_value) \
+		* (1.0 + species_increase + individual_increase) \
+		* species_multiplier * individual_multiplier \
+		* global_multiplier
+
+
+func trigger_click_behaviour() -> void:
+	if click_tween and click_tween.is_running():
+		click_tween.kill()
+	
+	body.scale = original_scale
+	
+	click_tween = create_tween()
+	click_tween.tween_property(body, "scale", original_scale * 0.85, 0.04).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	click_tween.tween_property(body, "scale", original_scale * 1.12, 0.1).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	click_tween.tween_property(body, "scale", original_scale, 0.12).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 
 
 func set_target_position(_target_position: Vector3) -> void:
@@ -68,7 +102,7 @@ func wait() -> void:
 	
 	await get_tree().create_timer(randf_range(0.0, 5.0)).timeout
 	
-	# prevent multiple waits from fighting each other
+	# prevent multiple wait values from fighting each other
 	if current_wait_id != wait_id:
 		return
 	

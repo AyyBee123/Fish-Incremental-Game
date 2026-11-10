@@ -58,6 +58,9 @@ height = 4.3875732
 [node name="Clownfish" unique_id=1761693036 instance=ExtResource("1_drabq")]
 script = ExtResource("2_ua3lr")
 
+[node name="Armature" parent="." index="0" unique_id=1902963498]
+unique_name_in_owner = true
+
 [node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1087709124) index="0" unique_id=494992645]
 surface_material_override/0 = SubResource("ShaderMaterial_drabq")
 

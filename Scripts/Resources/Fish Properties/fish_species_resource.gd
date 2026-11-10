@@ -15,3 +15,5 @@ extends Resource
 
 @export_category("Click")
 @export var click_value: float = 1.0
+@export var click_increase: float = 0.0
+@export var click_multiplier: float = 1.0

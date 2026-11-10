@@ -17,7 +17,7 @@ var fish_names: Array = []
 func _ready() -> void:
 	load_fish_names()
 	get_aquarium_bounds()
-	for i in 1:
+	for i in 100:
 		spawn_fish(create_fish(preload("uid://df20jvqg3ut1w"), fish_names.pick_random()), true)
 
 
