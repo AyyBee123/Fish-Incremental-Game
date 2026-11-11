@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dbrgxfwe3t0wu"]
 
-[ext_resource type="Script" uid="uid://chr18rj22ext1" path="res://Scripts/Aquarium/aquarium.gd" id="1_g8xk0"]
-[ext_resource type="Script" uid="uid://uykmlribml6m" path="res://Scripts/Managers/fish_manager.gd" id="2_0c2x4"]
-[ext_resource type="Script" uid="uid://do4r5cj3jy0yd" path="res://Scripts/Managers/click_manager.gd" id="3_1to5j"]
-[ext_resource type="FontFile" uid="uid://c7ivi3qvka8la" path="res://Fonts/PixelFont.ttf" id="4_g8xk0"]
+[ext_resource type="Script" uid="uid://chr18rj22ext1" path="res://Scripts/Aquarium/aquarium.gd" id="1_h7ht6"]
+[ext_resource type="Script" uid="uid://uykmlribml6m" path="res://Scripts/Managers/fish_manager.gd" id="2_jhcuh"]
+[ext_resource type="Script" uid="uid://do4r5cj3jy0yd" path="res://Scripts/Managers/click_manager.gd" id="3_4djwm"]
+[ext_resource type="FontFile" uid="uid://c7ivi3qvka8la" path="res://Fonts/PixelFont.ttf" id="4_6odeh"]
 
 [sub_resource type="Environment" id="Environment_5h11f"]
 
 [node name="Main" type="Node3D" unique_id=859174208]
-script = ExtResource("1_g8xk0")
+script = ExtResource("1_h7ht6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=728541427]
 environment = SubResource("Environment_5h11f")
@@ -23,11 +23,11 @@ fov = 30.0
 
 [node name="Fish Manager" type="Node" parent="." unique_id=398162355]
 unique_name_in_owner = true
-script = ExtResource("2_0c2x4")
+script = ExtResource("2_jhcuh")
 
 [node name="Click Manager" type="Node" parent="." unique_id=1484032693]
 unique_name_in_owner = true
-script = ExtResource("3_1to5j")
+script = ExtResource("3_4djwm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=9434428]
 
@@ -48,6 +48,6 @@ offset_right = 96.0
 offset_bottom = 32.0
 theme_override_colors/font_color = Color(1, 0.81960785, 0.47058824, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
-theme_override_fonts/font = ExtResource("4_g8xk0")
+theme_override_fonts/font = ExtResource("4_6odeh")
 theme_override_font_sizes/font_size = 64
 text = "$0"

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdabgnt10l3ar"
-path="res://.godot/imported/Clownfish_Image.png-295e7a8b7b7ca10a91f93635f29e4f4b.ctex"
+path="res://.godot/imported/Clownfish_Image.png-c06cdb755e73848915b221f9e9870b2c.ctex"
 metadata={
 "vram_texture": false
 }
@@ -13,8 +13,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Fish/Clownfish/Clownfish_Image.png"
-dest_files=["res://.godot/imported/Clownfish_Image.png-295e7a8b7b7ca10a91f93635f29e4f4b.ctex"]
+source_file="res://Assets/Textures/Fish/Clownfish/Clownfish_Image.png"
+dest_files=["res://.godot/imported/Clownfish_Image.png-c06cdb755e73848915b221f9e9870b2c.ctex"]
 
 [params]
 

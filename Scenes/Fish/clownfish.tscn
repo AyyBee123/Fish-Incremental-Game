@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://b7mten2i55q3b" path="res://Shaders/Materials/outline.tres" id="2_drabq"]
 [ext_resource type="Script" uid="uid://bi2d20nlwc4cg" path="res://Scripts/Fish/fish.gd" id="2_ua3lr"]
 [ext_resource type="Shader" uid="uid://c1fj4ewss4ptt" path="res://Shaders/cel-shader-base.gdshader" id="3_drabq"]
-[ext_resource type="Texture2D" uid="uid://bdabgnt10l3ar" path="res://Assets/Fish/Clownfish/Clownfish_Image.png" id="4_drabq"]
+[ext_resource type="Texture2D" uid="uid://bdabgnt10l3ar" path="res://Assets/Textures/Fish/Clownfish/Clownfish_Image.png" id="4_drabq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_drabq"]
 render_priority = 0

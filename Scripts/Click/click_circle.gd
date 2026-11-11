@@ -20,6 +20,7 @@ func update_cursor_position() -> void:
 	
 	if intersection != null:
 		global_position = intersection
+		look_at(intersection + ray_direction, Vector3.UP)
 
 
 func _input(event: InputEvent) -> void:
