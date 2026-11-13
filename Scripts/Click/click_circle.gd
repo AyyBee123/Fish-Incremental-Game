@@ -3,6 +3,7 @@ extends Area3D
 
 @onready var aquarium: Aquarium = get_tree().current_scene
 @onready var collision_shape: CollisionShape3D = %CollisionShape3D
+@onready var click_interval: Timer = %ClickInterval
 
 
 func _physics_process(_delta: float) -> void:
@@ -24,6 +25,8 @@ func update_cursor_position() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("click"):
+	if event.is_action_pressed("click") and click_interval.is_stopped():
+		if get_overlapping_areas().size() > 0:
+			click_interval.start()
 		for fish in get_overlapping_areas():
 			fish.get_parent().on_click()

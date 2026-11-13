@@ -15,3 +15,8 @@ script = ExtResource("1_uch7a")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_5h11f")
+
+[node name="ClickInterval" type="Timer" parent="." unique_id=965211436]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
