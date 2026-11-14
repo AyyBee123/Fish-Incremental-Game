@@ -4,7 +4,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5h11f"]
 height = 10000.0
-radius = 0.05
+radius = 0.1
 
 [node name="Click Circle" type="Area3D" unique_id=1985891243]
 collision_layer = 0
