@@ -6,7 +6,7 @@ extends Area3D
 @onready var click_interval: Timer = %ClickInterval
 
 
-func _physics_process(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_cursor_position()
 
 
