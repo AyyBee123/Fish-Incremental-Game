@@ -18,5 +18,5 @@ shape = SubResource("CylinderShape3D_5h11f")
 
 [node name="ClickInterval" type="Timer" parent="." unique_id=965211436]
 unique_name_in_owner = true
-wait_time = 0.1
+wait_time = 0.08
 one_shot = true
