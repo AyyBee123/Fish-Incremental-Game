@@ -7,8 +7,6 @@
 render_priority = 0
 shader = ExtResource("1_rtq6w")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p4eed"]
-
 [sub_resource type="Gradient" id="Gradient_drabq"]
 offsets = PackedFloat32Array(0, 0.083, 0.25, 0.417, 0.583, 0.75, 0.917)
 colors = PackedColorArray(1, 0, 0, 1, 0.8781727, 0.37012342, 0, 1, 0.9092766, 0.65169764, 0, 1, 0.32079723, 0.8798834, 1.540184e-06, 1, 0, 0.59607846, 0.72156864, 1, 0.54509807, 0.34901962, 1, 1, 1, 0, 0, 1)
@@ -21,7 +19,6 @@ render_priority = 0
 next_pass = SubResource("ShaderMaterial_1wnwg")
 shader = ExtResource("2_05xd1")
 shader_parameter/color = Color(0.78352374, 0.7835233, 0.78352314, 1)
-shader_parameter/base_texture = SubResource("CompressedTexture2D_p4eed")
 shader_parameter/specular = Color(0, 0, 0, 0.5019608)
 shader_parameter/fresnel = Color(0, 0, 0, 0.3019608)
 shader_parameter/rainbow_gradient = SubResource("GradientTexture1D_drabq")
