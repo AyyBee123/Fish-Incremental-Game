@@ -16,7 +16,6 @@ render_mode depth_draw_always;
 #endif
 
 #include "includes/base-cel-shader.gdshaderinc"
-#include "includes/rainbow.gdshaderinc"
 
 #if USE_EMISSION
 #include "includes/emission.gdshaderinc"
@@ -64,6 +63,15 @@ uniform vec4 fresnel: source_color = vec4(0.2, 0.2, 0.2, 0.3);
 uniform sampler2D fresnel_texture: hint_default_white;
 group_uniforms;
 
+group_uniforms RainbowProperties;
+uniform sampler2D rainbow_gradient : source_color, filter_linear;
+uniform float rainbow_speed = 0.2;
+uniform float rainbow_length = 0.5;
+uniform float rainbow_strength : hint_range(0.0, 1.0) = 0.7;
+
+varying vec3 local_position;
+group_uniforms;
+
 varying vec3 SPECULAR_COLOR;
 varying float SPECULAR_STRENGTH;
 varying vec3 FRESNEL_COLOR;
@@ -75,6 +83,13 @@ group_uniforms Tiling;
 uniform vec2 uv_scale = vec2(1,1);
 uniform vec2 uv_offset = vec2(0,0);
 group_uniforms;
+
+
+vec3 rainbow_effect() {
+	float position = fract(local_position.z * rainbow_length + TIME * rainbow_speed);
+	return texture(rainbow_gradient, vec2(position, 0.5)).rgb;
+}
+
 
 void vertex() {
 	local_position = VERTEX;
