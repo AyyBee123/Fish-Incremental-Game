@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cdrx7fdi8eq7g"
-path="res://.godot/imported/Sand.glb-a973cf5cf462e645368d45ea527cf925.scn"
+uid="uid://biisgdeie55s4"
+path="res://.godot/imported/Aquarium.glb-751928e2f69ce06d17db8784a0b10dad.scn"
 
 [deps]
 
-source_file="res://Assets/Aquarium/Sand.glb"
-dest_files=["res://.godot/imported/Sand.glb-a973cf5cf462e645368d45ea527cf925.scn"]
+source_file="res://Assets/Aquarium/Aquarium.glb"
+dest_files=["res://.godot/imported/Aquarium.glb-751928e2f69ce06d17db8784a0b10dad.scn"]
 
 [params]
 

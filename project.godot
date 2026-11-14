@@ -64,6 +64,7 @@ click={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.16597018, 0.3985075, 0.5677437, 1)
 
 [shader_globals]
 

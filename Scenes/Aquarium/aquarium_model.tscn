@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://sr5h2ctj5aad"]
+
+[ext_resource type="PackedScene" uid="uid://biisgdeie55s4" path="res://Assets/Aquarium/Aquarium.glb" id="1_sbynj"]
+[ext_resource type="Shader" uid="uid://bb3jdeeq0wjap" path="res://Shaders/sand.gdshader" id="3_0074e"]
+[ext_resource type="Shader" uid="uid://c1howga40g4ci" path="res://Shaders/water_pattern.gdshader" id="4_e52e1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbynj"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.1254902)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ocbjn"]
+noise_type = 2
+seed = 5
+frequency = 0.008
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vljit"]
+noise = SubResource("FastNoiseLite_ocbjn")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cx5w5"]
+render_priority = 0
+shader = ExtResource("3_0074e")
+shader_parameter/color = Color(0.7353551, 0.6779187, 0.60907155, 1)
+shader_parameter/specular = Color(0, 0, 0, 0.5019608)
+shader_parameter/fresnel = Color(0, 0, 0, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_vljit")
+shader_parameter/noise_scale = Vector2(8, 8)
+shader_parameter/sand_color_light = Color(0.85, 0.72, 0.48, 1)
+shader_parameter/sand_color_dark = Color(0.65, 0.49, 0.3, 1)
+shader_parameter/noise_strength = 0.35
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wxl5q"]
+render_priority = 0
+shader = ExtResource("4_e52e1")
+shader_parameter/wave_amplitude = 0.03
+shader_parameter/wave_frequency = 6.0
+shader_parameter/wave_speed = 0.2
+shader_parameter/seamless = true
+shader_parameter/_speed = 0.5
+shader_parameter/_scale = 6.0
+shader_parameter/color_deep = Color(0.05, 0.25, 0.55, 0.85)
+shader_parameter/color_shallow = Color(0.4, 0.85, 0.95, 0.6)
+shader_parameter/color_threshold = 0.5
+shader_parameter/mesh_border_enabled = true
+shader_parameter/mesh_border_width = 0.00400000019
+
+[node name="Aquarium" unique_id=457526443 instance=ExtResource("1_sbynj")]
+
+[node name="Glass" parent="." index="0" unique_id=1861902457]
+surface_material_override/0 = SubResource("StandardMaterial3D_sbynj")
+
+[node name="Sand" parent="." index="1" unique_id=1503090005]
+surface_material_override/0 = SubResource("ShaderMaterial_cx5w5")
+
+[node name="Water" parent="." index="2" unique_id=1574845161]
+surface_material_override/0 = SubResource("ShaderMaterial_wxl5q")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dbrgxfwe3t0wu"]
 
 [ext_resource type="Script" uid="uid://chr18rj22ext1" path="res://Scripts/Aquarium/aquarium.gd" id="1_h7ht6"]
-[ext_resource type="PackedScene" uid="uid://bvw0tm0pfpmqq" path="res://Scenes/Aquarium/sand.tscn" id="2_4djwm"]
+[ext_resource type="PackedScene" uid="uid://sr5h2ctj5aad" path="res://Scenes/Aquarium/aquarium_model.tscn" id="2_4djwm"]
 [ext_resource type="Script" uid="uid://uykmlribml6m" path="res://Scripts/Managers/fish_manager.gd" id="2_jhcuh"]
 [ext_resource type="Script" uid="uid://do4r5cj3jy0yd" path="res://Scripts/Managers/click_manager.gd" id="3_4djwm"]
 [ext_resource type="FontFile" uid="uid://c7ivi3qvka8la" path="res://Fonts/PixelFont.ttf" id="4_6odeh"]
@@ -24,8 +24,8 @@ unique_name_in_owner = true
 transform = Transform3D(-1, -3.0510108e-09, 8.736952e-08, 0, 0.99939084, 0.034899496, -8.742278e-08, 0.034899496, -0.99939084, 0, 5, -90)
 fov = 30.0
 
-[node name="Sand" parent="." unique_id=484583921 instance=ExtResource("2_4djwm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+[node name="Aquarium Model" parent="." unique_id=457526443 instance=ExtResource("2_4djwm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
 
 [node name="Fish Manager" type="Node" parent="." unique_id=398162355]
 unique_name_in_owner = true
