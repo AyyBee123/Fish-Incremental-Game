@@ -18,7 +18,7 @@ func _ready() -> void:
 	load_fish_names()
 	get_aquarium_bounds()
 	for i in 100:
-		spawn_fish(create_fish(preload("uid://df20jvqg3ut1w"), fish_names.pick_random()), true)
+		spawn_fish(create_fish(preload("uid://tgs88p7e0acj"), fish_names.pick_random()), true)
 
 
 func create_fish(species: FishSpeciesResource, fish_name: String = "Fish") -> FishInstanceResource:

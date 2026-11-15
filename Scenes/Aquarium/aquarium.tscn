@@ -30,7 +30,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
 [node name="Fish Manager" type="Node" parent="." unique_id=398162355]
 unique_name_in_owner = true
 script = ExtResource("2_jhcuh")
-aquarium_margin_down = 8.0
+aquarium_margin_left = 8.0
+aquarium_margin_right = 8.0
+aquarium_margin_up = 8.0
+aquarium_margin_down = 12.0
 
 [node name="Click Manager" type="Node" parent="." unique_id=1484032693]
 unique_name_in_owner = true

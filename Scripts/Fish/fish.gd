@@ -18,7 +18,7 @@ var is_spawning: bool = false
 
 func _ready() -> void:
 	original_scale = body.scale
-	animation_tree["parameters/Movement/blend_position"] = -1.0
+	animation_tree["parameters/Movement/BlendSpace1D/blend_position"] = -1.0
 	target_position = global_position
 	wait()
 
@@ -166,4 +166,4 @@ func play_spawn_animation() -> void:
 func update_animation_parameters() -> void:
 	var speed_ratio = clampf(velocity.length() / fish_res.species.max_speed, 0.0, 1.0)
 	var blend = lerpf(-1.0, 1.0, speed_ratio)
-	animation_tree["parameters/Movement/blend_position"] = blend
+	animation_tree["parameters/Movement/BlendSpace1D/blend_position"] = blend
