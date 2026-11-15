@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c7ivi3qvka8la"
-path="res://.godot/imported/PixelFont.ttf-f71fcad2d1e36a4afedd4347045cf9e2.fontdata"
+uid="uid://cktsncv23dr1s"
+path="res://.godot/imported/Font.ttf-71fcdc5ec4cce959c9806df7b5f7ca47.fontdata"
 
 [deps]
 
-source_file="res://Fonts/PixelFont.ttf"
-dest_files=["res://.godot/imported/PixelFont.ttf-f71fcad2d1e36a4afedd4347045cf9e2.fontdata"]
+source_file="res://Fonts/Font.ttf"
+dest_files=["res://.godot/imported/Font.ttf-71fcdc5ec4cce959c9806df7b5f7ca47.fontdata"]
 
 [params]
 

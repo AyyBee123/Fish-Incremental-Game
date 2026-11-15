@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://sr5h2ctj5aad" path="res://Scenes/Aquarium/aquarium_model.tscn" id="2_4djwm"]
 [ext_resource type="Script" uid="uid://uykmlribml6m" path="res://Scripts/Managers/fish_manager.gd" id="2_jhcuh"]
 [ext_resource type="Script" uid="uid://do4r5cj3jy0yd" path="res://Scripts/Managers/click_manager.gd" id="3_4djwm"]
-[ext_resource type="FontFile" uid="uid://c7ivi3qvka8la" path="res://Fonts/PixelFont.ttf" id="4_6odeh"]
 [ext_resource type="PackedScene" uid="uid://cnveierx5pplm" path="res://Scenes/Click/click_circle.tscn" id="4_jhcuh"]
 [ext_resource type="Script" uid="uid://cprdwv7dve5p8" path="res://Scripts/Click/click_radius.gd" id="5_h7ht6"]
+[ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="6_4djwm"]
 
 [sub_resource type="Environment" id="Environment_5h11f"]
 
@@ -58,7 +58,7 @@ offset_right = 96.0
 offset_bottom = 32.0
 theme_override_colors/font_color = Color(1, 0.81960785, 0.47058824, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
-theme_override_fonts/font = ExtResource("4_6odeh")
+theme_override_fonts/font = ExtResource("6_4djwm")
 theme_override_font_sizes/font_size = 64
 text = "$0"
 
