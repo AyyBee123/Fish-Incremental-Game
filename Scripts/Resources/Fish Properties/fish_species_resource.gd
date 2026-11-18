@@ -4,6 +4,8 @@ extends Resource
 @export_category("Core")
 @export var species_name: String
 @export var model: PackedScene
+@export var is_unlocked: bool = true # this is for the encyclopedia (and shop if the fish can be bought from the shop)
+@export var is_shop_fish: bool = true # flag if the fish can be purchased from the shop
 
 @export_category("Movement")
 @export var movement_behaviour: MovementBehaviour

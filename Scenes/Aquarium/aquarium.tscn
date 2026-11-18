@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="6_4djwm"]
 
 [sub_resource type="Environment" id="Environment_5h11f"]
+glow_enabled = true
 
 [node name="Main" type="Node3D" unique_id=859174208]
 script = ExtResource("1_h7ht6")

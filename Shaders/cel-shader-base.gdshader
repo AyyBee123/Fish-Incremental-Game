@@ -1,6 +1,6 @@
 shader_type spatial;
 
-#define USE_ALPHA 1
+#define USE_ALPHA 0
 #define USE_ALPHA_CUTOFF 0
 #define USE_EMISSION 0
 #define USE_REFLECTIONS 0
@@ -89,7 +89,7 @@ void fragment() {
 
 #if USE_ALPHA
 	float alpha = color.a * texture(base_texture, base_uv).a;
-	ALBEDO *= alpha;
+	ALPHA *= alpha;
 #elif USE_ALPHA_CUTOFF
 	ALPHA = color.a * texture(base_texture, base_uv).a;
 	ALPHA_SCISSOR_THRESHOLD = color.a * texture(base_texture, base_uv).a;

@@ -3,16 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bwol4brtvuu3o" path="res://Assets/Fish/Rainbow Fish/Rainbowfish.glb" id="1_nrrsb"]
 [ext_resource type="Script" uid="uid://bi2d20nlwc4cg" path="res://Scripts/Fish/fish.gd" id="2_smpd3"]
 [ext_resource type="Material" uid="uid://dwq2kgsopqdwr" path="res://Shaders/Materials/rainbow_material.tres" id="2_ue2al"]
-[ext_resource type="Material" uid="uid://c1r25otuebbcr" path="res://Shaders/Materials/highlight.tres" id="3_ovwr1"]
-[ext_resource type="Shader" uid="uid://6j4g8rb6srij" path="res://Shaders/outline.gdshader" id="4_cpfia"]
 [ext_resource type="Shader" uid="uid://dk5rywv3a3emn" path="res://Shaders/rainbow_fish.gdshader" id="5_smpd3"]
-[ext_resource type="Material" uid="uid://b7mten2i55q3b" path="res://Shaders/Materials/outline.tres" id="6_cpfia"]
 [ext_resource type="Shader" uid="uid://c1fj4ewss4ptt" path="res://Shaders/cel-shader-base.gdshader" id="7_smpd3"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1wnwg"]
-render_priority = 0
-next_pass = ExtResource("3_ovwr1")
-shader = ExtResource("4_cpfia")
 
 [sub_resource type="Gradient" id="Gradient_drabq"]
 offsets = PackedFloat32Array(0, 0.083, 0.25, 0.417, 0.583, 0.75, 0.917)
@@ -23,7 +15,6 @@ gradient = SubResource("Gradient_drabq")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5qokl"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_1wnwg")
 shader = ExtResource("5_smpd3")
 shader_parameter/color = Color(0.78352374, 0.7835233, 0.78352314, 1)
 shader_parameter/specular = Color(0, 0, 0, 0.5019608)
@@ -37,7 +28,6 @@ shader_parameter/rainbow_strength = 0.50000002375
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dw28x"]
 render_priority = 0
-next_pass = ExtResource("6_cpfia")
 shader = ExtResource("7_smpd3")
 shader_parameter/color = Color(0.2627451, 0.2627451, 0.2627451, 1)
 shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
@@ -56,7 +46,6 @@ shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0teb"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_1wnwg")
 shader = ExtResource("5_smpd3")
 shader_parameter/color = Color(0, 0, 0, 1)
 shader_parameter/specular = Color(0, 0, 0, 0.5019608)
@@ -68,24 +57,24 @@ shader_parameter/rainbow_speed = 0.2
 shader_parameter/rainbow_length = 0.22
 shader_parameter/rainbow_strength = 0.2000000095
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_smpd3"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lqk2g"]
 animation = &"Idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5qokl"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ongdx"]
 animation = &"Swim"
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_e0teb"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_smpd3")
+blend_point_0/node = SubResource("AnimationNodeAnimation_lqk2g")
 blend_point_0/pos = -1.0
 blend_point_0/name = &"Idle"
-blend_point_1/node = SubResource("AnimationNodeAnimation_5qokl")
+blend_point_1/node = SubResource("AnimationNodeAnimation_ongdx")
 blend_point_1/pos = 1.0
 blend_point_1/name = &"Swim"
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_8i4ll"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qovlt"]
-graph_offset = Vector2(-537, 57)
+graph_offset = Vector2(-248, 88)
 nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_e0teb")
 nodes/BlendSpace1D/position = Vector2(-340, 140)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_8i4ll")
@@ -123,6 +112,7 @@ unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="Cube" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(2009528550) index="0" unique_id=1261942961]
+cast_shadow = 0
 surface_material_override/0 = ExtResource("2_ue2al")
 surface_material_override/1 = SubResource("ShaderMaterial_5qokl")
 surface_material_override/2 = SubResource("ShaderMaterial_dw28x")

@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://bpdryhbrd1ri5"]
+
+[ext_resource type="PackedScene" uid="uid://htapj5o5mn3t" path="res://Assets/Fish/Glassfish/Glassfish.glb" id="1_t8l6p"]
+[ext_resource type="Script" uid="uid://bi2d20nlwc4cg" path="res://Scripts/Fish/fish.gd" id="2_nubsu"]
+[ext_resource type="Shader" uid="uid://c3eckykv8g7x" path="res://Shaders/glass_shader.gdshader" id="3_88elg"]
+[ext_resource type="Shader" uid="uid://c1fj4ewss4ptt" path="res://Shaders/cel-shader-base.gdshader" id="3_nubsu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ndrw7"]
+render_priority = 0
+shader = ExtResource("3_88elg")
+shader_parameter/refraction = 0.05
+shader_parameter/blurriness = 0.0
+shader_parameter/color = Color(0.39215687, 0.39215687, 0.39215687, 0.5019608)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7dn1"]
+render_priority = 0
+shader = ExtResource("3_nubsu")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/specular = Color(0, 0, 0, 0.5019608)
+shader_parameter/fresnel = Color(0, 0, 0, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lqk2g"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ongdx"]
+animation = &"Swim"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_e0teb"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_lqk2g")
+blend_point_0/pos = -1.0
+blend_point_0/name = &"Idle"
+blend_point_1/node = SubResource("AnimationNodeAnimation_ongdx")
+blend_point_1/pos = 1.0
+blend_point_1/name = &"Swim"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_8i4ll"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qovlt"]
+graph_offset = Vector2(-248, 88)
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_e0teb")
+nodes/BlendSpace1D/position = Vector2(-340, 140)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_8i4ll")
+nodes/TimeScale/position = Vector2(-20, 120)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"BlendSpace1D"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ua3lr"]
+animation = &"Spawn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_64lq3"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u307h"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nubsu"]
+states/Movement/node = SubResource("AnimationNodeBlendTree_qovlt")
+states/Movement/position = Vector2(525, 100)
+states/Spawn/node = SubResource("AnimationNodeAnimation_ua3lr")
+states/Spawn/position = Vector2(525, -7)
+states/Start/position = Vector2(183, 100)
+transitions = ["Spawn", "Movement", SubResource("AnimationNodeStateMachineTransition_64lq3"), "Start", "Movement", SubResource("AnimationNodeStateMachineTransition_u307h")]
+graph_offset = Vector2(-123, -65)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_88elg"]
+radius = 1.1533203
+height = 4.679533
+
+[node name="Glassfish" unique_id=262562074 instance=ExtResource("1_t8l6p")]
+script = ExtResource("2_nubsu")
+
+[node name="Armature" parent="." index="0" unique_id=558447448]
+unique_name_in_owner = true
+
+[node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(179026058) index="0" unique_id=1752832386]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+cast_shadow = 0
+surface_material_override/0 = SubResource("ShaderMaterial_ndrw7")
+surface_material_override/1 = SubResource("ShaderMaterial_g7dn1")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=100276029]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/..")
+root_motion_track = NodePath("Armature/Skeleton3D:Back_Body")
+tree_root = SubResource("AnimationNodeStateMachine_nubsu")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Movement/BlendSpace1D/blend_position = -1.0
+parameters/Movement/TimeScale/scale = 1.1000000000000014
+
+[node name="Click Area" type="Area3D" parent="." index="3" unique_id=1935964494]
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Click Area" index="0" unique_id=2018760950]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.2729171, 0.026777148, 0)
+shape = SubResource("CapsuleShape3D_88elg")

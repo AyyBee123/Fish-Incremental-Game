@@ -22,15 +22,7 @@ vec3 refraction_fragment(
 	float amount = 1.0 - alpha;
 	vec2 offset = screen_uv - normal.xy * refraction;
 	float image_depth = texture(depth_texture, offset).r;
-	return image_depth < depth
-			? textureLod(
-					screen_texture,
-					screen_uv,
-					blurriness * 8.0
-			).rgb * amount
-			: textureLod(
-					screen_texture,
-					offset,
-					blurriness * 8.0
-			).rgb * amount;
+	return image_depth > depth
+	? textureLod(screen_texture, screen_uv, blurriness * 8.0).rgb * amount
+	: textureLod(screen_texture, offset,    blurriness * 8.0).rgb * amount;
 }
