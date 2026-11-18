@@ -3,10 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://htapj5o5mn3t" path="res://Assets/Fish/Glassfish/Glassfish.glb" id="1_t8l6p"]
 [ext_resource type="Script" uid="uid://bi2d20nlwc4cg" path="res://Scripts/Fish/fish.gd" id="2_nubsu"]
 [ext_resource type="Shader" uid="uid://c3eckykv8g7x" path="res://Shaders/glass_shader.gdshader" id="3_88elg"]
+[ext_resource type="Material" uid="uid://b7mten2i55q3b" path="res://Shaders/Materials/outline.tres" id="3_ndrw7"]
 [ext_resource type="Shader" uid="uid://c1fj4ewss4ptt" path="res://Shaders/cel-shader-base.gdshader" id="3_nubsu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ndrw7"]
 render_priority = 0
+next_pass = ExtResource("3_ndrw7")
 shader = ExtResource("3_88elg")
 shader_parameter/refraction = 0.05
 shader_parameter/blurriness = 0.0

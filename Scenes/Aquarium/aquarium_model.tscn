@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://c1howga40g4ci" path="res://Shaders/water_pattern.gdshader" id="4_e52e1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sever"]
-render_priority = -1
+render_priority = 2
 shader = ExtResource("2_sbynj")
 shader_parameter/color = Color(0.5053441, 0.50534403, 0.5053442, 0.1254902)
 shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
@@ -24,7 +24,7 @@ noise = SubResource("FastNoiseLite_ocbjn")
 seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cx5w5"]
-render_priority = -1
+render_priority = 2
 shader = ExtResource("3_0074e")
 shader_parameter/color = Color(0.7353551, 0.6779187, 0.60907155, 1)
 shader_parameter/specular = Color(0, 0, 0, 0.5019608)
@@ -38,7 +38,7 @@ shader_parameter/sand_color_dark = Color(0.65, 0.49, 0.3, 1)
 shader_parameter/noise_strength = 0.35
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wxl5q"]
-render_priority = -1
+render_priority = 2
 shader = ExtResource("4_e52e1")
 shader_parameter/wave_amplitude = 0.03
 shader_parameter/wave_frequency = 6.0
