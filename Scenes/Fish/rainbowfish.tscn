@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bi2d20nlwc4cg" path="res://Scripts/Fish/fish.gd" id="2_smpd3"]
 [ext_resource type="Material" uid="uid://dwq2kgsopqdwr" path="res://Shaders/Materials/rainbow_material.tres" id="2_ue2al"]
 [ext_resource type="Shader" uid="uid://dk5rywv3a3emn" path="res://Shaders/rainbow_fish.gdshader" id="5_smpd3"]
+[ext_resource type="Material" uid="uid://b7mten2i55q3b" path="res://Shaders/Materials/outline.tres" id="6_ovwr1"]
 [ext_resource type="Shader" uid="uid://c1fj4ewss4ptt" path="res://Shaders/cel-shader-base.gdshader" id="7_smpd3"]
 
 [sub_resource type="Gradient" id="Gradient_drabq"]
@@ -46,6 +47,7 @@ shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0teb"]
 render_priority = 0
+next_pass = ExtResource("6_ovwr1")
 shader = ExtResource("5_smpd3")
 shader_parameter/color = Color(0, 0, 0, 1)
 shader_parameter/specular = Color(0, 0, 0, 0.5019608)
