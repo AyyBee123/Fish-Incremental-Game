@@ -19,15 +19,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 Preloads="*uid://b4iebdw2llybd"
-
-[debug]
-
-settings/stdout/print_fps=true
+GameManager="*uid://bfhq20jttf0wg"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0

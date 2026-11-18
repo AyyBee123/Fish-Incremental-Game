@@ -5,7 +5,7 @@ extends Node3D
 
 @onready var animation_tree: AnimationTree = %AnimationTree
 @onready var aquarium: Aquarium = get_tree().current_scene
-@onready var body: Node3D = %Armature
+@onready var armature: Node3D = %Armature
 
 var original_scale: Vector3
 var click_tween: Tween
@@ -17,7 +17,7 @@ var is_spawning: bool = false
 
 
 func _ready() -> void:
-	original_scale = body.scale
+	original_scale = armature.scale
 	animation_tree["parameters/Movement/BlendSpace1D/blend_position"] = -1.0
 	target_position = global_position
 	wait()
@@ -51,9 +51,8 @@ func _physics_process(delta) -> void:
 
 
 func on_click() -> void:
-	if is_spawning: return
 	var value = get_click_value()
-	aquarium.money += value
+	GameManager.money += value
 	trigger_click_behaviour()
 
 
@@ -78,12 +77,12 @@ func trigger_click_behaviour() -> void:
 	if click_tween and click_tween.is_running():
 		click_tween.kill()
 	
-	body.scale = original_scale
+	armature.scale = original_scale
 	
 	click_tween = create_tween()
-	click_tween.tween_property(body, "scale", original_scale * 0.85, 0.04).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	click_tween.tween_property(body, "scale", original_scale * 1.12, 0.1).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	click_tween.tween_property(body, "scale", original_scale, 0.12).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	click_tween.tween_property(armature, "scale", original_scale * 0.85, 0.04).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	click_tween.tween_property(armature, "scale", original_scale * 1.12, 0.1).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	click_tween.tween_property(armature, "scale", original_scale, 0.12).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 
 
 func set_target_position(_target_position: Vector3) -> void:
