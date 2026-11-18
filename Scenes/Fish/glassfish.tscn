@@ -10,6 +10,8 @@
 render_priority = 0
 next_pass = ExtResource("3_ndrw7")
 shader = ExtResource("3_88elg")
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 1.0
 shader_parameter/refraction = 0.05
 shader_parameter/blurriness = 0.0
 shader_parameter/color = Color(0.39215687, 0.39215687, 0.39215687, 0.5019608)
