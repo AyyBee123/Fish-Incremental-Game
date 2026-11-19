@@ -10,6 +10,7 @@ extends Node
 
 var aquarium_min: Vector3
 var aquarium_max: Vector3
+var aquarium_cap: int = 100
 
 var fish_names: Array = []
 
