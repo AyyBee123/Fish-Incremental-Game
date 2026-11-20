@@ -65,12 +65,9 @@ func get_click_value() -> float:
 	var individual_increase = fish_res.click_increase
 	var individual_multiplier = fish_res.click_multiplier
 	
-	var global_multiplier = aquarium.global_click_multiplier
-	
 	return (base_value) \
 		* (1.0 + species_increase + individual_increase) \
-		* species_multiplier * individual_multiplier \
-		* global_multiplier
+		* species_multiplier * individual_multiplier
 
 
 func trigger_click_behaviour() -> void:

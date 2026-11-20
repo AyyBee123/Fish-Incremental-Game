@@ -7,7 +7,6 @@ extends Node3D
 @onready var fish_manager: Node = %"Fish Manager"
 @onready var click_manager: Node = %"Click Manager"
 
-var global_click_multiplier: float = 1.0
 var displayed_money: float:
 	set(v):
 		displayed_money = v
@@ -15,11 +14,14 @@ var displayed_money: float:
 
 
 func _ready() -> void:
+	aquarium_res = AquariumResource.new() # for now, then check for save file to find the resource
 	GameManager.current_aquarium = aquarium_res
 	displayed_money = GameManager.money
 	
 	if not GameManager.owned_aquariums.has(aquarium_res):
 		GameManager.owned_aquariums.append(aquarium_res)
+		if GameManager.owned_aquariums.size() > 1:
+			aquarium_res.aquarium_name = "Aquarium %s" % (GameManager.owned_aquariums.size())
 	
 	if aquarium_res.fish.is_empty():
 		# new aquarium
@@ -28,6 +30,8 @@ func _ready() -> void:
 		# spawn fish assigned to this aquarium
 		for fish_data in aquarium_res.fish:
 			fish_manager.spawn_fish(fish_data.fish, false, false, fish_data.position)
+	
+	print(aquarium_res.aquarium_name)
 
 
 func _process(delta: float) -> void:

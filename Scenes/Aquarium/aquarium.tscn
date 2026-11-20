@@ -2,19 +2,18 @@
 
 [ext_resource type="Script" uid="uid://chr18rj22ext1" path="res://Scripts/Aquarium/aquarium.gd" id="1_h7ht6"]
 [ext_resource type="PackedScene" uid="uid://sr5h2ctj5aad" path="res://Scenes/Aquarium/aquarium_model.tscn" id="2_4djwm"]
-[ext_resource type="Resource" uid="uid://dq7jj15imj68c" path="res://Resources/Aquariums/aquarium1.tres" id="2_6odeh"]
 [ext_resource type="Script" uid="uid://uykmlribml6m" path="res://Scripts/Managers/fish_manager.gd" id="2_jhcuh"]
 [ext_resource type="Script" uid="uid://do4r5cj3jy0yd" path="res://Scripts/Managers/click_manager.gd" id="3_4djwm"]
 [ext_resource type="PackedScene" uid="uid://cnveierx5pplm" path="res://Scenes/Click/click_circle.tscn" id="4_jhcuh"]
 [ext_resource type="Script" uid="uid://cprdwv7dve5p8" path="res://Scripts/Click/click_radius.gd" id="5_h7ht6"]
 [ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="6_4djwm"]
+[ext_resource type="PackedScene" uid="uid://b78up0gxuvlmi" path="res://Scenes/UI/shop.tscn" id="8_6odeh"]
 
 [sub_resource type="Environment" id="Environment_5h11f"]
 glow_enabled = true
 
 [node name="Aquarium" type="Node3D" unique_id=859174208]
 script = ExtResource("1_h7ht6")
-aquarium_res = ExtResource("2_6odeh")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=728541427]
 environment = SubResource("Environment_5h11f")
@@ -72,3 +71,7 @@ text = "$0"
 anchors_preset = 0
 script = ExtResource("5_h7ht6")
 thickness = 1.0
+
+[node name="Shop" parent="CanvasLayer/UI" unique_id=2084740983 instance=ExtResource("8_6odeh")]
+visible = false
+layout_mode = 1

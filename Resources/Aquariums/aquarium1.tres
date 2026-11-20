@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="AquariumResource" format=3 uid="uid://dq7jj15imj68c"]
-
-[ext_resource type="Script" uid="uid://bjsqhwn2biy8l" path="res://Scripts/Resources/Aquarium/aquarium_fish_data.gd" id="1_2cp67"]
-[ext_resource type="Script" uid="uid://cnytmjvmnvksy" path="res://Scripts/Resources/Aquarium/aquarium_resource.gd" id="2_516wi"]
-
-[resource]
-script = ExtResource("2_516wi")
-max_capacity = 5
-metadata/_custom_type_script = "uid://cnytmjvmnvksy"
