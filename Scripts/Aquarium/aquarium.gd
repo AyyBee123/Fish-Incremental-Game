@@ -3,6 +3,7 @@ extends Node3D
 
 @export var aquarium_res: AquariumResource
 
+@onready var ui: Control = %UI
 @onready var camera: Camera3D = %Camera3D
 @onready var fish_manager: Node = %"Fish Manager"
 @onready var click_manager: Node = %"Click Manager"
@@ -30,8 +31,6 @@ func _ready() -> void:
 		# spawn fish assigned to this aquarium
 		for fish_data in aquarium_res.fish:
 			fish_manager.spawn_fish(fish_data.fish, false, false, fish_data.position)
-	
-	print(aquarium_res.aquarium_name)
 
 
 func _process(delta: float) -> void:

@@ -6,11 +6,24 @@
 [ext_resource type="Script" uid="uid://do4r5cj3jy0yd" path="res://Scripts/Managers/click_manager.gd" id="3_4djwm"]
 [ext_resource type="PackedScene" uid="uid://cnveierx5pplm" path="res://Scenes/Click/click_circle.tscn" id="4_jhcuh"]
 [ext_resource type="Script" uid="uid://cprdwv7dve5p8" path="res://Scripts/Click/click_radius.gd" id="5_h7ht6"]
+[ext_resource type="Script" uid="uid://sqkqedln3r3o" path="res://Scripts/Aquarium/aquarium_ui.gd" id="6_2bmw5"]
 [ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="6_4djwm"]
-[ext_resource type="PackedScene" uid="uid://b78up0gxuvlmi" path="res://Scenes/UI/shop.tscn" id="8_6odeh"]
+[ext_resource type="Texture2D" uid="uid://bthd8nsa6qhbj" path="res://Assets/UI/Button.png" id="8_05nrt"]
+[ext_resource type="Texture2D" uid="uid://g3h6s3hj0lyu" path="res://Assets/UI/Button Pressed.png" id="9_kxvt4"]
+[ext_resource type="Texture2D" uid="uid://5i82ptanqjcl" path="res://Assets/UI/Button Hover.png" id="10_jlta3"]
+[ext_resource type="Shader" uid="uid://2xyd4nbwija5" path="res://Shaders/icon_shader.gdshader" id="11_1hoif"]
+[ext_resource type="Texture2D" uid="uid://ca378wahjdk74" path="res://Assets/UI/Icons/Shop Icon.png" id="12_05nrt"]
 
 [sub_resource type="Environment" id="Environment_5h11f"]
 glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5h11f"]
+shader = ExtResource("11_1hoif")
+shader_parameter/tint_color = Color(0.31764707, 0.2509804, 0, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 2.0
+shader_parameter/shadow_color = Color(0, 0, 0, 0.5)
+shader_parameter/shadow_offset = Vector2(2, 4)
 
 [node name="Aquarium" type="Node3D" unique_id=859174208]
 script = ExtResource("1_h7ht6")
@@ -29,9 +42,10 @@ fov = 30.0
 [node name="Aquarium Model" parent="." unique_id=457526443 instance=ExtResource("2_4djwm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
 
-[node name="Fish Manager" type="Node" parent="." unique_id=398162355]
+[node name="Fish Manager" type="Node" parent="." unique_id=398162355 node_paths=PackedStringArray("aquarium")]
 unique_name_in_owner = true
 script = ExtResource("2_jhcuh")
+aquarium = NodePath("..")
 aquarium_margin_left = 8.0
 aquarium_margin_right = 8.0
 aquarium_margin_up = 8.0
@@ -46,13 +60,17 @@ unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=9434428]
 
-[node name="UI" type="Control" parent="CanvasLayer" unique_id=1888308740]
+[node name="UI" type="Control" parent="CanvasLayer" unique_id=1888308740 node_paths=PackedStringArray("aquarium")]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_2bmw5")
+aquarium = NodePath("../..")
 
 [node name="MoneyLabel" type="Label" parent="CanvasLayer/UI" unique_id=1031119075]
 unique_name_in_owner = true
@@ -63,15 +81,71 @@ offset_right = 104.0
 offset_bottom = 83.0
 theme_override_colors/font_color = Color(1, 0.81960785, 0.47058824, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("6_4djwm")
 theme_override_font_sizes/font_size = 64
 text = "$0"
 
+[node name="SelectionUI" type="HBoxContainer" parent="CanvasLayer/UI" unique_id=370276893]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 948.0
+offset_top = 8.0
+offset_right = 1908.0
+offset_bottom = 136.0
+mouse_filter = 2
+alignment = 2
+
+[node name="ShopButton" type="TextureButton" parent="CanvasLayer/UI/SelectionUI" unique_id=1705396675]
+custom_maximum_size = Vector2(128, 128)
+layout_mode = 2
+texture_normal = ExtResource("8_05nrt")
+texture_pressed = ExtResource("9_kxvt4")
+texture_hover = ExtResource("10_jlta3")
+stretch_mode = 5
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/UI/SelectionUI/ShopButton" unique_id=673309456]
+material = SubResource("ShaderMaterial_5h11f")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.66400003
+offset_bottom = 0.0079956055
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("12_05nrt")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/SelectionUI/ShopButton" unique_id=1450903421]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.66400003
+anchor_right = 1.0
+anchor_bottom = 0.961
+offset_top = 0.0079956055
+offset_bottom = -0.008003235
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("6_4djwm")
+theme_override_font_sizes/font_size = 32
+text = "Shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ClickRadius" type="Control" parent="CanvasLayer/UI" unique_id=719334242]
 anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("5_h7ht6")
 thickness = 1.0
 
-[node name="Shop" parent="CanvasLayer/UI" unique_id=2084740983 instance=ExtResource("8_6odeh")]
-visible = false
-layout_mode = 1
+[connection signal="pressed" from="CanvasLayer/UI/SelectionUI/ShopButton" to="CanvasLayer/UI" method="_on_shop_button_pressed"]

@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="FishSpeciesResource" format=3 uid="uid://tgs88p7e0acj"]
 
 [ext_resource type="PackedScene" uid="uid://2tdqf8wd8bo8" path="res://Scenes/Fish/rainbowfish.tscn" id="1_oesh3"]
+[ext_resource type="Texture2D" uid="uid://dua30twwseb1i" path="res://Assets/Screenshots/rainbowfish.png" id="1_x7v2v"]
 [ext_resource type="Resource" uid="uid://1hv7i7cmfraj" path="res://Resources/Movement Behaviours/base.tres" id="2_x7v2v"]
 [ext_resource type="Script" uid="uid://duwvt65xb45i1" path="res://Scripts/Resources/Fish Properties/fish_species_resource.gd" id="3_rc6mh"]
 
@@ -8,6 +9,8 @@
 script = ExtResource("3_rc6mh")
 species_name = "Rainbow Fish"
 model = ExtResource("1_oesh3")
+image = ExtResource("1_x7v2v")
+price = 1000.0
 movement_behaviour = ExtResource("2_x7v2v")
 acceleration = 4.0
 deceleration = 2.0

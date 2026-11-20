@@ -24,7 +24,7 @@ func update_cursor_position() -> void:
 		look_at(intersection + ray_direction, Vector3.UP)
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("click") and click_interval.is_stopped():
 		var overlapping_fish = get_overlapping_areas()
 		if overlapping_fish.is_empty(): return

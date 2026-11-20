@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ksxwepasqjrq"]
+
+[ext_resource type="Script" uid="uid://bfhq20jttf0wg" path="res://Scripts/Globals/game_manager.gd" id="1_hargk"]
+[ext_resource type="Script" uid="uid://duwvt65xb45i1" path="res://Scripts/Resources/Fish Properties/fish_species_resource.gd" id="2_y52mb"]
+[ext_resource type="Resource" uid="uid://df20jvqg3ut1w" path="res://Resources/Species/clownfish.tres" id="3_rlibi"]
+[ext_resource type="Resource" uid="uid://buyn1qlie2arr" path="res://Resources/Species/glassfish.tres" id="4_vdvrv"]
+[ext_resource type="Resource" uid="uid://tgs88p7e0acj" path="res://Resources/Species/rainbowfish.tres" id="5_0aimm"]
+
+[node name="GameManager" type="Node" unique_id=1040028158]
+script = ExtResource("1_hargk")
+available_fish = Array[ExtResource("2_y52mb")]([ExtResource("3_rlibi"), ExtResource("4_vdvrv"), ExtResource("5_0aimm")])

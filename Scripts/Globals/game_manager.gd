@@ -1,5 +1,7 @@
 extends Node
 
+@export var available_fish: Array[FishSpeciesResource]
+
 var money: float = 0.0
 var owned_fish: Array[FishInstanceResource] = []
 var owned_aquariums: Array[AquariumResource] = []

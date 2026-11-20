@@ -1,12 +1,12 @@
 class_name FishManager
 extends Node
 
+@export var aquarium: Aquarium
 @export var aquarium_margin_left: float = 4.0
 @export var aquarium_margin_right: float = 4.0
 @export var aquarium_margin_up: float = 4.0
 @export var aquarium_margin_down: float = 4.0
 
-@onready var aquarium: Aquarium = get_parent()
 
 var aquarium_min: Vector3
 var aquarium_max: Vector3

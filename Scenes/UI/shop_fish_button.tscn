@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cmc3hvv5acdtu"]
+
+[ext_resource type="Texture2D" uid="uid://bthd8nsa6qhbj" path="res://Assets/UI/Button.png" id="1_kp66h"]
+[ext_resource type="Texture2D" uid="uid://g3h6s3hj0lyu" path="res://Assets/UI/Button Pressed.png" id="2_oluwq"]
+[ext_resource type="Texture2D" uid="uid://5i82ptanqjcl" path="res://Assets/UI/Button Hover.png" id="3_ttgu0"]
+[ext_resource type="BitMap" uid="uid://x16gusbfrlsp" path="res://Assets/UI/Masks/Button_BWMask.png" id="4_wkaim"]
+[ext_resource type="Script" uid="uid://rqlb4a5aotmj" path="res://Scripts/UI/shop_fish_button.gd" id="5_nqafy"]
+[ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="6_oluwq"]
+[ext_resource type="Texture2D" uid="uid://dekj365whq7ge" path="res://Assets/Screenshots/clownfish.png" id="6_ttgu0"]
+
+[node name="ShopFishButton" type="TextureButton" unique_id=346374264]
+custom_maximum_size = Vector2(128, 128)
+offset_right = 256.0
+offset_bottom = 256.0
+texture_normal = ExtResource("1_kp66h")
+texture_pressed = ExtResource("2_oluwq")
+texture_hover = ExtResource("3_ttgu0")
+texture_click_mask = ExtResource("4_wkaim")
+stretch_mode = 5
+script = ExtResource("5_nqafy")
+
+[node name="FishImage" type="TextureRect" parent="." unique_id=579608746]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031000001
+anchor_right = 0.96900004
+anchor_bottom = 0.703
+offset_left = 0.031999826
+offset_right = -0.03200531
+offset_bottom = 0.01599884
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ttgu0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceLabel" type="Label" parent="." unique_id=922946001]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("6_oluwq")
+theme_override_font_sizes/font_size = 32
+text = "$0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
