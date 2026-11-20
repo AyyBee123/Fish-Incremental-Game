@@ -6,7 +6,7 @@ extends Node
 @export var aquarium_margin_up: float = 4.0
 @export var aquarium_margin_down: float = 4.0
 
-@onready var aquarium: Aquarium = get_tree().current_scene
+@onready var aquarium: Aquarium = get_parent()
 
 var aquarium_min: Vector3
 var aquarium_max: Vector3
@@ -17,13 +17,7 @@ var fish_names: Array = []
 
 func _ready() -> void:
 	load_fish_names()
-	get_aquarium_bounds()
-	for i in 34:
-		spawn_fish(create_fish(preload("uid://buyn1qlie2arr"), fish_names.pick_random()), true)
-	for i in 33:
-		spawn_fish(create_fish(preload("uid://df20jvqg3ut1w"), fish_names.pick_random()), true)
-	for i in 33:
-		spawn_fish(create_fish(preload("uid://tgs88p7e0acj"), fish_names.pick_random()), true)
+	set_aquarium_bounds()
 
 
 func create_fish(species: FishSpeciesResource, fish_name: String = "Fish") -> FishInstanceResource:
@@ -33,20 +27,30 @@ func create_fish(species: FishSpeciesResource, fish_name: String = "Fish") -> Fi
 	return fish_instance
 
 
-func spawn_fish(fish_instance: FishInstanceResource, play_anim: bool, pos: Vector3 = Vector3(INF, INF, INF)) -> void:
+func spawn_fish(fish_instance: FishInstanceResource, play_anim: bool, is_new: bool = true, pos: Vector3 = Vector3(INF, INF, INF)) -> void:
 	GameManager.add_fish(fish_instance)
+	
 	var fish: Fish = fish_instance.species.model.instantiate()
 	fish.fish_res = fish_instance
 	add_child(fish)
+	
 	if pos == Vector3(INF, INF, INF):
-		fish.global_position = Vector3(randf_range(aquarium_min.x, aquarium_max.x), 0, randi_range(-4, 8))
+		fish.global_position = get_random_aquarium_position()
 	else:
 		fish.global_position = pos
+	
+	if is_new:
+		GameManager.add_fish_to_aquarium(fish_instance, aquarium.aquarium_res, get_random_aquarium_position())
+	
 	if play_anim:
 		fish.play_spawn_animation()
 
 
-func get_aquarium_bounds() -> void:
+#func move_fish_to_aquarium(fish_instance: FishInstanceResource, aquarium_res: AquariumResource) -> void:
+	#pass
+
+
+func set_aquarium_bounds() -> void:
 	var corners = [Vector2(0, 0), Vector2(get_viewport().size.x, 0), Vector2(0, get_viewport().size.y), get_viewport().size]
 	var positions: Array[Vector3] = []
 	var plane = Plane(Vector3.FORWARD, 0)
@@ -72,6 +76,10 @@ func get_aquarium_bounds() -> void:
 	aquarium_max.x -= aquarium_margin_right
 	aquarium_min.y += aquarium_margin_down
 	aquarium_max.y -= aquarium_margin_up
+
+
+func get_random_aquarium_position() -> Vector3:
+	return Vector3(randf_range(aquarium_min.x, aquarium_max.x), 0, randi_range(-4, 8))
 
 
 func load_fish_names() -> void:

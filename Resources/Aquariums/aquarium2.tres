@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AquariumResource" format=3 uid="uid://b54ra6g17vvyu"]
+
+[ext_resource type="Script" uid="uid://bjsqhwn2biy8l" path="res://Scripts/Resources/Aquarium/aquarium_fish_data.gd" id="1_3m444"]
+[ext_resource type="Script" uid="uid://cnytmjvmnvksy" path="res://Scripts/Resources/Aquarium/aquarium_resource.gd" id="2_emsux"]
+
+[resource]
+script = ExtResource("2_emsux")
+id = 1
+max_capacity = 5
+metadata/_custom_type_script = "uid://cnytmjvmnvksy"
