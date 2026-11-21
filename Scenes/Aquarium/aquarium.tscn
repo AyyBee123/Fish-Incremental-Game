@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://5i82ptanqjcl" path="res://Assets/UI/Button Hover.png" id="10_jlta3"]
 [ext_resource type="Shader" uid="uid://2xyd4nbwija5" path="res://Shaders/icon_shader.gdshader" id="11_1hoif"]
 [ext_resource type="Texture2D" uid="uid://ca378wahjdk74" path="res://Assets/UI/Icons/Shop Icon.png" id="12_05nrt"]
+[ext_resource type="BitMap" uid="uid://0huum2cds88h" path="res://Assets/UI/Masks/Button_click_mask.res" id="12_kxvt4"]
 
 [sub_resource type="Environment" id="Environment_5h11f"]
 glow_enabled = true
@@ -109,6 +110,7 @@ layout_mode = 2
 texture_normal = ExtResource("8_05nrt")
 texture_pressed = ExtResource("9_kxvt4")
 texture_hover = ExtResource("10_jlta3")
+texture_click_mask = ExtResource("12_kxvt4")
 stretch_mode = 5
 
 [node name="Icon" type="TextureRect" parent="CanvasLayer/UI/SelectionUI/ShopButton" unique_id=673309456]

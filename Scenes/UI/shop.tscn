@@ -4,41 +4,21 @@
 [ext_resource type="Script" uid="uid://spvty0exm360" path="res://Scripts/UI/shop.gd" id="1_lmqlo"]
 [ext_resource type="Texture2D" uid="uid://bbteglfl6pwft" path="res://Assets/UI/Close Button.png" id="2_6qnyu"]
 [ext_resource type="Texture2D" uid="uid://bthd8nsa6qhbj" path="res://Assets/UI/Button.png" id="2_gm4r4"]
+[ext_resource type="Theme" uid="uid://bpqf2swccpde7" path="res://Assets/Themes/scroll_theme.tres" id="3_5oyw6"]
 [ext_resource type="Texture2D" uid="uid://g3h6s3hj0lyu" path="res://Assets/UI/Button Pressed.png" id="4_buvk0"]
 [ext_resource type="Texture2D" uid="uid://bp3620furiwph" path="res://Assets/UI/Close Button Hover.png" id="4_gm4r4"]
 [ext_resource type="Texture2D" uid="uid://b2rnppq16sfpl" path="res://Assets/UI/Close Button Press.png" id="4_l5jkk"]
 [ext_resource type="Texture2D" uid="uid://5i82ptanqjcl" path="res://Assets/UI/Button Hover.png" id="5_8pb36"]
-[ext_resource type="BitMap" uid="uid://2jjiwe4j61vr" path="res://Assets/UI/Masks/Close_Button_BWMask.png" id="6_4vyng"]
-[ext_resource type="BitMap" uid="uid://x16gusbfrlsp" path="res://Assets/UI/Masks/Button_BWMask.png" id="6_8pb36"]
 [ext_resource type="Shader" uid="uid://2xyd4nbwija5" path="res://Shaders/icon_shader.gdshader" id="6_tw4d4"]
+[ext_resource type="BitMap" uid="uid://0huum2cds88h" path="res://Assets/UI/Masks/Button_click_mask.res" id="7_57cgt"]
 [ext_resource type="Texture2D" uid="uid://rwqynrrjj181" path="res://Assets/UI/Icons/Fish Icon.png" id="7_m1un4"]
 [ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="8_een5p"]
+[ext_resource type="Texture2D" uid="uid://0affxqjg577m" path="res://Assets/UI/Icons/Aquarium Icon.png" id="10_w2r4i"]
+[ext_resource type="BitMap" uid="uid://b60xoafhwbyi" path="res://Assets/UI/Masks/Close Button_click_mask.res" id="14_5oyw6"]
 [ext_resource type="Texture2D" uid="uid://c8lu27sanqxrw" path="res://Assets/UI/Back Button.png" id="14_een5p"]
 [ext_resource type="Texture2D" uid="uid://cjp5c2godqy3s" path="res://Assets/UI/Back Button Pressed.png" id="15_w2r4i"]
 [ext_resource type="Texture2D" uid="uid://cfu66gc5li2e6" path="res://Assets/UI/Back Button Hover.png" id="16_5oyw6"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5jkk"]
-bg_color = Color(1, 0.7647059, 0.10980392, 1)
-expand_margin_left = 4.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vyng"]
-bg_color = Color(1, 0.7647059, 0.10980392, 1)
-expand_margin_left = 4.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmqlo"]
-bg_color = Color(1, 0.7647059, 0.10980392, 1)
-expand_margin_left = 4.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eedsn"]
-content_margin_left = 8.0
-bg_color = Color(0.7151162, 0.53911227, 1.92523e-07, 1)
-
-[sub_resource type="Theme" id="Theme_l5jkk"]
-VScrollBar/constants/padding_left = 4
-VScrollBar/styles/grabber = SubResource("StyleBoxFlat_l5jkk")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_4vyng")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_lmqlo")
-VScrollBar/styles/scroll = SubResource("StyleBoxFlat_eedsn")
+[ext_resource type="BitMap" uid="uid://087be6r35no8" path="res://Assets/UI/Masks/Back Button_click_mask.res" id="19_57cgt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5h11f"]
 shader = ExtResource("6_tw4d4")
@@ -100,7 +80,7 @@ theme_override_constants/margin_bottom = 64
 unique_name_in_owner = true
 custom_maximum_size = Vector2(1336, 620)
 layout_mode = 2
-theme = SubResource("Theme_l5jkk")
+theme = ExtResource("3_5oyw6")
 follow_focus = true
 horizontal_scroll_mode = 0
 
@@ -118,7 +98,7 @@ layout_mode = 2
 texture_normal = ExtResource("2_gm4r4")
 texture_pressed = ExtResource("4_buvk0")
 texture_hover = ExtResource("5_8pb36")
-texture_click_mask = ExtResource("6_8pb36")
+texture_click_mask = ExtResource("7_57cgt")
 
 [node name="Icon" type="TextureRect" parent="Background/MarginContainer/CategoryView/SelectionGrid/FishButton" unique_id=673309456]
 material = SubResource("ShaderMaterial_5h11f")
@@ -150,8 +130,50 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("8_een5p")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 32
 text = "Fish"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AquariumButton" type="TextureButton" parent="Background/MarginContainer/CategoryView/SelectionGrid" unique_id=244850939]
+layout_mode = 2
+texture_normal = ExtResource("2_gm4r4")
+texture_pressed = ExtResource("4_buvk0")
+texture_hover = ExtResource("5_8pb36")
+texture_click_mask = ExtResource("7_57cgt")
+
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/CategoryView/SelectionGrid/AquariumButton" unique_id=627773021]
+material = SubResource("ShaderMaterial_5h11f")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.684
+offset_bottom = -0.104003906
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_w2r4i")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/MarginContainer/CategoryView/SelectionGrid/AquariumButton" unique_id=788452498]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.684
+anchor_bottom = 0.684
+offset_top = -0.104003906
+offset_right = 256.0
+offset_bottom = 74.895996
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("8_een5p")
+theme_override_font_sizes/font_size = 32
+text = "Aquariums"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -159,10 +181,24 @@ vertical_alignment = 1
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-theme = SubResource("Theme_l5jkk")
+theme = ExtResource("3_5oyw6")
 follow_focus = true
 
-[node name="FishGrid" type="HFlowContainer" parent="Background/MarginContainer/FishView" unique_id=648415186]
+[node name="Grid" type="HFlowContainer" parent="Background/MarginContainer/FishView" unique_id=648415186]
+custom_minimum_size = Vector2(1336, 620)
+custom_maximum_size = Vector2(1336, 620)
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="AquariumView" type="ScrollContainer" parent="Background/MarginContainer" unique_id=92446823]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme = ExtResource("3_5oyw6")
+follow_focus = true
+
+[node name="Grid" type="HFlowContainer" parent="Background/MarginContainer/AquariumView" unique_id=889640264]
 custom_minimum_size = Vector2(1336, 620)
 custom_maximum_size = Vector2(1336, 620)
 layout_mode = 2
@@ -178,7 +214,7 @@ offset_bottom = 227.0
 texture_normal = ExtResource("2_6qnyu")
 texture_pressed = ExtResource("4_l5jkk")
 texture_hover = ExtResource("4_gm4r4")
-texture_click_mask = ExtResource("6_4vyng")
+texture_click_mask = ExtResource("14_5oyw6")
 
 [node name="BackButton" type="TextureButton" parent="." unique_id=622428347]
 unique_name_in_owner = true
@@ -190,9 +226,10 @@ offset_bottom = 231.0
 texture_normal = ExtResource("14_een5p")
 texture_pressed = ExtResource("15_w2r4i")
 texture_hover = ExtResource("16_5oyw6")
-texture_click_mask = ExtResource("6_4vyng")
+texture_click_mask = ExtResource("19_57cgt")
 
 [connection signal="visibility_changed" from="Background/MarginContainer/CategoryView" to="." method="_on_category_view_visibility_changed"]
 [connection signal="pressed" from="Background/MarginContainer/CategoryView/SelectionGrid/FishButton" to="." method="_on_fish_button_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/CategoryView/SelectionGrid/AquariumButton" to="." method="_on_aquarium_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
