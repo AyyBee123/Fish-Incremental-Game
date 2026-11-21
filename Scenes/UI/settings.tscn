@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://cneiimxcqdkrc"]
 
 [ext_resource type="Script" uid="uid://dmar3j0wnus1k" path="res://Scripts/UI/settings.gd" id="1_owiy1"]
+[ext_resource type="Theme" uid="uid://gi2chdn18cyi" path="res://Assets/Themes/menu_button.tres" id="2_ma1v7"]
+[ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="3_p46qs"]
 
 [node name="Settings" type="Control" unique_id=432695705]
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,3 +22,122 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.2509804)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1834335889]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_right = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer" unique_id=948485022]
+custom_minimum_size = Vector2(512, 96)
+custom_maximum_size = Vector2(512, 96)
+layout_mode = 2
+theme = ExtResource("2_ma1v7")
+
+[node name="Label" type="Label" parent="VBoxContainer/ResumeButton" unique_id=625794549]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_p46qs")
+theme_override_font_sizes/font_size = 48
+text = "Resume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="Button" parent="VBoxContainer" unique_id=16764367]
+custom_minimum_size = Vector2(512, 96)
+custom_maximum_size = Vector2(512, 96)
+layout_mode = 2
+theme = ExtResource("2_ma1v7")
+
+[node name="Label" type="Label" parent="VBoxContainer/Options" unique_id=1626571771]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_p46qs")
+theme_override_font_sizes/font_size = 48
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitToMenu" type="Button" parent="VBoxContainer" unique_id=1438647551]
+custom_minimum_size = Vector2(512, 96)
+custom_maximum_size = Vector2(512, 96)
+layout_mode = 2
+theme = ExtResource("2_ma1v7")
+
+[node name="Label" type="Label" parent="VBoxContainer/ExitToMenu" unique_id=1860422635]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_p46qs")
+theme_override_font_sizes/font_size = 48
+text = "Exit to Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitToDesktop" type="Button" parent="VBoxContainer" unique_id=356444650]
+custom_minimum_size = Vector2(512, 96)
+custom_maximum_size = Vector2(512, 96)
+layout_mode = 2
+theme = ExtResource("2_ma1v7")
+
+[node name="Label" type="Label" parent="VBoxContainer/ExitToDesktop" unique_id=1171510998]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_p46qs")
+theme_override_font_sizes/font_size = 48
+text = "Exit to Desktop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitToMenu" to="." method="_on_exit_to_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitToDesktop" to="." method="_on_exit_to_desktop_pressed"]

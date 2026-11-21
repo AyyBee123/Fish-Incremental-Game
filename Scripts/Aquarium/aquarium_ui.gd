@@ -3,6 +3,7 @@ extends Control
 @export var aquarium: Aquarium
 
 var current_shop: Shop
+var current_settings: Settings
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -13,13 +14,17 @@ func _unhandled_input(event: InputEvent) -> void:
 			open_shop()
 		accept_event()
 	if event.is_action_pressed("back"):
-		close_shop()
+		if current_shop:
+			close_shop()
+		else:
+			open_settings()
 		accept_event()
 
 
 func open_shop() -> void:
 	if current_shop: return
 	var shop: Shop = Preloads.SHOP.instantiate()
+	current_shop = shop
 	add_child(shop)
 
 
@@ -28,9 +33,21 @@ func close_shop() -> void:
 		current_shop.queue_free()
 
 
+func open_settings() -> void:
+	if current_settings: return
+	var settings: Settings = Preloads.SETTINGS.instantiate()
+	current_settings = settings
+	add_child(settings)
+
+
+func close_settings() -> void:
+	if current_settings:
+		current_shop.queue_free()
+
+
 func _on_shop_button_pressed() -> void:
 	open_shop()
 
 
 func _on_settings_button_pressed() -> void:
-	pass # Replace with function body.
+	open_settings()
