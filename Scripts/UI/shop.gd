@@ -40,6 +40,7 @@ func buy_fish(species: FishSpeciesResource) -> void:
 	var manager: FishManager = get_tree().current_scene.fish_manager
 	manager.spawn_fish(manager.create_fish(species, manager.fish_names.pick_random()), true, true)
 	
+	get_tree().current_scene.update_capacity_label()
 	SaveManager.save_game()
 
 

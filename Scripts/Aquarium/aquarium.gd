@@ -31,6 +31,7 @@ func _ready() -> void:
 			aquarium_res.aquarium_name = "Aquarium %s" % (owned_aquariums.size())
 	
 	populate_aquarium_list()
+	update_capacity_label()
 	
 	if aquarium_res.fish.is_empty() and aquarium_res.id == 0:
 		# new aquarium
@@ -65,3 +66,13 @@ func populate_aquarium_list() -> void:
 		button.setup(aquarium)
 		button.pressed.connect(switch_aquarium.bind(aquarium))
 		%AquariumList.add_child(button)
+
+
+func update_capacity_label() -> void:
+	var current: int = aquarium_res.fish.size()
+	var capacity: int = aquarium_res.max_capacity
+	
+	if current >= capacity:
+		%CapacityLabel.text = "[color=red]%d[/color]/%d" % [current, capacity]
+	else:
+		%CapacityLabel.text = "%d/%d" % [current, capacity]
