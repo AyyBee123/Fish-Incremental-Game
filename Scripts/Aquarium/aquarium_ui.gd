@@ -17,10 +17,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		accept_event()
 
 
-func _on_shop_button_pressed() -> void:
-	open_shop()
-
-
 func open_shop() -> void:
 	if current_shop: return
 	var shop: Shop = Preloads.SHOP.instantiate()
@@ -30,3 +26,11 @@ func open_shop() -> void:
 func close_shop() -> void:
 	if current_shop:
 		current_shop.queue_free()
+
+
+func _on_shop_button_pressed() -> void:
+	open_shop()
+
+
+func _on_settings_button_pressed() -> void:
+	pass # Replace with function body.

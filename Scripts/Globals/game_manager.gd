@@ -2,8 +2,7 @@ extends Node
 
 @export var available_fish: Array[FishSpeciesResource]
 
-var owned_fish: Array[FishInstanceResource] = []
-var owned_aquariums: Array[AquariumResource] = []
+var aquarium_prices: Array = [25000, 100000, 500000, 1000000, 10000000]
 
 
 func _process(delta: float) -> void:
@@ -13,20 +12,12 @@ func _process(delta: float) -> void:
 func earn_passive_income(delta) -> void:
 	var income: float = 0.0
 	
-	for fish: FishInstanceResource in owned_fish:
-		# calculate the fish's passive income per second
-		income += fish.species.click_value * fish.species.passive_income_percent
+	for aquarium: AquariumResource in SaveManager.game_data.owned_aquariums:
+		for fish_data: AquariumFishData in aquarium.fish:
+			var fish = fish_data.fish
+			income += fish.species.click_value * fish.species.passive_income_percent
 	
 	SaveManager.game_data.money += income * delta
-
-
-func add_fish(fish: FishInstanceResource) -> void:
-	if not owned_fish.has(fish):
-		owned_fish.append(fish)
-
-
-func remove_fish(fish: FishInstanceResource) -> void:
-	owned_fish.erase(fish)
 
 
 func add_fish_to_aquarium(fish_instance: FishInstanceResource, aquarium_res: AquariumResource, position: Vector3) -> void:

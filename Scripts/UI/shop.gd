@@ -22,22 +22,66 @@ func populate_fish_shop() -> void:
 		var button: ShopFishButton = Preloads.SHOP_FISH_BUTTON.instantiate()
 		button.price = species.price
 		button.image = species.image
+		button.fish_name = species.species_name
 		button.pressed.connect(buy_fish.bind(species))
 		fish_view.get_node("Grid").add_child(button)
 
 
 func buy_fish(species: FishSpeciesResource) -> void:
 	var aquarium: AquariumResource = get_tree().current_scene.aquarium_res
-	if aquarium.fish.size() >= aquarium.max_capacity: return
-	if SaveManager.game_data.money < species.price: return
+	
+	if aquarium.fish.size() >= aquarium.max_capacity:
+		return
+	if SaveManager.game_data.money < species.price:
+		return
+	
 	SaveManager.game_data.money -= species.price
+	
 	var manager: FishManager = get_tree().current_scene.fish_manager
 	manager.spawn_fish(manager.create_fish(species, manager.fish_names.pick_random()), true, true)
+	
 	SaveManager.save_game()
 
 
 func populate_aquarium_shop() -> void:
-	pass
+	for node in aquarium_view.get_node("Grid").get_children():
+		node.queue_free()
+	
+	for i in range(1, GameManager.aquarium_prices.size() + 1):
+		var already_owned = false
+		
+		for aquarium: AquariumResource in SaveManager.game_data.owned_aquariums:
+			if aquarium.id == i:
+				already_owned = true
+				break
+		
+		if already_owned:
+			continue
+		
+		var button: ShopAquariumButton = Preloads.SHOP_AQUARIUM_BUTTON.instantiate()
+		button.price = GameManager.aquarium_prices[i - 1]
+		button.aquarium_name = "Aquarium %s" % (i)
+		button.pressed.connect(buy_aquarium.bind(i))
+		aquarium_view.get_node("Grid").add_child(button)
+
+
+func buy_aquarium(id: int) -> void:
+	var price = GameManager.aquarium_prices[id - 1]
+	
+	if SaveManager.game_data.money < price:
+		return
+	
+	SaveManager.game_data.money -= price
+	
+	var aquarium = AquariumResource.new()
+	aquarium.id = id
+	aquarium.aquarium_name = "Aquarium %s" % (id)
+	
+	SaveManager.game_data.owned_aquariums.append(aquarium)
+	
+	SaveManager.save_game()
+	get_tree().current_scene.populate_aquarium_list()
+	populate_aquarium_shop()
 
 
 func _on_category_view_visibility_changed() -> void:

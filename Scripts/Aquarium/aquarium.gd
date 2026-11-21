@@ -1,7 +1,7 @@
 class_name Aquarium
 extends Node3D
 
-@export var aquarium_res: AquariumResource
+var aquarium_res: AquariumResource
 
 @onready var ui: Control = %UI
 @onready var camera: Camera3D = %Camera3D
@@ -30,9 +30,11 @@ func _ready() -> void:
 		if owned_aquariums.size() > 1:
 			aquarium_res.aquarium_name = "Aquarium %s" % (owned_aquariums.size())
 	
-	if aquarium_res.fish.is_empty():
+	populate_aquarium_list()
+	
+	if aquarium_res.fish.is_empty() and aquarium_res.id == 0:
 		# new aquarium
-		fish_manager.spawn_fish(fish_manager.create_fish(Preloads.CLOWNFISH, fish_manager.fish_names.pick_random()), true)
+		fish_manager.spawn_fish(fish_manager.create_fish(preload("uid://df20jvqg3ut1w"), fish_manager.fish_names.pick_random()), true)
 	else:
 		# spawn fish assigned to this aquarium
 		for fish_data in aquarium_res.fish:
@@ -42,3 +44,24 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if displayed_money != SaveManager.game_data.money:
 		displayed_money = lerpf(displayed_money, SaveManager.game_data.money, 1.0 - exp(-25.0 * delta))
+
+
+func switch_aquarium(new_aquarium: AquariumResource) -> void:
+	SaveManager.save_game() # save the currently active aquarium and its fish
+	SaveManager.game_data.current_aquarium = new_aquarium # change the active aquarium
+	ResourceSaver.save(SaveManager.game_data, SaveManager.PATH) # save new selection without getting the old aquarium's fish
+	get_tree().reload_current_scene() # reload the aquarium scene
+
+
+func populate_aquarium_list() -> void:
+	for node in %AquariumList.get_children():
+		node.queue_free()
+	
+	for aquarium: AquariumResource in SaveManager.game_data.owned_aquariums:
+		if aquarium == SaveManager.game_data.current_aquarium:
+			continue
+		
+		var button: AquariumSelectionButton = Preloads.AQUARIUM_BUTTON.instantiate()
+		button.setup(aquarium)
+		button.pressed.connect(switch_aquarium.bind(aquarium))
+		%AquariumList.add_child(button)

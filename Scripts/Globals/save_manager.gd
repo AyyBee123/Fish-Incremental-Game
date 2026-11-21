@@ -10,7 +10,6 @@ func _ready() -> void:
 
 
 func save_game() -> void:
-	
 	var aquarium = game_data.current_aquarium
 	var fish_manager = get_tree().get_first_node_in_group("fish_manager")
 	

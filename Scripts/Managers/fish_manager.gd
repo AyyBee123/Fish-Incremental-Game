@@ -28,8 +28,6 @@ func create_fish(species: FishSpeciesResource, fish_name: String = "Fish") -> Fi
 
 
 func spawn_fish(fish_instance: FishInstanceResource, play_anim: bool, is_new: bool = true, pos: Vector3 = Vector3(INF, INF, INF), rot: Vector3 = Vector3(INF, INF, INF)) -> void:
-	GameManager.add_fish(fish_instance)
-	
 	var fish: Fish = fish_instance.species.model.instantiate()
 	fish.fish_res = fish_instance
 	

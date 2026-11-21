@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://h2bqmq0fnk3i"]
+
+[ext_resource type="Texture2D" uid="uid://bthd8nsa6qhbj" path="res://Assets/UI/Button.png" id="1_m0q1o"]
+[ext_resource type="Texture2D" uid="uid://g3h6s3hj0lyu" path="res://Assets/UI/Button Pressed.png" id="2_mi11v"]
+[ext_resource type="Texture2D" uid="uid://5i82ptanqjcl" path="res://Assets/UI/Button Hover.png" id="3_ild81"]
+[ext_resource type="BitMap" uid="uid://0huum2cds88h" path="res://Assets/UI/Masks/Button_click_mask.res" id="4_86xlx"]
+[ext_resource type="Shader" uid="uid://2xyd4nbwija5" path="res://Shaders/icon_shader.gdshader" id="5_bybac"]
+[ext_resource type="Script" uid="uid://cnj45bsasbqpy" path="res://Scripts/UI/aquarium_button.gd" id="5_mi11v"]
+[ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="7_53d0p"]
+[ext_resource type="Texture2D" uid="uid://0affxqjg577m" path="res://Assets/UI/Icons/Aquarium Icon.png" id="7_ild81"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5h11f"]
+shader = ExtResource("5_bybac")
+shader_parameter/tint_color = Color(0.31764707, 0.2509804, 0, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 2.0
+shader_parameter/shadow_color = Color(0, 0, 0, 0.5)
+shader_parameter/shadow_offset = Vector2(2, 4)
+
+[node name="AquariumButton" type="TextureButton" unique_id=1021959741]
+custom_maximum_size = Vector2(128, 128)
+texture_normal = ExtResource("1_m0q1o")
+texture_pressed = ExtResource("2_mi11v")
+texture_hover = ExtResource("3_ild81")
+texture_click_mask = ExtResource("4_86xlx")
+stretch_mode = 5
+script = ExtResource("5_mi11v")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=700944845]
+material = SubResource("ShaderMaterial_5h11f")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.66400003
+offset_bottom = 0.0079956055
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_ild81")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=2001957139]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.61700004
+anchor_right = 1.0
+anchor_bottom = 0.91400003
+offset_top = 0.023994446
+offset_bottom = 0.0079956055
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("7_53d0p")
+theme_override_font_sizes/font_size = 16
+text = "Aquarium 1"
+horizontal_alignment = 1
+vertical_alignment = 1
