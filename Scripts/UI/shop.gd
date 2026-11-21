@@ -28,10 +28,11 @@ func populate_fish_shop() -> void:
 func buy_fish(species: FishSpeciesResource) -> void:
 	var aquarium: AquariumResource = get_tree().current_scene.aquarium_res
 	if aquarium.fish.size() >= aquarium.max_capacity: return
-	if GameManager.money < species.price: return
-	GameManager.money -= species.price
+	if SaveManager.game_data.money < species.price: return
+	SaveManager.game_data.money -= species.price
 	var manager: FishManager = get_tree().current_scene.fish_manager
 	manager.spawn_fish(manager.create_fish(species, manager.fish_names.pick_random()), true, true)
+	SaveManager.save_game()
 
 
 func _on_close_button_pressed() -> void:

@@ -15,24 +15,30 @@ var displayed_money: float:
 
 
 func _ready() -> void:
-	aquarium_res = AquariumResource.new() # for now, then check for save file to find the resource
-	GameManager.current_aquarium = aquarium_res
-	displayed_money = GameManager.money
+	if SaveManager.game_data.current_aquarium:
+		aquarium_res = SaveManager.game_data.current_aquarium
+	else:
+		aquarium_res = AquariumResource.new()
+		SaveManager.game_data.current_aquarium = aquarium_res
 	
-	if not GameManager.owned_aquariums.has(aquarium_res):
-		GameManager.owned_aquariums.append(aquarium_res)
-		if GameManager.owned_aquariums.size() > 1:
-			aquarium_res.aquarium_name = "Aquarium %s" % (GameManager.owned_aquariums.size())
+	SaveManager.game_data.current_aquarium = aquarium_res
+	displayed_money = SaveManager.game_data.money
+	
+	var owned_aquariums: Array = SaveManager.game_data.owned_aquariums
+	if not owned_aquariums.has(aquarium_res):
+		owned_aquariums.append(aquarium_res)
+		if owned_aquariums.size() > 1:
+			aquarium_res.aquarium_name = "Aquarium %s" % (owned_aquariums.size())
 	
 	if aquarium_res.fish.is_empty():
 		# new aquarium
-		fish_manager.spawn_fish(fish_manager.create_fish(preload("uid://df20jvqg3ut1w")), true)
+		fish_manager.spawn_fish(fish_manager.create_fish(Preloads.CLOWNFISH, fish_manager.fish_names.pick_random()), true)
 	else:
 		# spawn fish assigned to this aquarium
 		for fish_data in aquarium_res.fish:
-			fish_manager.spawn_fish(fish_data.fish, false, false, fish_data.position)
+			fish_manager.spawn_fish(fish_data.fish, false, false, fish_data.position, fish_data.rotation)
 
 
 func _process(delta: float) -> void:
-	if displayed_money != GameManager.money:
-		displayed_money = lerpf(displayed_money, GameManager.money, 1.0 - exp(-25.0 * delta))
+	if displayed_money != SaveManager.game_data.money:
+		displayed_money = lerpf(displayed_money, SaveManager.game_data.money, 1.0 - exp(-25.0 * delta))

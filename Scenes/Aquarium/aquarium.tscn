@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://sr5h2ctj5aad" path="res://Scenes/Aquarium/aquarium_model.tscn" id="2_4djwm"]
 [ext_resource type="Script" uid="uid://uykmlribml6m" path="res://Scripts/Managers/fish_manager.gd" id="2_jhcuh"]
 [ext_resource type="Script" uid="uid://do4r5cj3jy0yd" path="res://Scripts/Managers/click_manager.gd" id="3_4djwm"]
+[ext_resource type="Script" uid="uid://c4h23ba2xi8rn" path="res://Scripts/Managers/instance_save_manager.gd" id="3_05nrt"]
 [ext_resource type="PackedScene" uid="uid://cnveierx5pplm" path="res://Scenes/Click/click_circle.tscn" id="4_jhcuh"]
 [ext_resource type="Script" uid="uid://cprdwv7dve5p8" path="res://Scripts/Click/click_radius.gd" id="5_h7ht6"]
 [ext_resource type="Script" uid="uid://sqkqedln3r3o" path="res://Scripts/Aquarium/aquarium_ui.gd" id="6_2bmw5"]
@@ -42,7 +43,11 @@ fov = 30.0
 [node name="Aquarium Model" parent="." unique_id=457526443 instance=ExtResource("2_4djwm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
 
-[node name="Fish Manager" type="Node" parent="." unique_id=398162355 node_paths=PackedStringArray("aquarium")]
+[node name="Instance Save Manager" type="Node" parent="." unique_id=1231781495]
+unique_name_in_owner = true
+script = ExtResource("3_05nrt")
+
+[node name="Fish Manager" type="Node" parent="." unique_id=398162355 node_paths=PackedStringArray("aquarium") groups=["fish_manager"]]
 unique_name_in_owner = true
 script = ExtResource("2_jhcuh")
 aquarium = NodePath("..")

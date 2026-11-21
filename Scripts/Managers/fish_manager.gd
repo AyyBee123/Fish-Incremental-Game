@@ -27,11 +27,12 @@ func create_fish(species: FishSpeciesResource, fish_name: String = "Fish") -> Fi
 	return fish_instance
 
 
-func spawn_fish(fish_instance: FishInstanceResource, play_anim: bool, is_new: bool = true, pos: Vector3 = Vector3(INF, INF, INF)) -> void:
+func spawn_fish(fish_instance: FishInstanceResource, play_anim: bool, is_new: bool = true, pos: Vector3 = Vector3(INF, INF, INF), rot: Vector3 = Vector3(INF, INF, INF)) -> void:
 	GameManager.add_fish(fish_instance)
 	
 	var fish: Fish = fish_instance.species.model.instantiate()
 	fish.fish_res = fish_instance
+	
 	add_child(fish)
 	
 	if pos == Vector3(INF, INF, INF):
@@ -39,8 +40,11 @@ func spawn_fish(fish_instance: FishInstanceResource, play_anim: bool, is_new: bo
 	else:
 		fish.global_position = pos
 	
+	if rot != Vector3(INF, INF, INF):
+		fish.global_rotation = rot
+	
 	if is_new:
-		GameManager.add_fish_to_aquarium(fish_instance, aquarium.aquarium_res, get_random_aquarium_position())
+		GameManager.add_fish_to_aquarium(fish_instance, aquarium.aquarium_res, fish.global_position)
 	
 	if play_anim:
 		fish.play_spawn_animation()
