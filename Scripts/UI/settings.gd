@@ -6,7 +6,7 @@ func _on_resume_button_pressed() -> void:
 	queue_free()
 
 
-func _on_options_pressed() -> void:
+func _on_settings_pressed() -> void:
 	pass
 
 

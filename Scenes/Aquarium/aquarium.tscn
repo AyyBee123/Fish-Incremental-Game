@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://ca378wahjdk74" path="res://Assets/UI/Icons/Shop Icon.png" id="12_05nrt"]
 [ext_resource type="BitMap" uid="uid://0huum2cds88h" path="res://Assets/UI/Masks/Button_click_mask.res" id="12_kxvt4"]
 [ext_resource type="Texture2D" uid="uid://tgehc3ctxsjl" path="res://Assets/UI/Icons/Settings Icon.png" id="15_jlta3"]
-[ext_resource type="PackedScene" uid="uid://h2bqmq0fnk3i" path="res://Scenes/UI/aquarium_button.tscn" id="16_1hoif"]
 
 [sub_resource type="Environment" id="Environment_5h11f"]
 glow_enabled = true
@@ -211,7 +210,7 @@ theme_override_constants/outline_size = 2
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("6_4djwm")
 theme_override_font_sizes/font_size = 24
-text = "Settings"
+text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -224,9 +223,6 @@ offset_right = 1908.0
 offset_bottom = 1068.0
 mouse_filter = 2
 alignment = 2
-
-[node name="AquariumButton" parent="CanvasLayer/UI/AquariumList" unique_id=1021959741 instance=ExtResource("16_1hoif")]
-layout_mode = 2
 
 [node name="ClickRadius" type="Control" parent="CanvasLayer/UI" unique_id=719334242]
 anchors_preset = 0

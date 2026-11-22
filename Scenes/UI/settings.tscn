@@ -62,13 +62,13 @@ text = "Resume"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Options" type="Button" parent="VBoxContainer" unique_id=16764367]
+[node name="Settings" type="Button" parent="VBoxContainer" unique_id=16764367]
 custom_minimum_size = Vector2(512, 96)
 custom_maximum_size = Vector2(512, 96)
 layout_mode = 2
 theme = ExtResource("2_ma1v7")
 
-[node name="Label" type="Label" parent="VBoxContainer/Options" unique_id=1626571771]
+[node name="Label" type="Label" parent="VBoxContainer/Settings" unique_id=1626571771]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,7 +83,7 @@ theme_override_constants/outline_size = 2
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("3_p46qs")
 theme_override_font_sizes/font_size = 48
-text = "Options"
+text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -138,6 +138,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitToMenu" to="." method="_on_exit_to_menu_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitToDesktop" to="." method="_on_exit_to_desktop_pressed"]

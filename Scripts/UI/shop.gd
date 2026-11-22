@@ -5,6 +5,7 @@ extends Control
 @onready var category_view: ScrollContainer = %CategoryView
 @onready var fish_view: ScrollContainer = %FishView
 @onready var aquarium_view: ScrollContainer = %AquariumView
+@onready var capacity_view: ScrollContainer = %CapacityView
 
 
 func _ready() -> void:
@@ -85,6 +86,43 @@ func buy_aquarium(id: int) -> void:
 	populate_aquarium_shop()
 
 
+func populate_capacity_shop() -> void:
+	for node in capacity_view.get_node("Grid").get_children():
+		node.queue_free()
+	
+	var aquarium: AquariumResource = get_tree().current_scene.aquarium_res
+	
+	for i in range(GameManager.capacity_upgrade_prices[aquarium.id].size()):
+		if aquarium.purchased_capacity_upgrades[i]:
+			continue
+		
+		var button: ShopCapacityButton = Preloads.SHOP_CAPACITY_BUTTON.instantiate()
+		button.price = GameManager.capacity_upgrade_prices[aquarium.id][i]
+		button.capacity_increase = GameManager.capacity_upgrade_increases[i]
+		button.pressed.connect(buy_capacity_upgrade.bind(i))
+		capacity_view.get_node("Grid").add_child(button)
+
+
+func buy_capacity_upgrade(upgrade_id: int) -> void:
+	var aquarium: AquariumResource = get_tree().current_scene.aquarium_res
+	
+	if aquarium.purchased_capacity_upgrades[upgrade_id]:
+		return
+	
+	var price: float = GameManager.capacity_upgrade_prices[aquarium.id][upgrade_id]
+	
+	if SaveManager.game_data.money < price:
+		return
+	
+	SaveManager.game_data.money -= price
+	aquarium.purchased_capacity_upgrades[upgrade_id] = true
+	aquarium.max_capacity += 5
+	
+	SaveManager.save_game()
+	get_tree().current_scene.update_capacity_label()
+	populate_capacity_shop()
+
+
 func _on_category_view_visibility_changed() -> void:
 	%BackButton.visible = not %CategoryView.visible
 
@@ -110,3 +148,9 @@ func _on_aquarium_button_pressed() -> void:
 	category_view.hide()
 	populate_aquarium_shop()
 	aquarium_view.show()
+
+
+func _on_capacity_button_pressed() -> void:
+	category_view.hide()
+	populate_capacity_shop()
+	capacity_view.show()
