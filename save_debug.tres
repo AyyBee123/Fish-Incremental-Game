@@ -14,8 +14,8 @@ fish_name = "Astrid"
 [sub_resource type="Resource" id="Resource_epgac"]
 script = ExtResource("1_rf7th")
 fish = SubResource("Resource_e6l1o")
-position = Vector3(30.959755, 5.113878, 8e-44)
-rotation = Vector3(1.8482627e-06, -1.5286452, 0.21536858)
+position = Vector3(31.368313, -12.684541, 8e-44)
+rotation = Vector3(1.8976173e-06, -3.141564, -0.05851994)
 
 [sub_resource type="Resource" id="Resource_o2jq1"]
 script = ExtResource("2_fi8q5")
@@ -26,8 +26,8 @@ purchase_timestamp = 1795371239
 [sub_resource type="Resource" id="Resource_ew5c3"]
 script = ExtResource("1_rf7th")
 fish = SubResource("Resource_o2jq1")
-position = Vector3(-15.298887, 7.582082, -3.3487533e-13)
-rotation = Vector3(-8.4887395e-09, -3.1415892, -0.20297065)
+position = Vector3(-2.139534, 10.926064, -1.6343601e-13)
+rotation = Vector3(7.184279e-09, -3.0047061, -0.1658133)
 
 [sub_resource type="Resource" id="Resource_erp2p"]
 script = ExtResource("2_fi8q5")
@@ -38,8 +38,8 @@ purchase_timestamp = 1795371240
 [sub_resource type="Resource" id="Resource_wigse"]
 script = ExtResource("1_rf7th")
 fish = SubResource("Resource_erp2p")
-position = Vector3(-30.123363, -11.427616, -5.5451726e-13)
-rotation = Vector3(-1.6105665e-07, -3.1415892, -0.8604327)
+position = Vector3(18.701933, 4.0153275, 3.1840974e-15)
+rotation = Vector3(-3.0962437e-07, -0.02296569, -1.4326823)
 
 [sub_resource type="Resource" id="Resource_hao7k"]
 script = ExtResource("2_fi8q5")
@@ -50,8 +50,8 @@ purchase_timestamp = 1795371240
 [sub_resource type="Resource" id="Resource_yvp6t"]
 script = ExtResource("1_rf7th")
 fish = SubResource("Resource_hao7k")
-position = Vector3(-0.3079145, 9.268034, 5.442797e-15)
-rotation = Vector3(4.4103817e-07, -6.886011e-07, -0.24735327)
+position = Vector3(-23.127243, 19.631563, 4.54526e-18)
+rotation = Vector3(5.504177e-07, -1.0457444, -0.09173314)
 
 [sub_resource type="Resource" id="Resource_0exl6"]
 script = ExtResource("4_5qy27")
@@ -72,7 +72,8 @@ aquarium_name = "Aquarium 3"
 
 [resource]
 script = ExtResource("5_733bx")
-money = 2556.8134896566944
+money = 118069.11097900411
 owned_aquariums = Array[ExtResource("4_5qy27")]([SubResource("Resource_0exl6"), SubResource("Resource_vu0n6"), SubResource("Resource_lja3u")])
 current_aquarium = SubResource("Resource_0exl6")
 purchased_global_upgrades = Array[String](["PI_2"])
+last_save_timestamp = 1795372224

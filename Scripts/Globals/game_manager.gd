@@ -24,6 +24,10 @@ func _process(delta: float) -> void:
 
 
 func earn_passive_income(delta: float) -> void:
+	SaveManager.game_data.money += get_passive_income_per_second() * delta
+
+
+func get_passive_income_per_second() -> float:
 	var income: float = 0.0
 	
 	for aquarium: AquariumResource in SaveManager.game_data.owned_aquariums:
@@ -34,7 +38,7 @@ func earn_passive_income(delta: float) -> void:
 			
 			income += click_value * passive_percent
 	
-	SaveManager.game_data.money += income * delta
+	return income
 
 
 func get_total_click_increase(fish: FishInstanceResource) -> float:

@@ -1,12 +1,14 @@
 extends Node
 
+const MAX_OFFLINE_SECONDS: int = 8 * 60 * 60 # first number is in hours
+
 var PATH: String = "user://save.res"
 
 var game_data: GameDataResource
 
 
 func _ready() -> void:
-	load_game()
+	load_game() # for now. this will be called when loading game later on
 
 
 func save_game() -> void:
@@ -23,9 +25,11 @@ func save_game() -> void:
 			fish_data.rotation = fish_node.global_rotation
 			aquarium.fish.append(fish_data)
 	
+	game_data.last_save_timestamp = int(Time.get_unix_time_from_system())
+	
 	var error: Error = ResourceSaver.save(game_data, PATH)
 	
-	# Debug copy for inspection in the editor
+	# debug copy for inspection in the editor
 	ResourceSaver.save(game_data, "res://save_debug.tres")
 	
 	if error != OK:
@@ -37,3 +41,13 @@ func load_game() -> void:
 		game_data = ResourceLoader.load(PATH) as GameDataResource
 	else:
 		game_data = GameDataResource.new()
+		game_data.last_save_timestamp = int(Time.get_unix_time_from_system())
+		return
+	
+	var current_timestamp: int = int(Time.get_unix_time_from_system())
+	var elapsed_time: int = current_timestamp - game_data.last_save_timestamp
+	elapsed_time = clampi(elapsed_time, 0, MAX_OFFLINE_SECONDS)
+	
+	if elapsed_time > 0:
+		var offline_income: float = GameManager.get_passive_income_per_second() * elapsed_time
+		game_data.money += offline_income
