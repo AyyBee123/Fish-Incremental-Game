@@ -2,6 +2,11 @@ class_name Settings
 extends Control
 
 
+func _ready() -> void:
+	if get_tree().current_scene is Aquarium:
+		get_tree().current_scene.deselect_fish()
+
+
 func _on_resume_button_pressed() -> void:
 	queue_free()
 

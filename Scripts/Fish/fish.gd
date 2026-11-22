@@ -20,6 +20,7 @@ func _ready() -> void:
 	original_scale = armature.scale
 	animation_tree["parameters/Movement/BlendSpace1D/blend_position"] = -1.0
 	target_position = global_position
+	%"Click Area".input_event.connect(_on_selection_area_input_event)
 	wait()
 
 
@@ -54,6 +55,10 @@ func on_click() -> void:
 	var value = get_click_value()
 	SaveManager.game_data.money += value
 	trigger_click_behaviour()
+
+
+func set_selected(value: bool) -> void:
+	%Body.set_instance_shader_parameter("is_highlighted", value)
 
 
 func get_click_value() -> float:
@@ -163,3 +168,8 @@ func update_animation_parameters() -> void:
 	var speed_ratio = clampf(velocity.length() / fish_res.species.max_speed, 0.0, 1.0)
 	var blend = lerpf(-1.0, 1.0, speed_ratio)
 	animation_tree["parameters/Movement/BlendSpace1D/blend_position"] = blend
+
+
+func _on_selection_area_input_event(_camera: Camera3D, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+	if event.is_action_pressed("select"):
+		aquarium.select_fish(self)

@@ -25,6 +25,9 @@ func save_game() -> void:
 	
 	var error: Error = ResourceSaver.save(game_data, PATH)
 	
+	# Debug copy for inspection in the editor
+	ResourceSaver.save(game_data, "res://save_debug.tres")
+	
 	if error == OK:
 		print("Game saved!")
 	else:

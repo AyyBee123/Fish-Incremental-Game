@@ -8,6 +8,7 @@ var aquarium_res: AquariumResource
 @onready var fish_manager: Node = %"Fish Manager"
 @onready var click_manager: Node = %"Click Manager"
 
+var selected_fish: Fish
 var displayed_money: float:
 	set(v):
 		displayed_money = v
@@ -26,6 +27,7 @@ func _ready() -> void:
 	
 	var owned_aquariums: Array = SaveManager.game_data.owned_aquariums
 	if not owned_aquariums.has(aquarium_res):
+		aquarium_res.aquarium_name = "Aquarium %s" % (owned_aquariums.size() + 1)
 		owned_aquariums.append(aquarium_res)
 		if owned_aquariums.size() > 1:
 			aquarium_res.aquarium_name = "Aquarium %s" % (owned_aquariums.size())
@@ -76,3 +78,28 @@ func update_capacity_label() -> void:
 		%CapacityLabel.text = "[color=red]%d[/color]/%d" % [current, capacity]
 	else:
 		%CapacityLabel.text = "%d/%d" % [current, capacity]
+
+
+func select_fish(fish: Fish) -> void:
+	if selected_fish == fish:
+		return
+	
+	if is_instance_valid(selected_fish):
+		selected_fish.set_selected(false)
+	
+	selected_fish = fish
+	selected_fish.set_selected(true)
+	
+	
+
+
+func deselect_fish() -> void:
+	if is_instance_valid(selected_fish):
+		selected_fish.set_selected(false)
+	
+	selected_fish = null
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("click") or event.is_action_pressed("back"):
+		deselect_fish()

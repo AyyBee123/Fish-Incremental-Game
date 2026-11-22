@@ -14,38 +14,39 @@ colors = PackedColorArray(1, 0, 0, 1, 0.8781727, 0.37012342, 0, 1, 0.9092766, 0.
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_drabq"]
 gradient = SubResource("Gradient_drabq")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5qokl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovwr1"]
 render_priority = 0
+next_pass = ExtResource("6_ovwr1")
 shader = ExtResource("5_smpd3")
-shader_parameter/color = Color(0.78352374, 0.7835233, 0.78352314, 1)
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/specular = Color(0, 0, 0, 0.5019608)
 shader_parameter/fresnel = Color(0, 0, 0, 0.3019608)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/rainbow_gradient = SubResource("GradientTexture1D_drabq")
-shader_parameter/rainbow_speed = 0.4
-shader_parameter/rainbow_length = 0.0
-shader_parameter/rainbow_strength = 0.50000002375
+shader_parameter/rainbow_speed = 0.1
+shader_parameter/rainbow_length = 0.1
+shader_parameter/rainbow_strength = 0.6000000285
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dw28x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_knkr8"]
 render_priority = 0
 shader = ExtResource("7_smpd3")
-shader_parameter/color = Color(0.2627451, 0.2627451, 0.2627451, 1)
+shader_parameter/color = Color(0, 0, 0, 1)
 shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
 shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wqolx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xt0bh"]
 render_priority = 0
 shader = ExtResource("7_smpd3")
-shader_parameter/color = Color(0.26293248, 0.26293242, 0.26293263, 1)
+shader_parameter/color = Color(0, 0, 0, 1)
 shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
 shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0teb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpfia"]
 render_priority = 0
 next_pass = ExtResource("6_ovwr1")
 shader = ExtResource("5_smpd3")
@@ -109,17 +110,17 @@ height = 5.1058273
 [node name="Rainbowfish" unique_id=1487464950 instance=ExtResource("1_nrrsb")]
 script = ExtResource("2_smpd3")
 
-[node name="Armature" parent="." index="0" unique_id=406708656]
+[node name="Armature" parent="." index="0" unique_id=2051789314]
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="Cube" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(2009528550) index="0" unique_id=1261942961]
-cast_shadow = 0
+[node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1872199323) index="0" unique_id=14662422]
+unique_name_in_owner = true
 surface_material_override/0 = ExtResource("2_ue2al")
-surface_material_override/1 = SubResource("ShaderMaterial_5qokl")
-surface_material_override/2 = SubResource("ShaderMaterial_dw28x")
-surface_material_override/3 = SubResource("ShaderMaterial_wqolx")
-surface_material_override/4 = SubResource("ShaderMaterial_e0teb")
+surface_material_override/1 = SubResource("ShaderMaterial_ovwr1")
+surface_material_override/2 = SubResource("ShaderMaterial_knkr8")
+surface_material_override/3 = SubResource("ShaderMaterial_xt0bh")
+surface_material_override/4 = SubResource("ShaderMaterial_cpfia")
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=1001332626]
 unique_name_in_owner = true
@@ -131,6 +132,7 @@ parameters/Movement/BlendSpace1D/blend_position = -1.0
 parameters/Movement/TimeScale/scale = 1.5
 
 [node name="Click Area" type="Area3D" parent="." index="3" unique_id=1373553766]
+unique_name_in_owner = true
 collision_mask = 0
 monitoring = false
 

@@ -4,6 +4,7 @@ extends Node
 
 var aquarium_prices: Array = [25000, 100000, 500000, 1000000, 10000000]
 
+var capacity_upgrade_increases: Array[int] = [5, 10, 15, 25, 40]
 var capacity_upgrade_prices: Array[Array] = [
 	[2500.0, 5000.0, 10000.0, 15000.0, 25000.0], # Aquarium 0
 	[10000.0, 20000.0, 35000.0, 60000.0, 100000.0], # Aquarium 1
@@ -12,8 +13,6 @@ var capacity_upgrade_prices: Array[Array] = [
 	[1000000.0, 2000000.0, 3500000.0, 6000000.0, 10000000.0], # Aquarium 4
 	[1000000.0, 2000000.0, 3500000.0, 6000000.0, 10000000.0] # Aquarium 5
 ]
-
-var capacity_upgrade_increases: Array[int] = [5, 10, 15, 25, 40]
 
 
 func _process(delta: float) -> void:

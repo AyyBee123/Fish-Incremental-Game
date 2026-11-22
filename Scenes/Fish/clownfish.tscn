@@ -17,6 +17,15 @@ shader_parameter/fresnel = Color(0, 0, 0, 0.3019608)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rs070"]
+render_priority = 0
+shader = ExtResource("3_drabq")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w85j4"]
 animation = &"Idle"
 
@@ -71,7 +80,9 @@ script = ExtResource("2_ua3lr")
 unique_name_in_owner = true
 
 [node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1987449484) index="0" unique_id=695036367]
+unique_name_in_owner = true
 surface_material_override/0 = SubResource("ShaderMaterial_drabq")
+surface_material_override/1 = SubResource("ShaderMaterial_rs070")
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=1009631430]
 unique_name_in_owner = true
@@ -83,6 +94,7 @@ parameters/Movement/BlendSpace1D/blend_position = -1.0
 parameters/Movement/TimeScale/scale = 1.0
 
 [node name="Click Area" type="Area3D" parent="." index="3" unique_id=1431076270]
+unique_name_in_owner = true
 collision_mask = 0
 monitoring = false
 

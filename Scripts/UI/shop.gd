@@ -10,6 +10,7 @@ extends Control
 
 func _ready() -> void:
 	category_view.show()
+	get_tree().current_scene.deselect_fish()
 	for node in margin_container.get_children():
 		if node == category_view: continue
 		node.hide()
@@ -77,7 +78,7 @@ func buy_aquarium(id: int) -> void:
 	
 	var aquarium = AquariumResource.new()
 	aquarium.id = id
-	aquarium.aquarium_name = "Aquarium %s" % (id)
+	aquarium.aquarium_name = "Aquarium %s" % (id + 1)
 	
 	SaveManager.game_data.owned_aquariums.append(aquarium)
 	

@@ -83,6 +83,7 @@ script = ExtResource("2_nubsu")
 unique_name_in_owner = true
 
 [node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1439473966) index="0" unique_id=1973055268]
+unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 cast_shadow = 0
 surface_material_override/0 = SubResource("ShaderMaterial_ndrw7")
@@ -98,6 +99,7 @@ parameters/Movement/BlendSpace1D/blend_position = -1.0
 parameters/Movement/TimeScale/scale = 1.1000000000000014
 
 [node name="Click Area" type="Area3D" parent="." index="3" unique_id=1935964494]
+unique_name_in_owner = true
 collision_mask = 0
 monitoring = false
 
