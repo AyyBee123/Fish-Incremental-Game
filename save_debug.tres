@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="GameDataResource" format=3 uid="uid://d3duppsb8wn7f"]
+[gd_resource type="Resource" script_class="GameDataResource" format=3]
 
-[ext_resource type="Script" uid="uid://bjsqhwn2biy8l" path="res://Scripts/Resources/Aquarium/aquarium_fish_data.gd" id="1_rf7th"]
-[ext_resource type="Script" uid="uid://hwq1f3htr3g1" path="res://Scripts/Resources/Fish Properties/fish_instance_resource.gd" id="2_fi8q5"]
-[ext_resource type="Resource" uid="uid://tgs88p7e0acj" path="res://Resources/Species/rainbowfish.tres" id="3_ogtgv"]
-[ext_resource type="Script" uid="uid://cnytmjvmnvksy" path="res://Scripts/Resources/Aquarium/aquarium_resource.gd" id="4_5qy27"]
-[ext_resource type="Script" uid="uid://bdxafa1qx55ok" path="res://Scripts/Resources/Data/game_data_resource.gd" id="5_733bx"]
+[ext_resource type="Script" path="res://Scripts/Resources/Aquarium/aquarium_fish_data.gd" id="1_rf7th"]
+[ext_resource type="Script" path="res://Scripts/Resources/Fish Properties/fish_instance_resource.gd" id="2_fi8q5"]
+[ext_resource type="Resource" path="res://Resources/Species/rainbowfish.tres" id="3_ogtgv"]
+[ext_resource type="Script" path="res://Scripts/Resources/Aquarium/aquarium_resource.gd" id="4_5qy27"]
+[ext_resource type="Script" path="res://Scripts/Resources/Data/game_data_resource.gd" id="5_733bx"]
 
 [sub_resource type="Resource" id="Resource_e6l1o"]
 script = ExtResource("2_fi8q5")
@@ -14,15 +14,51 @@ fish_name = "Astrid"
 [sub_resource type="Resource" id="Resource_epgac"]
 script = ExtResource("1_rf7th")
 fish = SubResource("Resource_e6l1o")
-position = Vector3(1.5950675, 14.556783, 8e-44)
-rotation = Vector3(1.9564532e-06, 0.00010565942, 1.4348122)
+position = Vector3(30.959755, 5.113878, 8e-44)
+rotation = Vector3(1.8482627e-06, -1.5286452, 0.21536858)
+
+[sub_resource type="Resource" id="Resource_o2jq1"]
+script = ExtResource("2_fi8q5")
+species = ExtResource("3_ogtgv")
+fish_name = "Anjali"
+purchase_timestamp = 1795371239
+
+[sub_resource type="Resource" id="Resource_ew5c3"]
+script = ExtResource("1_rf7th")
+fish = SubResource("Resource_o2jq1")
+position = Vector3(-15.298887, 7.582082, -3.3487533e-13)
+rotation = Vector3(-8.4887395e-09, -3.1415892, -0.20297065)
+
+[sub_resource type="Resource" id="Resource_erp2p"]
+script = ExtResource("2_fi8q5")
+species = ExtResource("3_ogtgv")
+fish_name = "Lightbulb Fish"
+purchase_timestamp = 1795371240
+
+[sub_resource type="Resource" id="Resource_wigse"]
+script = ExtResource("1_rf7th")
+fish = SubResource("Resource_erp2p")
+position = Vector3(-30.123363, -11.427616, -5.5451726e-13)
+rotation = Vector3(-1.6105665e-07, -3.1415892, -0.8604327)
+
+[sub_resource type="Resource" id="Resource_hao7k"]
+script = ExtResource("2_fi8q5")
+species = ExtResource("3_ogtgv")
+fish_name = "Binky"
+purchase_timestamp = 1795371240
+
+[sub_resource type="Resource" id="Resource_yvp6t"]
+script = ExtResource("1_rf7th")
+fish = SubResource("Resource_hao7k")
+position = Vector3(-0.3079145, 9.268034, 5.442797e-15)
+rotation = Vector3(4.4103817e-07, -6.886011e-07, -0.24735327)
 
 [sub_resource type="Resource" id="Resource_0exl6"]
 script = ExtResource("4_5qy27")
 aquarium_name = "Aquarium 1"
 max_capacity = 10
 purchased_capacity_upgrades = Array[bool]([true, false, false, false, false])
-fish = Array[ExtResource("1_rf7th")]([SubResource("Resource_epgac")])
+fish = Array[ExtResource("1_rf7th")]([SubResource("Resource_epgac"), SubResource("Resource_ew5c3"), SubResource("Resource_wigse"), SubResource("Resource_yvp6t")])
 
 [sub_resource type="Resource" id="Resource_vu0n6"]
 script = ExtResource("4_5qy27")
@@ -36,6 +72,7 @@ aquarium_name = "Aquarium 3"
 
 [resource]
 script = ExtResource("5_733bx")
-money = 3400.5402333330862
+money = 2556.8134896566944
 owned_aquariums = Array[ExtResource("4_5qy27")]([SubResource("Resource_0exl6"), SubResource("Resource_vu0n6"), SubResource("Resource_lja3u")])
 current_aquarium = SubResource("Resource_0exl6")
+purchased_global_upgrades = Array[String](["PI_2"])

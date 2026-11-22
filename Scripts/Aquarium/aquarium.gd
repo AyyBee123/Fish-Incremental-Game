@@ -108,29 +108,28 @@ func deselect_fish() -> void:
 func sell_fish() -> void:
 	if not is_instance_valid(selected_fish):
 		return
-	
-	if get_total_fish_count() <= 1:
-		return
-	
+
 	var fish: Fish = selected_fish
 	var fish_resource: FishInstanceResource = fish.fish_res
+
+	# count fish across all aquariums
+	var total_fish: int = 0
+	for aquarium: AquariumResource in SaveManager.game_data.owned_aquariums:
+		total_fish += aquarium.fish.size()
+	
+	if total_fish <= 1:
+		return
+	
+	var sell_price: float = GameManager.get_fish_sell_price(fish_resource)
 	
 	deselect_fish()
 	
-	# remove from aquarium resource
-	for i in range(aquarium_res.fish.size() - 1, -1, -1):
-		if aquarium_res.fish[i].fish == fish_resource:
-			aquarium_res.fish.remove_at(i)
-			break
-	
-	# remove the fish node
 	fish_manager.remove_child(fish)
 	fish.queue_free()
 	
-	var sell_price: float = get_fish_sell_price(fish_resource)
 	SaveManager.game_data.money += sell_price
-	
 	SaveManager.save_game()
+	
 	update_capacity_label()
 
 

@@ -14,9 +14,9 @@ var capacity_upgrade_prices: Array[Array] = [
 	[1000000.0, 2000000.0, 3500000.0, 6000000.0, 10000000.0] # Aquarium 5
 ]
 
-@export var individual_fish_upgrades: Array[FishUpgradeResource]
-@export var species_upgrades: Array[FishUpgradeResource]
-@export var global_upgrades: Array[FishUpgradeResource]
+@export var individual_fish_upgrades: Array[UpgradeResource]
+@export var species_upgrades: Array[UpgradeResource]
+@export var global_upgrades: Array[UpgradeResource]
 
 
 func _process(delta: float) -> void:
@@ -41,12 +41,17 @@ func get_total_click_increase(fish: FishInstanceResource) -> float:
 	var increase: float = 0.0
 	
 	for upgrade_id: String in fish.purchased_upgrades:
-		var upgrade: FishUpgradeResource = get_upgrade(upgrade_id)
+		var upgrade: UpgradeResource = get_upgrade(upgrade_id)
 		if upgrade and upgrade.effect:
 			increase += upgrade.effect.get_click_increase(fish)
 	
 	for upgrade_id: String in fish.species.purchased_upgrades:
-		var upgrade: FishUpgradeResource = get_species_upgrade(upgrade_id)
+		var upgrade: UpgradeResource = get_species_upgrade(upgrade_id)
+		if upgrade and upgrade.effect:
+			increase += upgrade.effect.get_click_increase(fish)
+	
+	for upgrade_id: String in SaveManager.game_data.purchased_global_upgrades:
+		var upgrade: UpgradeResource = get_global_upgrade(upgrade_id)
 		if upgrade and upgrade.effect:
 			increase += upgrade.effect.get_click_increase(fish)
 	
@@ -57,12 +62,17 @@ func get_total_click_multiplier(fish: FishInstanceResource) -> float:
 	var multiplier: float = 1.0
 	
 	for upgrade_id: String in fish.purchased_upgrades:
-		var upgrade: FishUpgradeResource = get_upgrade(upgrade_id)
+		var upgrade: UpgradeResource = get_upgrade(upgrade_id)
 		if upgrade and upgrade.effect:
 			multiplier *= upgrade.effect.get_click_multiplier(fish)
 	
 	for upgrade_id: String in fish.species.purchased_upgrades:
-		var upgrade: FishUpgradeResource = get_species_upgrade(upgrade_id)
+		var upgrade: UpgradeResource = get_species_upgrade(upgrade_id)
+		if upgrade and upgrade.effect:
+			multiplier *= upgrade.effect.get_click_multiplier(fish)
+	
+	for upgrade_id: String in SaveManager.game_data.purchased_global_upgrades:
+		var upgrade: UpgradeResource = get_global_upgrade(upgrade_id)
 		if upgrade and upgrade.effect:
 			multiplier *= upgrade.effect.get_click_multiplier(fish)
 	
@@ -73,12 +83,17 @@ func get_passive_income_percent(fish: FishInstanceResource) -> float:
 	var percent: float = 0.0
 	
 	for upgrade_id: String in fish.purchased_upgrades:
-		var upgrade: FishUpgradeResource = get_upgrade(upgrade_id)
+		var upgrade: UpgradeResource = get_upgrade(upgrade_id)
 		if upgrade and upgrade.effect:
 			percent += upgrade.effect.get_passive_income_percent(fish)
 	
 	for upgrade_id: String in fish.species.purchased_upgrades:
-		var upgrade: FishUpgradeResource = get_species_upgrade(upgrade_id)
+		var upgrade: UpgradeResource = get_species_upgrade(upgrade_id)
+		if upgrade and upgrade.effect:
+			percent += upgrade.effect.get_passive_income_percent(fish)
+	
+	for upgrade_id: String in SaveManager.game_data.purchased_global_upgrades:
+		var upgrade: UpgradeResource = get_global_upgrade(upgrade_id)
 		if upgrade and upgrade.effect:
 			percent += upgrade.effect.get_passive_income_percent(fish)
 	
@@ -94,7 +109,7 @@ func get_global_click_bonus(clicked_fish: Fish) -> float:
 	var fish_manager: FishManager = get_tree().get_first_node_in_group("fish_manager")
 	
 	for upgrade_id in SaveManager.game_data.purchased_global_upgrades:
-		var upgrade: FishUpgradeResource = get_global_upgrade(upgrade_id)
+		var upgrade: UpgradeResource = get_global_upgrade(upgrade_id)
 		
 		if upgrade and upgrade.effect:
 			bonus += upgrade.effect.apply_on_click(clicked_fish, fish_manager)
@@ -102,28 +117,35 @@ func get_global_click_bonus(clicked_fish: Fish) -> float:
 	return bonus
 
 
-func get_upgrade(upgrade_id: String) -> FishUpgradeResource:
-	for upgrade: FishUpgradeResource in individual_fish_upgrades:
+func get_upgrade(upgrade_id: String) -> UpgradeResource:
+	for upgrade: UpgradeResource in individual_fish_upgrades:
 		if upgrade.id == upgrade_id:
 			return upgrade
 	
 	return null
 
 
-func get_species_upgrade(upgrade_id: String) -> FishUpgradeResource:
-	for upgrade: FishUpgradeResource in species_upgrades:
+func get_species_upgrade(upgrade_id: String) -> UpgradeResource:
+	for upgrade: UpgradeResource in species_upgrades:
 		if upgrade.id == upgrade_id:
 			return upgrade
 	
 	return null
 
 
-func get_global_upgrade(upgrade_id: String) -> FishUpgradeResource:
-	for upgrade: FishUpgradeResource in global_upgrades:
+func get_global_upgrade(upgrade_id: String) -> UpgradeResource:
+	for upgrade: UpgradeResource in global_upgrades:
 		if upgrade.id == upgrade_id:
 			return upgrade
 	
 	return null
+
+
+func get_fish_sell_price(fish: FishInstanceResource) -> float:
+	var original_price: float = fish.species.price
+	var upgrade_cost: float = fish.personal_upgrade_spent
+	
+	return (original_price + upgrade_cost) * 0.5
 
 
 func add_fish_to_aquarium(fish_instance: FishInstanceResource, aquarium_res: AquariumResource, position: Vector3) -> void:

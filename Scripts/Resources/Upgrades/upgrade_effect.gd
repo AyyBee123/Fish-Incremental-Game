@@ -1,4 +1,4 @@
-class_name FishUpgradeEffect
+class_name UpgradeEffect
 extends Resource
 
 func get_click_increase(_fish: FishInstanceResource) -> float:

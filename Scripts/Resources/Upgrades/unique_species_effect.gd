@@ -1,5 +1,5 @@
 class_name UniqueSpeciesUpgrade
-extends FishUpgradeEffect
+extends UpgradeEffect
 
 @export var click_percent_per_species: float = 0.05
 

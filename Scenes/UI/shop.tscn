@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="8_een5p"]
 [ext_resource type="Texture2D" uid="uid://0affxqjg577m" path="res://Assets/UI/Icons/Aquarium Icon.png" id="10_w2r4i"]
 [ext_resource type="Texture2D" uid="uid://dx2s34plehbia" path="res://Assets/UI/Icons/Capacity Icon.png" id="12_vnhp2"]
+[ext_resource type="Texture2D" uid="uid://dcr7nf7eq00n4" path="res://Assets/UI/Icons/Upgrade Icon.png" id="13_yse77"]
 [ext_resource type="BitMap" uid="uid://b60xoafhwbyi" path="res://Assets/UI/Masks/Close Button_click_mask.res" id="14_5oyw6"]
 [ext_resource type="Texture2D" uid="uid://c8lu27sanqxrw" path="res://Assets/UI/Back Button.png" id="14_een5p"]
 [ext_resource type="Texture2D" uid="uid://cjp5c2godqy3s" path="res://Assets/UI/Back Button Pressed.png" id="15_w2r4i"]
@@ -220,6 +221,48 @@ text = "Expansions"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="UpgradeButton" type="TextureButton" parent="Background/MarginContainer/CategoryView/SelectionGrid" unique_id=328838759]
+layout_mode = 2
+texture_normal = ExtResource("2_gm4r4")
+texture_pressed = ExtResource("4_buvk0")
+texture_hover = ExtResource("5_8pb36")
+texture_click_mask = ExtResource("7_57cgt")
+
+[node name="Icon" type="TextureRect" parent="Background/MarginContainer/CategoryView/SelectionGrid/UpgradeButton" unique_id=1591506537]
+material = SubResource("ShaderMaterial_5h11f")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.684
+offset_bottom = -0.104003906
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_yse77")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Background/MarginContainer/CategoryView/SelectionGrid/UpgradeButton" unique_id=224902865]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.684
+anchor_bottom = 0.684
+offset_top = -0.104003906
+offset_right = 256.0
+offset_bottom = 74.895996
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("8_een5p")
+theme_override_font_sizes/font_size = 32
+text = "Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="FishView" type="ScrollContainer" parent="Background/MarginContainer" unique_id=622147231]
 unique_name_in_owner = true
 visible = false
@@ -262,6 +305,20 @@ layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 
+[node name="UpgradeView" type="ScrollContainer" parent="Background/MarginContainer" unique_id=1395761314]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme = ExtResource("3_5oyw6")
+follow_focus = true
+
+[node name="Grid" type="HFlowContainer" parent="Background/MarginContainer/UpgradeView" unique_id=1267809946]
+custom_minimum_size = Vector2(1336, 620)
+custom_maximum_size = Vector2(1336, 620)
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
 [node name="CloseButton" type="TextureButton" parent="." unique_id=36577286]
 layout_mode = 0
 offset_left = 1631.0
@@ -289,5 +346,6 @@ texture_click_mask = ExtResource("19_57cgt")
 [connection signal="pressed" from="Background/MarginContainer/CategoryView/SelectionGrid/FishButton" to="." method="_on_fish_button_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/CategoryView/SelectionGrid/AquariumButton" to="." method="_on_aquarium_button_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/CategoryView/SelectionGrid/CapacityButton" to="." method="_on_capacity_button_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/CategoryView/SelectionGrid/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

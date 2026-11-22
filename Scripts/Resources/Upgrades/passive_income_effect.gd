@@ -1,5 +1,5 @@
 class_name PassiveIncomeUpgradeEffect
-extends FishUpgradeEffect
+extends UpgradeEffect
 
 @export var passive_income_percent: float = 0.01
 

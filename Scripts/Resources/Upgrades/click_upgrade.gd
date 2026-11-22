@@ -1,5 +1,5 @@
 class_name FlatClickUpgrade
-extends FishUpgradeEffect
+extends UpgradeEffect
 
 @export var click_percent: float = 0.1
 
