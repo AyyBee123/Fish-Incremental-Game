@@ -5,6 +5,8 @@
 [ext_resource type="Material" uid="uid://dwq2kgsopqdwr" path="res://Shaders/Materials/rainbow_material.tres" id="2_ue2al"]
 [ext_resource type="Shader" uid="uid://dk5rywv3a3emn" path="res://Shaders/rainbow_fish.gdshader" id="5_smpd3"]
 [ext_resource type="Material" uid="uid://b7mten2i55q3b" path="res://Shaders/Materials/outline.tres" id="6_ovwr1"]
+[ext_resource type="Script" uid="uid://b4r1wfoo4xosf" path="res://Scripts/Fish/fish_name_label.gd" id="7_5qokl"]
+[ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="7_cpfia"]
 [ext_resource type="Shader" uid="uid://c1fj4ewss4ptt" path="res://Shaders/cel-shader-base.gdshader" id="7_smpd3"]
 
 [sub_resource type="Gradient" id="Gradient_drabq"]
@@ -139,3 +141,19 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Click Area" index="0" unique_id=1346821739]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.537, 0.12, 0)
 shape = SubResource("CapsuleShape3D_ue2al")
+
+[node name="Node3D" type="Node3D" parent="." index="4" unique_id=72180547]
+script = ExtResource("7_5qokl")
+
+[node name="NameLabel" type="Label3D" parent="Node3D" index="0" unique_id=187065932]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5994701, 0)
+billboard = 2
+no_depth_test = true
+texture_filter = 1
+render_priority = 4
+outline_render_priority = 3
+text = "Fish"
+font = ExtResource("7_cpfia")
+font_size = 128
+outline_size = 24

@@ -9,4 +9,7 @@ extends Resource
 @export var click_increase: float = 0.0
 @export var click_multiplier: float = 1.0
 
+@export_category("Miscellaneous Properties")
+@export var purchase_timestamp: int = 0
+
 var aquarium_position: Vector3

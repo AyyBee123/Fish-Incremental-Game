@@ -28,9 +28,7 @@ func save_game() -> void:
 	# Debug copy for inspection in the editor
 	ResourceSaver.save(game_data, "res://save_debug.tres")
 	
-	if error == OK:
-		print("Game saved!")
-	else:
+	if error != OK:
 		push_error("Failed to save game: " + str(error))
 
 

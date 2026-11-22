@@ -1,7 +1,7 @@
 class_name Fish
 extends Node3D
 
-@export var fish_res: FishInstanceResource
+var fish_res: FishInstanceResource
 
 @onready var animation_tree: AnimationTree = %AnimationTree
 @onready var aquarium: Aquarium = get_tree().current_scene
@@ -20,6 +20,7 @@ func _ready() -> void:
 	original_scale = armature.scale
 	animation_tree["parameters/Movement/BlendSpace1D/blend_position"] = -1.0
 	target_position = global_position
+	%NameLabel.text = fish_res.fish_name
 	%"Click Area".input_event.connect(_on_selection_area_input_event)
 	wait()
 

@@ -24,6 +24,7 @@ func create_fish(species: FishSpeciesResource, fish_name: String = "Fish") -> Fi
 	var fish_instance = FishInstanceResource.new()
 	fish_instance.species = species
 	fish_instance.fish_name = fish_name
+	fish_instance.purchase_timestamp = int(Time.get_unix_time_from_system())
 	return fish_instance
 
 

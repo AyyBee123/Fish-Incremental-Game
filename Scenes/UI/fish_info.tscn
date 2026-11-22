@@ -3,9 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://bujstfggoixl" path="res://Assets/UI/Fish Info UI.png" id="1_u8wvc"]
 [ext_resource type="Script" uid="uid://wsv7ibin02w6" path="res://Scripts/UI/fish_info.gd" id="1_y33d0"]
 [ext_resource type="Texture2D" uid="uid://bbteglfl6pwft" path="res://Assets/UI/Close Button.png" id="2_y33d0"]
+[ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="3_5wpab"]
 [ext_resource type="Texture2D" uid="uid://b2rnppq16sfpl" path="res://Assets/UI/Close Button Press.png" id="3_p3wmb"]
 [ext_resource type="Texture2D" uid="uid://bp3620furiwph" path="res://Assets/UI/Close Button Hover.png" id="4_5wpab"]
+[ext_resource type="Texture2D" uid="uid://dvp7dxp2sprbf" path="res://Assets/UI/Upgrade List UI.png" id="4_ejxkt"]
 [ext_resource type="BitMap" uid="uid://b60xoafhwbyi" path="res://Assets/UI/Masks/Close Button_click_mask.res" id="5_ejxkt"]
+[ext_resource type="Texture2D" uid="uid://b67yxe5iu8mfb" path="res://Assets/UI/Sell Button.png" id="5_pa3fb"]
+[ext_resource type="Texture2D" uid="uid://do0asy6knwv4f" path="res://Assets/UI/Sell Button Pressed.png" id="6_5thxd"]
+[ext_resource type="Texture2D" uid="uid://c5mjiqvhfjqjq" path="res://Assets/UI/Sell Button Hover.png" id="7_7ko2i"]
+[ext_resource type="BitMap" uid="uid://08f7pth3hsfl" path="res://Assets/UI/Masks/Sell Button_click_mask.res" id="8_ao17w"]
 
 [node name="Fish Info" type="Control" unique_id=1880718435]
 layout_mode = 3
@@ -32,6 +38,212 @@ grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("1_u8wvc")
 
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=367289156]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer" unique_id=1355111575]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NameLabel" type="Label" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1583933644]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_5wpab")
+theme_override_font_sizes/font_size = 56
+text = "Name"
+vertical_alignment = 1
+
+[node name="SpeciesLabel" type="Label" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1964982791]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_5wpab")
+theme_override_font_sizes/font_size = 32
+text = "Species"
+vertical_alignment = 1
+
+[node name="DateLabel" type="Label" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=446227179]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_5wpab")
+theme_override_font_sizes/font_size = 24
+text = "Birthday: dd/mm/yyyy"
+vertical_alignment = 1
+
+[node name="EmptySpace" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1443717762]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="PurchasedControl" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=942777694]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/PurchasedControl" unique_id=1811419744]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/PurchasedControl/VBoxContainer" unique_id=1804705301]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_5wpab")
+theme_override_font_sizes/font_size = 24
+text = "Purchased Upgrades"
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TextureRect/MarginContainer/VBoxContainer/PurchasedControl/VBoxContainer" unique_id=2057601428]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_ejxkt")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="EmptySpace2" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1098717333]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="PersonalControl" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=575242191]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/PersonalControl" unique_id=1475627403]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/PersonalControl/VBoxContainer" unique_id=1721434583]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_5wpab")
+theme_override_font_sizes/font_size = 24
+text = "Personal Upgrades"
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TextureRect/MarginContainer/VBoxContainer/PersonalControl/VBoxContainer" unique_id=909474621]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_ejxkt")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="EmptySpace3" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=518749027]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="SpeciesControl" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1944097144]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/SpeciesControl" unique_id=964606149]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/SpeciesControl/VBoxContainer" unique_id=527300878]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_5wpab")
+theme_override_font_sizes/font_size = 24
+text = "Species Upgrades"
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TextureRect/MarginContainer/VBoxContainer/SpeciesControl/VBoxContainer" unique_id=41394314]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_ejxkt")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="EmptySpace4" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=499174596]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="SellButton" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1206853051]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("5_pa3fb")
+texture_pressed = ExtResource("6_5thxd")
+texture_hover = ExtResource("7_7ko2i")
+texture_click_mask = ExtResource("8_ao17w")
+
+[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/SellButton" unique_id=1371444367]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_5wpab")
+theme_override_font_sizes/font_size = 32
+text = "Sell"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CloseButton" type="TextureButton" parent="." unique_id=837099886]
 layout_mode = 1
 anchors_preset = 1
@@ -45,4 +257,5 @@ texture_pressed = ExtResource("3_p3wmb")
 texture_hover = ExtResource("4_5wpab")
 texture_click_mask = ExtResource("5_ejxkt")
 
+[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/SellButton" to="." method="_on_sell_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

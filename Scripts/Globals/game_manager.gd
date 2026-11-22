@@ -35,3 +35,15 @@ func add_fish_to_aquarium(fish_instance: FishInstanceResource, aquarium_res: Aqu
 	data.fish = fish_instance
 	data.position = position
 	aquarium_res.fish.append(data)
+
+
+func set_resolution(width: int, height: int) -> void:
+	var size = Vector2i(width, height)
+	DisplayServer.window_set_size(size)
+	
+	var screen = DisplayServer.window_get_current_screen()
+	var screen_size = DisplayServer.screen_get_size(screen)
+	var position = DisplayServer.screen_get_position(screen)
+	
+	@warning_ignore("integer_division")
+	DisplayServer.window_set_position(position + (screen_size - size) / 2)

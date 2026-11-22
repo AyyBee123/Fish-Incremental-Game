@@ -9,10 +9,11 @@ var aquarium_res: AquariumResource
 @onready var click_manager: Node = %"Click Manager"
 
 var selected_fish: Fish
+var fish_info: FishInfo
 var displayed_money: float:
 	set(v):
 		displayed_money = v
-		%MoneyLabel.text = "$%.2f" % v
+		%MoneyLabel.text = "$%s" % Utils.format_number_two_decimals(v)
 
 
 func _ready() -> void:
@@ -84,13 +85,17 @@ func select_fish(fish: Fish) -> void:
 	if selected_fish == fish:
 		return
 	
+	if not selected_fish:
+		fish_info = Preloads.FISH_INFO.instantiate()
+		ui.add_child(fish_info)
+	
 	if is_instance_valid(selected_fish):
 		selected_fish.set_selected(false)
 	
 	selected_fish = fish
 	selected_fish.set_selected(true)
 	
-	
+	fish_info.display_info(fish)
 
 
 func deselect_fish() -> void:
@@ -98,6 +103,48 @@ func deselect_fish() -> void:
 		selected_fish.set_selected(false)
 	
 	selected_fish = null
+
+
+func sell_fish() -> void:
+	if not is_instance_valid(selected_fish):
+		return
+	
+	if get_total_fish_count() <= 1:
+		return
+	
+	var fish: Fish = selected_fish
+	var fish_resource: FishInstanceResource = fish.fish_res
+	
+	deselect_fish()
+	
+	# remove from aquarium resource
+	for i in range(aquarium_res.fish.size() - 1, -1, -1):
+		if aquarium_res.fish[i].fish == fish_resource:
+			aquarium_res.fish.remove_at(i)
+			break
+	
+	# remove the fish node
+	fish_manager.remove_child(fish)
+	fish.queue_free()
+	
+	var sell_price: float = get_fish_sell_price(fish_resource)
+	SaveManager.game_data.money += sell_price
+	
+	SaveManager.save_game()
+	update_capacity_label()
+
+
+func get_fish_sell_price(fish: FishInstanceResource) -> float:
+	return fish.species.price * 0.5
+
+
+func get_total_fish_count() -> int:
+	var total: int = 0
+	
+	for aquarium: AquariumResource in SaveManager.game_data.owned_aquariums:
+		total += aquarium.fish.size()
+	
+	return total
 
 
 func _unhandled_input(event: InputEvent) -> void:

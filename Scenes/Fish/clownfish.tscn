@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://bi2d20nlwc4cg" path="res://Scripts/Fish/fish.gd" id="2_ua3lr"]
 [ext_resource type="Shader" uid="uid://c1fj4ewss4ptt" path="res://Shaders/cel-shader-base.gdshader" id="3_drabq"]
 [ext_resource type="Texture2D" uid="uid://bdabgnt10l3ar" path="res://Assets/Fish/Clownfish/Clownfish_Image.png" id="4_drabq"]
+[ext_resource type="Script" uid="uid://b4r1wfoo4xosf" path="res://Scripts/Fish/fish_name_label.gd" id="6_16vx3"]
+[ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="6_w85j4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_drabq"]
 render_priority = 0
@@ -101,3 +103,19 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Click Area" index="0" unique_id=24524079]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.11395264, -0.103553176, 0)
 shape = SubResource("CapsuleShape3D_5h11f")
+
+[node name="Node3D" type="Node3D" parent="." index="4" unique_id=938600712]
+script = ExtResource("6_16vx3")
+
+[node name="NameLabel" type="Label3D" parent="Node3D" index="0" unique_id=110922335]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6702552, 0)
+billboard = 2
+no_depth_test = true
+texture_filter = 1
+render_priority = 4
+outline_render_priority = 3
+text = "Fish"
+font = ExtResource("6_w85j4")
+font_size = 128
+outline_size = 24
