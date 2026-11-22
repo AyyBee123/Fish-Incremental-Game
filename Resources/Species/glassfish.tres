@@ -16,5 +16,5 @@ acceleration = 1.0
 max_speed = 1.0
 arrival_distance = 0.1
 rotation_speed = 1.0
-click_value = 5.0
+click_value = 10.0
 metadata/_custom_type_script = "uid://duwvt65xb45i1"

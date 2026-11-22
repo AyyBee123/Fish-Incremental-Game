@@ -18,6 +18,6 @@ extends Resource
 
 @export_category("Click")
 @export var click_value: float = 1.0
-@export var click_increase: float = 0.0
-@export var click_multiplier: float = 1.0
-@export var passive_income_percent: float = 0.0
+
+@export_category("Upgrades")
+@export var purchased_upgrades: Array[String] = []

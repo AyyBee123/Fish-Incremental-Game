@@ -58,22 +58,12 @@ func on_click() -> void:
 	trigger_click_behaviour()
 
 
+func get_click_value() -> float:
+	return GameManager.get_fish_click_value(fish_res)
+
+
 func set_selected(value: bool) -> void:
 	%Body.set_instance_shader_parameter("is_highlighted", value)
-
-
-func get_click_value() -> float:
-	var base_value = fish_res.species.click_value
-	
-	var species_increase = fish_res.species.click_increase
-	var species_multiplier = fish_res.species.click_multiplier
-	
-	var individual_increase = fish_res.click_increase
-	var individual_multiplier = fish_res.click_multiplier
-	
-	return (base_value) \
-		* (1.0 + species_increase + individual_increase) \
-		* species_multiplier * individual_multiplier
 
 
 func trigger_click_behaviour() -> void:

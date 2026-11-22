@@ -14,20 +14,116 @@ var capacity_upgrade_prices: Array[Array] = [
 	[1000000.0, 2000000.0, 3500000.0, 6000000.0, 10000000.0] # Aquarium 5
 ]
 
+@export var individual_fish_upgrades: Array[FishUpgradeResource]
+@export var species_upgrades: Array[FishUpgradeResource]
+@export var global_upgrades: Array[FishUpgradeResource]
+
 
 func _process(delta: float) -> void:
 	earn_passive_income(delta)
 
 
-func earn_passive_income(delta) -> void:
+func earn_passive_income(delta: float) -> void:
 	var income: float = 0.0
 	
 	for aquarium: AquariumResource in SaveManager.game_data.owned_aquariums:
 		for fish_data: AquariumFishData in aquarium.fish:
-			var fish = fish_data.fish
-			income += fish.species.click_value * fish.species.passive_income_percent
+			var fish: FishInstanceResource = fish_data.fish
+			var click_value: float = get_fish_click_value(fish)
+			var passive_percent: float = get_passive_income_percent(fish)
+			
+			income += click_value * passive_percent
 	
 	SaveManager.game_data.money += income * delta
+
+
+func get_total_click_increase(fish: FishInstanceResource) -> float:
+	var increase: float = 0.0
+	
+	for upgrade_id: String in fish.purchased_upgrades:
+		var upgrade: FishUpgradeResource = get_upgrade(upgrade_id)
+		if upgrade and upgrade.effect:
+			increase += upgrade.effect.get_click_increase(fish)
+	
+	for upgrade_id: String in fish.species.purchased_upgrades:
+		var upgrade: FishUpgradeResource = get_species_upgrade(upgrade_id)
+		if upgrade and upgrade.effect:
+			increase += upgrade.effect.get_click_increase(fish)
+	
+	return increase
+
+
+func get_total_click_multiplier(fish: FishInstanceResource) -> float:
+	var multiplier: float = 1.0
+	
+	for upgrade_id: String in fish.purchased_upgrades:
+		var upgrade: FishUpgradeResource = get_upgrade(upgrade_id)
+		if upgrade and upgrade.effect:
+			multiplier *= upgrade.effect.get_click_multiplier(fish)
+	
+	for upgrade_id: String in fish.species.purchased_upgrades:
+		var upgrade: FishUpgradeResource = get_species_upgrade(upgrade_id)
+		if upgrade and upgrade.effect:
+			multiplier *= upgrade.effect.get_click_multiplier(fish)
+	
+	return multiplier
+
+
+func get_passive_income_percent(fish: FishInstanceResource) -> float:
+	var percent: float = 0.0
+	
+	for upgrade_id: String in fish.purchased_upgrades:
+		var upgrade: FishUpgradeResource = get_upgrade(upgrade_id)
+		if upgrade and upgrade.effect:
+			percent += upgrade.effect.get_passive_income_percent(fish)
+	
+	for upgrade_id: String in fish.species.purchased_upgrades:
+		var upgrade: FishUpgradeResource = get_species_upgrade(upgrade_id)
+		if upgrade and upgrade.effect:
+			percent += upgrade.effect.get_passive_income_percent(fish)
+	
+	return percent
+
+
+func get_fish_click_value(fish: FishInstanceResource) -> float:
+	return fish.species.click_value * (1.0 + get_total_click_increase(fish)) * get_total_click_multiplier(fish)
+
+
+func get_global_click_bonus(clicked_fish: Fish) -> float:
+	var bonus: float = 0.0
+	var fish_manager: FishManager = get_tree().get_first_node_in_group("fish_manager")
+	
+	for upgrade_id in SaveManager.game_data.purchased_global_upgrades:
+		var upgrade: FishUpgradeResource = get_global_upgrade(upgrade_id)
+		
+		if upgrade and upgrade.effect:
+			bonus += upgrade.effect.apply_on_click(clicked_fish, fish_manager)
+	
+	return bonus
+
+
+func get_upgrade(upgrade_id: String) -> FishUpgradeResource:
+	for upgrade: FishUpgradeResource in individual_fish_upgrades:
+		if upgrade.id == upgrade_id:
+			return upgrade
+	
+	return null
+
+
+func get_species_upgrade(upgrade_id: String) -> FishUpgradeResource:
+	for upgrade: FishUpgradeResource in species_upgrades:
+		if upgrade.id == upgrade_id:
+			return upgrade
+	
+	return null
+
+
+func get_global_upgrade(upgrade_id: String) -> FishUpgradeResource:
+	for upgrade: FishUpgradeResource in global_upgrades:
+		if upgrade.id == upgrade_id:
+			return upgrade
+	
+	return null
 
 
 func add_fish_to_aquarium(fish_instance: FishInstanceResource, aquarium_res: AquariumResource, position: Vector3) -> void:
