@@ -53,7 +53,8 @@ func _physics_process(delta) -> void:
 
 
 func on_click() -> void:
-	var value = get_click_value()
+	var value: float = get_click_value()
+	value += GameManager.get_global_click_bonus(self)
 	SaveManager.game_data.money += value
 	trigger_click_behaviour()
 

@@ -112,7 +112,10 @@ func get_global_click_bonus(clicked_fish: Fish) -> float:
 	var bonus: float = 0.0
 	var fish_manager: FishManager = get_tree().get_first_node_in_group("fish_manager")
 	
-	for upgrade_id in SaveManager.game_data.purchased_global_upgrades:
+	if not fish_manager:
+		return bonus
+	
+	for upgrade_id: String in SaveManager.game_data.purchased_global_upgrades:
 		var upgrade: UpgradeResource = get_global_upgrade(upgrade_id)
 		
 		if upgrade and upgrade.effect:

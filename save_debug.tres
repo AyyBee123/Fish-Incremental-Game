@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="GameDataResource" format=3]
+[gd_resource type="Resource" script_class="GameDataResource" format=3 uid="uid://d3plfmj6b7xtb"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/Aquarium/aquarium_fish_data.gd" id="1_rf7th"]
-[ext_resource type="Script" path="res://Scripts/Resources/Fish Properties/fish_instance_resource.gd" id="2_fi8q5"]
-[ext_resource type="Resource" path="res://Resources/Species/rainbowfish.tres" id="3_ogtgv"]
-[ext_resource type="Script" path="res://Scripts/Resources/Aquarium/aquarium_resource.gd" id="4_5qy27"]
-[ext_resource type="Script" path="res://Scripts/Resources/Data/game_data_resource.gd" id="5_733bx"]
+[ext_resource type="Script" uid="uid://bjsqhwn2biy8l" path="res://Scripts/Resources/Aquarium/aquarium_fish_data.gd" id="1_rf7th"]
+[ext_resource type="Script" uid="uid://hwq1f3htr3g1" path="res://Scripts/Resources/Fish Properties/fish_instance_resource.gd" id="2_fi8q5"]
+[ext_resource type="Resource" uid="uid://tgs88p7e0acj" path="res://Resources/Species/rainbowfish.tres" id="3_ogtgv"]
+[ext_resource type="Script" uid="uid://cnytmjvmnvksy" path="res://Scripts/Resources/Aquarium/aquarium_resource.gd" id="4_5qy27"]
+[ext_resource type="Script" uid="uid://bdxafa1qx55ok" path="res://Scripts/Resources/Data/game_data_resource.gd" id="5_733bx"]
 
 [sub_resource type="Resource" id="Resource_e6l1o"]
 script = ExtResource("2_fi8q5")
@@ -72,7 +72,7 @@ aquarium_name = "Aquarium 3"
 
 [resource]
 script = ExtResource("5_733bx")
-money = 118069.11097900411
+money = 118069.11097900412
 owned_aquariums = Array[ExtResource("4_5qy27")]([SubResource("Resource_0exl6"), SubResource("Resource_vu0n6"), SubResource("Resource_lja3u")])
 current_aquarium = SubResource("Resource_0exl6")
 purchased_global_upgrades = Array[String](["PI_2"])

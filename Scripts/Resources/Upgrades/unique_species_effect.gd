@@ -3,7 +3,7 @@ extends UpgradeEffect
 
 @export var click_percent_per_species: float = 0.05
 
-func calculate_bonus(fish: FishInstanceResource) -> float:
+func get_click_increase(fish: FishInstanceResource) -> float:
 	var unique_species: Dictionary = {}
 	
 	for aquarium: AquariumResource in SaveManager.game_data.owned_aquariums:
