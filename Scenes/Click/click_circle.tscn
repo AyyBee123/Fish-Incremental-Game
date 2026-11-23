@@ -6,7 +6,7 @@
 height = 10000.0
 radius = 0.1
 
-[node name="Click Circle" type="Area3D" unique_id=1985891243]
+[node name="Click Circle" type="Area3D" unique_id=1985891243 groups=["click_circle"]]
 collision_layer = 0
 monitorable = false
 script = ExtResource("1_uch7a")

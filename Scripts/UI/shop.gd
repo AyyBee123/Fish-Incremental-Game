@@ -138,6 +138,7 @@ func populate_upgrade_shop() -> void:
 		button.price = upgrade.price
 		button.upgrade_name = upgrade.upgrade_name
 		button.pressed.connect(buy_upgrade.bind(upgrade))
+		button.pressed.connect(buy_upgrade.bind(get_tree().get_first_node_in_group("click_circle").update_circle_radius())) # here for now
 		upgrade_view.get_node("Grid").add_child(button)
 
 

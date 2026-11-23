@@ -5,6 +5,12 @@ extends Area3D
 @onready var collision_shape: CollisionShape3D = %CollisionShape3D
 @onready var click_interval: Timer = %ClickInterval
 
+var base_radius: float
+
+
+func _ready() -> void:
+	base_radius = %CollisionShape3D.shape.radius
+
 
 func _process(_delta: float) -> void:
 	update_cursor_position()
@@ -22,6 +28,12 @@ func update_cursor_position() -> void:
 	if intersection != null:
 		global_position = intersection
 		look_at(intersection + ray_direction, Vector3.UP)
+
+
+func update_circle_radius() -> void:
+	var increase: float = GameManager.get_total_click_size_increase()
+	var multiplier: float = GameManager.get_total_click_size_multiplier()
+	collision_shape.shape.radius = base_radius * (1.0 + increase) * multiplier
 
 
 func _unhandled_input(event: InputEvent) -> void:

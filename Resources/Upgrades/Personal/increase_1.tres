@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://bns7opyijjee0"]
+
+[ext_resource type="Script" uid="uid://dhywr74ip3xwy" path="res://Scripts/Resources/Upgrades/click_increase.gd" id="1_bpbh4"]
+[ext_resource type="Script" uid="uid://ch11dx2xy25xy" path="res://Scripts/Resources/Upgrades/upgrade_resource.gd" id="2_4r4gb"]
+
+[sub_resource type="Resource" id="Resource_1gt3a"]
+script = ExtResource("1_bpbh4")
+metadata/_custom_type_script = "uid://dhywr74ip3xwy"
+
+[resource]
+script = ExtResource("2_4r4gb")
+id = "P_I1"
+upgrade_name = "Click increase 1"
+description = "Increases money from clicking {fish_name} by 10%."
+price = 100.0
+effect = SubResource("Resource_1gt3a")
+metadata/_custom_type_script = "uid://ch11dx2xy25xy"

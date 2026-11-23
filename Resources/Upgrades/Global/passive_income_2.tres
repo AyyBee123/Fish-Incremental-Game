@@ -10,7 +10,7 @@ metadata/_custom_type_script = "uid://fb7rj870bqjh"
 
 [resource]
 script = ExtResource("2_j2wqe")
-id = "PI_2"
+id = "PI2"
 upgrade_name = "Passive Income Increase 2"
 description = "Passive Income +2%"
 price = 50000.0

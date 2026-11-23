@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://c3s01rq18gmtj"]
+
+[ext_resource type="Script" uid="uid://ch11dx2xy25xy" path="res://Scripts/Resources/Upgrades/upgrade_resource.gd" id="1_ek5gb"]
+
+[resource]
+script = ExtResource("1_ek5gb")
+id = "ClickSize_I1"
+upgrade_name = "Click Circle Size Increase 1"
+description = "Increases the size of the click circle by 10%."
+price = 1000.0
+metadata/_custom_type_script = "uid://ch11dx2xy25xy"
