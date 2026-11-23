@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://cnc7yjh8v32ms"]
+
+[ext_resource type="Script" uid="uid://dxphjl86e1q8d" path="res://Scripts/Resources/Upgrades/click_size_increase.gd" id="1_fjmls"]
+[ext_resource type="Script" uid="uid://ch11dx2xy25xy" path="res://Scripts/Resources/Upgrades/upgrade_resource.gd" id="2_rtbec"]
+
+[sub_resource type="Resource" id="Resource_ek5gb"]
+script = ExtResource("1_fjmls")
+click_circle_size_increase = 2.0
+metadata/_custom_type_script = "uid://dxphjl86e1q8d"
+
+[resource]
+script = ExtResource("2_rtbec")
+id = "ClickSize_I15"
+upgrade_name = "Click Circle Size Increase 1"
+description = "Increases the size of the click circle by 10%."
+price = 1000.0
+effect = SubResource("Resource_ek5gb")
+metadata/_custom_type_script = "uid://ch11dx2xy25xy"

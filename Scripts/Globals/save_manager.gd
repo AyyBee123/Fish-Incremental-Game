@@ -8,7 +8,7 @@ var game_data: GameDataResource
 
 
 func _ready() -> void:
-	load_game() # for now. this will be called when loading game later on
+	load_game()
 
 
 func save_game() -> void:

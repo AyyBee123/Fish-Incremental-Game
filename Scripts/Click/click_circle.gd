@@ -9,7 +9,9 @@ var base_radius: float
 
 
 func _ready() -> void:
-	base_radius = %CollisionShape3D.shape.radius
+	collision_shape.shape = collision_shape.shape.duplicate() # prevents modified radius from carrying over between scenes
+	base_radius = collision_shape.shape.radius
+	update_circle_radius()
 
 
 func _process(_delta: float) -> void:

@@ -20,4 +20,4 @@ extends Resource
 @export var click_value: float = 1.0
 
 @export_category("Upgrades")
-@export var purchased_upgrades: Array[String] = []
+@export var available_upgrades: Array[UpgradeResource] = []

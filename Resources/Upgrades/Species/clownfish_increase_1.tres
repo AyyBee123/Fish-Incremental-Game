@@ -9,9 +9,9 @@ metadata/_custom_type_script = "uid://dhywr74ip3xwy"
 
 [resource]
 script = ExtResource("1_1gt3a")
-id = "Clownfish_I1"
+id = "I1"
 upgrade_name = "Click increase 1"
-description = "Increases money from clicking Clownfish by 10%."
+description = "Increases money from clicking {species_name} by 10%."
 price = 200.0
 effect = SubResource("Resource_1gt3a")
 metadata/_custom_type_script = "uid://ch11dx2xy25xy"

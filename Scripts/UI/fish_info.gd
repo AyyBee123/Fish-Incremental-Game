@@ -1,6 +1,9 @@
 class_name FishInfo
 extends Control
 
+@onready var purchased_container: HBoxContainer = %PurchasedContainer
+@onready var species_container: HBoxContainer = %SpeciesContainer
+
 
 func _process(_delta: float) -> void:
 	if get_tree().current_scene is Aquarium and get_tree().current_scene.selected_fish == null:
@@ -14,6 +17,56 @@ func display_info(fish: Fish) -> void:
 	%NameLabel.text = fish.fish_res.fish_name
 	%SpeciesLabel.text = fish.fish_res.species.species_name
 	%DateLabel.text = formatted_date
+	
+	populate_upgrades(fish)
+
+
+func populate_upgrades(fish: Fish) -> void:
+	var species = fish.fish_res.species
+
+	# clear existing entries
+	for child in purchased_container.get_children():
+		child.queue_free()
+
+	for child in species_container.get_children():
+		child.queue_free()
+
+	# purchased upgrades
+	var species_data: SpeciesSaveData = GameManager.get_species_save_data(species)
+
+	for upgrade_id: String in species_data.purchased_upgrades:
+		var upgrade: UpgradeResource = GameManager.get_species_upgrade(upgrade_id, species.available_upgrades)
+
+		if upgrade == null:
+			continue
+
+		var button: FishUpgradeButton = Preloads.FISH_UPGRADE_BUTTON.instantiate()
+		button.upgrade_name = upgrade.upgrade_name
+		button.description = upgrade.description
+		button.price = upgrade.price
+		button.disabled = true
+
+		purchased_container.add_child(button)
+	
+	# available upgrades
+	for upgrade: UpgradeResource in species.available_upgrades:
+		if species_data.purchased_upgrades.has(upgrade.id):
+			continue
+		
+		var button: FishUpgradeButton = Preloads.FISH_UPGRADE_BUTTON.instantiate()
+		
+		button.upgrade_name = upgrade.upgrade_name
+		button.description = upgrade.description
+		button.price = upgrade.price
+		
+		button.pressed.connect(_on_species_upgrade_pressed.bind(fish, upgrade))
+		
+		species_container.add_child(button)
+
+
+func _on_species_upgrade_pressed(fish: Fish, upgrade: UpgradeResource) -> void:
+	if GameManager.purchase_species_upgrade(fish.fish_res, upgrade):
+		populate_upgrades(fish)
 
 
 func _on_close_button_pressed() -> void:

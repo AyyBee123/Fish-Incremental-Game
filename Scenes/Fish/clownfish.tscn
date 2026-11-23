@@ -1,16 +1,26 @@
 [gd_scene format=3 uid="uid://dpm7dfhel3mwg"]
 
 [ext_resource type="PackedScene" uid="uid://b23k32erkbnrh" path="res://Assets/Fish/Clownfish/Clownfish.glb" id="1_drabq"]
-[ext_resource type="Material" uid="uid://b7mten2i55q3b" path="res://Shaders/Materials/outline.tres" id="2_drabq"]
 [ext_resource type="Script" uid="uid://bi2d20nlwc4cg" path="res://Scripts/Fish/fish.gd" id="2_ua3lr"]
+[ext_resource type="Shader" uid="uid://dq0glnlgr0syt" path="res://Shaders/highlight.gdshader" id="3_1wnwg"]
 [ext_resource type="Shader" uid="uid://c1fj4ewss4ptt" path="res://Shaders/cel-shader-base.gdshader" id="3_drabq"]
+[ext_resource type="Shader" uid="uid://6j4g8rb6srij" path="res://Shaders/outline.gdshader" id="4_38rti"]
 [ext_resource type="Texture2D" uid="uid://bdabgnt10l3ar" path="res://Assets/Fish/Clownfish/Clownfish_Image.png" id="4_drabq"]
 [ext_resource type="Script" uid="uid://b4r1wfoo4xosf" path="res://Scripts/Fish/fish_name_label.gd" id="6_16vx3"]
 [ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="6_w85j4"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qs4in"]
+render_priority = 2
+shader = ExtResource("3_1wnwg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1o7v"]
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_qs4in")
+shader = ExtResource("4_38rti")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_drabq"]
 render_priority = 0
-next_pass = ExtResource("2_drabq")
+next_pass = SubResource("ShaderMaterial_p1o7v")
 shader = ExtResource("3_drabq")
 shader_parameter/color = Color(0.75, 0.75, 0.75, 1)
 shader_parameter/base_texture = ExtResource("4_drabq")
@@ -78,11 +88,12 @@ height = 4.3875732
 [node name="Clownfish" unique_id=1761693036 instance=ExtResource("1_drabq")]
 script = ExtResource("2_ua3lr")
 
-[node name="Armature" parent="." index="0" unique_id=2138995600]
+[node name="Armature" parent="." index="0" unique_id=1368548116]
 unique_name_in_owner = true
 
-[node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1987449484) index="0" unique_id=695036367]
+[node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(325973899) index="0" unique_id=1104880043]
 unique_name_in_owner = true
+cast_shadow = 0
 surface_material_override/0 = SubResource("ShaderMaterial_drabq")
 surface_material_override/1 = SubResource("ShaderMaterial_rs070")
 

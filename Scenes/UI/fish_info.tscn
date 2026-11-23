@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b2rnppq16sfpl" path="res://Assets/UI/Close Button Press.png" id="3_p3wmb"]
 [ext_resource type="Texture2D" uid="uid://bp3620furiwph" path="res://Assets/UI/Close Button Hover.png" id="4_5wpab"]
 [ext_resource type="Texture2D" uid="uid://dvp7dxp2sprbf" path="res://Assets/UI/Upgrade List UI.png" id="4_ejxkt"]
+[ext_resource type="Theme" uid="uid://bpqf2swccpde7" path="res://Assets/Themes/scroll_theme.tres" id="5_7ko2i"]
 [ext_resource type="BitMap" uid="uid://b60xoafhwbyi" path="res://Assets/UI/Masks/Close Button_click_mask.res" id="5_ejxkt"]
 [ext_resource type="Texture2D" uid="uid://b67yxe5iu8mfb" path="res://Assets/UI/Sell Button.png" id="5_pa3fb"]
 [ext_resource type="Texture2D" uid="uid://do0asy6knwv4f" path="res://Assets/UI/Sell Button Pressed.png" id="6_5thxd"]
@@ -43,6 +44,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 32
@@ -101,7 +104,7 @@ custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
 [node name="PurchasedControl" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=942777694]
-custom_minimum_size = Vector2(0, 192)
+custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/PurchasedControl" unique_id=1811419744]
@@ -135,46 +138,30 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="EmptySpace2" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1098717333]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-
-[node name="PersonalControl" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=575242191]
-custom_minimum_size = Vector2(0, 256)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/PersonalControl" unique_id=1475627403]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/MarginContainer/VBoxContainer/PurchasedControl/VBoxContainer/NinePatchRect" unique_id=147785961]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/PersonalControl/VBoxContainer" unique_id=1721434583]
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/MarginContainer/VBoxContainer/PurchasedControl/VBoxContainer/NinePatchRect/MarginContainer" unique_id=1198673261]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.31851014, 0.25184473, 4.813075e-08, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 2
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/font = ExtResource("3_5wpab")
-theme_override_font_sizes/font_size = 24
-text = "Personal Upgrades"
-vertical_alignment = 1
+theme = ExtResource("5_7ko2i")
+vertical_scroll_mode = 0
 
-[node name="NinePatchRect" type="NinePatchRect" parent="TextureRect/MarginContainer/VBoxContainer/PersonalControl/VBoxContainer" unique_id=909474621]
+[node name="PurchasedContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/PurchasedControl/VBoxContainer/NinePatchRect/MarginContainer/ScrollContainer" unique_id=1299757433]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("4_ejxkt")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
 
-[node name="EmptySpace3" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=518749027]
+[node name="EmptySpace2" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=518749027]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
@@ -213,13 +200,35 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="EmptySpace4" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=499174596]
-custom_minimum_size = Vector2(0, 4)
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/MarginContainer/VBoxContainer/SpeciesControl/VBoxContainer/NinePatchRect" unique_id=1575276432]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/MarginContainer/VBoxContainer/SpeciesControl/VBoxContainer/NinePatchRect/MarginContainer" unique_id=81728240]
+layout_mode = 2
+theme = ExtResource("5_7ko2i")
+vertical_scroll_mode = 0
+
+[node name="SpeciesContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/SpeciesControl/VBoxContainer/NinePatchRect/MarginContainer/ScrollContainer" unique_id=1488031908]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EmptySpace3" type="Control" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=499174596]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 
 [node name="SellButton" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1206853051]
 layout_mode = 2
-size_flags_vertical = 3
 texture_normal = ExtResource("5_pa3fb")
 texture_pressed = ExtResource("6_5thxd")
 texture_hover = ExtResource("7_7ko2i")

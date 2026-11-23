@@ -3,14 +3,24 @@
 [ext_resource type="PackedScene" uid="uid://htapj5o5mn3t" path="res://Assets/Fish/Glassfish/Glassfish.glb" id="1_t8l6p"]
 [ext_resource type="Script" uid="uid://bi2d20nlwc4cg" path="res://Scripts/Fish/fish.gd" id="2_nubsu"]
 [ext_resource type="Shader" uid="uid://c3eckykv8g7x" path="res://Shaders/glass_shader.gdshader" id="3_88elg"]
-[ext_resource type="Material" uid="uid://b7mten2i55q3b" path="res://Shaders/Materials/outline.tres" id="3_ndrw7"]
 [ext_resource type="Shader" uid="uid://c1fj4ewss4ptt" path="res://Shaders/cel-shader-base.gdshader" id="3_nubsu"]
+[ext_resource type="Shader" uid="uid://dq0glnlgr0syt" path="res://Shaders/highlight.gdshader" id="3_y77nv"]
+[ext_resource type="Shader" uid="uid://6j4g8rb6srij" path="res://Shaders/outline.gdshader" id="4_oigpc"]
 [ext_resource type="Script" uid="uid://b4r1wfoo4xosf" path="res://Scripts/Fish/fish_name_label.gd" id="6_hy77u"]
 [ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="6_ndrw7"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2gfnd"]
+render_priority = 2
+shader = ExtResource("3_y77nv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0f6b"]
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_2gfnd")
+shader = ExtResource("4_oigpc")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ndrw7"]
 render_priority = 0
-next_pass = ExtResource("3_ndrw7")
+next_pass = SubResource("ShaderMaterial_a0f6b")
 shader = ExtResource("3_88elg")
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.0

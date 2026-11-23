@@ -8,8 +8,9 @@
 [ext_resource type="Script" uid="uid://ch11dx2xy25xy" path="res://Scripts/Resources/Upgrades/upgrade_resource.gd" id="6_vdvrv"]
 [ext_resource type="Resource" uid="uid://dvlwy0ba5b61q" path="res://Resources/Upgrades/Global/passive_income_2.tres" id="7_0aimm"]
 [ext_resource type="Resource" uid="uid://c3s01rq18gmtj" path="res://Resources/Upgrades/Global/click_size_increase_1.tres" id="8_0aimm"]
+[ext_resource type="Resource" uid="uid://cnc7yjh8v32ms" path="res://Resources/Upgrades/Global/click_size_increase_15.tres" id="9_3dc17"]
 
 [node name="GameManager" type="Node" unique_id=1040028158]
 script = ExtResource("1_hargk")
 available_fish = Array[ExtResource("2_y52mb")]([ExtResource("3_rlibi"), ExtResource("4_vdvrv"), ExtResource("5_0aimm")])
-global_upgrades = Array[ExtResource("6_vdvrv")]([ExtResource("7_0aimm"), ExtResource("8_0aimm")])
+global_upgrades = Array[ExtResource("6_vdvrv")]([ExtResource("7_0aimm"), ExtResource("8_0aimm"), ExtResource("9_3dc17")])
