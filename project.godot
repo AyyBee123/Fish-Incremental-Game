@@ -16,11 +16,16 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=500
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://bm6krgp1rm2ci"
+
 [autoload]
 
 Preloads="*uid://b4iebdw2llybd"
 GameManager="*uid://ksxwepasqjrq"
 SaveManager="*uid://d3xva8mntkhrh"
+AudioManager="*uid://chb0uox6rh2dy"
 
 [display]
 
@@ -35,6 +40,7 @@ window/vsync/vsync_mode=0
 
 folder_colors={
 "res://Assets/": "yellow",
+"res://Audio/": "red",
 "res://Data/": "teal",
 "res://Fonts/": "gray",
 "res://Resources/": "green",

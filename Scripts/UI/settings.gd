@@ -3,6 +3,7 @@ extends Control
 
 
 func _ready() -> void:
+	AudioManager.pause.play()
 	if get_tree().current_scene is Aquarium:
 		get_tree().current_scene.deselect_fish()
 
@@ -28,3 +29,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("back"):
 		queue_free()
 		accept_event()
+
+
+func _exit_tree() -> void:
+	AudioManager.pause_reversed.play()

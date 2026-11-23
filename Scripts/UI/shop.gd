@@ -10,6 +10,7 @@ extends Control
 
 
 func _ready() -> void:
+	AudioManager.popup.play()
 	category_view.show()
 	get_tree().current_scene.deselect_fish()
 	for node in margin_container.get_children():
@@ -45,6 +46,7 @@ func buy_fish(species: FishSpeciesResource) -> void:
 	
 	get_tree().current_scene.update_capacity_label()
 	SaveManager.save_game()
+	AudioManager.cash.play()
 
 
 func populate_aquarium_shop() -> void:
@@ -86,6 +88,7 @@ func buy_aquarium(id: int) -> void:
 	SaveManager.save_game()
 	get_tree().current_scene.populate_aquarium_list()
 	populate_aquarium_shop()
+	AudioManager.cash.play()
 
 
 func populate_capacity_shop() -> void:
@@ -123,6 +126,7 @@ func buy_capacity_upgrade(upgrade_id: int) -> void:
 	SaveManager.save_game()
 	get_tree().current_scene.update_capacity_label()
 	populate_capacity_shop()
+	AudioManager.cash.play()
 
 
 func populate_upgrade_shop() -> void:
@@ -154,6 +158,7 @@ func buy_upgrade(upgrade: UpgradeResource) -> void:
 	
 	SaveManager.save_game()
 	populate_upgrade_shop()
+	AudioManager.cash.play()
 
 
 func _on_category_view_visibility_changed() -> void:
@@ -169,27 +174,36 @@ func _on_back_button_pressed() -> void:
 	for node in margin_container.get_children():
 		if node == category_view: continue
 		node.hide()
+	AudioManager.button.play()
 
 
 func _on_fish_button_pressed() -> void:
 	category_view.hide()
 	populate_fish_shop()
 	fish_view.show()
+	AudioManager.button.play()
 
 
 func _on_aquarium_button_pressed() -> void:
 	category_view.hide()
 	populate_aquarium_shop()
 	aquarium_view.show()
+	AudioManager.button.play()
 
 
 func _on_capacity_button_pressed() -> void:
 	category_view.hide()
 	populate_capacity_shop()
 	capacity_view.show()
+	AudioManager.button.play()
 
 
 func _on_upgrade_button_pressed() -> void:
 	category_view.hide()
 	populate_upgrade_shop()
 	upgrade_view.show()
+	AudioManager.button.play()
+
+
+func _exit_tree() -> void:
+	AudioManager.popup_reversed.play()

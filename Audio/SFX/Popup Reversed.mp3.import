@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://lyqmtp5ici82"
+path="res://.godot/imported/Popup Reversed.mp3-fa1677915772b6ab9b1bf2d1a0cbf6f3.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Popup Reversed.mp3"
+dest_files=["res://.godot/imported/Popup Reversed.mp3-fa1677915772b6ab9b1bf2d1a0cbf6f3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

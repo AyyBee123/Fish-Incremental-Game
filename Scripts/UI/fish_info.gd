@@ -11,6 +11,7 @@ func _process(_delta: float) -> void:
 
 
 func display_info(fish: Fish) -> void:
+	AudioManager.popup_high_pitch.play()
 	var date = Time.get_datetime_dict_from_unix_time(fish.fish_res.purchase_timestamp)
 	var formatted_date = "%02d/%02d/%04d" % [date.day, date.month, date.year]
 	
@@ -66,6 +67,7 @@ func populate_upgrades(fish: Fish) -> void:
 
 func _on_species_upgrade_pressed(fish: Fish, upgrade: UpgradeResource) -> void:
 	if GameManager.purchase_species_upgrade(fish.fish_res, upgrade):
+		AudioManager.cash.play()
 		populate_upgrades(fish)
 
 
@@ -77,3 +79,7 @@ func _on_close_button_pressed() -> void:
 func _on_sell_button_pressed() -> void:
 	if get_tree().current_scene is Aquarium:
 		get_tree().current_scene.sell_fish()
+
+
+func _exit_tree() -> void:
+	AudioManager.popup_reversed_high_pitch.play()

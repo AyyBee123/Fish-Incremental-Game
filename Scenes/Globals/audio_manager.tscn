@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://chb0uox6rh2dy"]
+
+[ext_resource type="Script" uid="uid://doa8u8d55jp3x" path="res://Scripts/Globals/audio_manager.gd" id="1_a6cw8"]
+[ext_resource type="AudioStream" uid="uid://or1uwwv2rgp5" path="res://Audio/SFX/Cash.mp3" id="2_88uku"]
+[ext_resource type="AudioStream" uid="uid://dfla7lfgcadlx" path="res://Audio/SFX/Popup.mp3" id="3_85on0"]
+[ext_resource type="AudioStream" uid="uid://lyqmtp5ici82" path="res://Audio/SFX/Popup Reversed.mp3" id="4_85on0"]
+[ext_resource type="AudioStream" uid="uid://c4alwuhlnehc8" path="res://Audio/SFX/UI Button.mp3" id="4_v1en5"]
+[ext_resource type="AudioStream" uid="uid://dn5gro0poy44k" path="res://Audio/SFX/Use.mp3" id="5_hfdkt"]
+[ext_resource type="AudioStream" uid="uid://dq3uy2cvo8ryd" path="res://Audio/SFX/Use Reversed.mp3" id="7_v1en5"]
+
+[node name="AudioManager" type="Node" unique_id=1072995070]
+script = ExtResource("1_a6cw8")
+
+[node name="Cash" type="AudioStreamPlayer" parent="." unique_id=2061051350]
+stream = ExtResource("2_88uku")
+bus = &"SFX"
+
+[node name="Popup" type="AudioStreamPlayer" parent="." unique_id=2140748435]
+stream = ExtResource("3_85on0")
+pitch_scale = 0.95
+bus = &"SFX"
+
+[node name="PopupHighPitch" type="AudioStreamPlayer" parent="." unique_id=1729662390]
+stream = ExtResource("3_85on0")
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="PopupReversed" type="AudioStreamPlayer" parent="." unique_id=1720119685]
+stream = ExtResource("4_85on0")
+pitch_scale = 0.95
+bus = &"SFX"
+
+[node name="PopupReversedHighPitch" type="AudioStreamPlayer" parent="." unique_id=91937874]
+stream = ExtResource("4_85on0")
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="Button" type="AudioStreamPlayer" parent="." unique_id=1601933661]
+stream = ExtResource("4_v1en5")
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=705464177]
+stream = ExtResource("4_v1en5")
+pitch_scale = 3.0
+bus = &"SFX"
+
+[node name="Pause" type="AudioStreamPlayer" parent="." unique_id=732781062]
+stream = ExtResource("5_hfdkt")
+bus = &"SFX"
+
+[node name="PauseReversed" type="AudioStreamPlayer" parent="." unique_id=687817114]
+stream = ExtResource("7_v1en5")

@@ -42,6 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("click") and click_interval.is_stopped():
 		var overlapping_fish = get_overlapping_areas()
 		if overlapping_fish.is_empty(): return
+		AudioManager.click.play()
 		click_interval.start()
 		for fish in overlapping_fish:
 			fish.get_parent().on_click()

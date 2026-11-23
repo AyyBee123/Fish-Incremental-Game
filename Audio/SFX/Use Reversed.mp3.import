@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dq3uy2cvo8ryd"
+path="res://.godot/imported/Use Reversed.mp3-060293869f62bcb15bf5720f6197df35.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Use Reversed.mp3"
+dest_files=["res://.godot/imported/Use Reversed.mp3-060293869f62bcb15bf5720f6197df35.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
