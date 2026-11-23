@@ -145,9 +145,6 @@ func get_global_upgrade(upgrade_id: String) -> UpgradeResource:
 func purchase_species_upgrade(fish: FishInstanceResource, upgrade: UpgradeResource) -> bool:
 	var species = fish.species
 	
-	if species.purchased_upgrades.has(upgrade.id):
-		return false
-	
 	if not species.available_upgrades.has(upgrade):
 		return false
 	
