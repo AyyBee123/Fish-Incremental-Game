@@ -51,6 +51,7 @@ func _process(delta: float) -> void:
 
 
 func switch_aquarium(new_aquarium: AquariumResource) -> void:
+	AudioManager.button.play()
 	SaveManager.save_game() # save the currently active aquarium and its fish
 	SaveManager.game_data.current_aquarium = new_aquarium # change the active aquarium
 	ResourceSaver.save(SaveManager.game_data, SaveManager.PATH) # save new selection without getting the old aquarium's fish
