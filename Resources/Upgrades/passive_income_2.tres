@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FishUpgradeResource" format=3 uid="uid://dvlwy0ba5b61q"]
+[gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://dvlwy0ba5b61q"]
 
 [ext_resource type="Script" uid="uid://fb7rj870bqjh" path="res://Scripts/Resources/Upgrades/passive_income_effect.gd" id="1_ncepg"]
 [ext_resource type="Script" uid="uid://ch11dx2xy25xy" path="res://Scripts/Resources/Upgrades/upgrade_resource.gd" id="2_j2wqe"]
@@ -13,6 +13,6 @@ script = ExtResource("2_j2wqe")
 id = "PI_2"
 upgrade_name = "Passive Income Increase 2"
 description = "Passive Income +2%"
-price = 500.0
+price = 50000.0
 effect = SubResource("Resource_5q2r0")
 metadata/_custom_type_script = "uid://ch11dx2xy25xy"

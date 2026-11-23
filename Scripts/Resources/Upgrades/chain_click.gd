@@ -1,7 +1,7 @@
 class_name ChainClickUpgrade
 extends UpgradeEffect
 
-@export var click_percent: float = 0.10
+@export var click_percent: float = 0.1
 
 func apply_on_click(clicked_fish: Fish, fish_manager: FishManager) -> float:
 	var bonus: float = 0.0
