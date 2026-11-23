@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="FishSpeciesResource" format=3 uid="uid://tgs88p7e0acj"]
 
 [ext_resource type="PackedScene" uid="uid://2tdqf8wd8bo8" path="res://Scenes/Fish/rainbowfish.tscn" id="1_oesh3"]
+[ext_resource type="Script" uid="uid://ch11dx2xy25xy" path="res://Scripts/Resources/Upgrades/upgrade_resource.gd" id="1_rc6mh"]
 [ext_resource type="Texture2D" uid="uid://dua30twwseb1i" path="res://Assets/Screenshots/rainbowfish.png" id="1_x7v2v"]
+[ext_resource type="Resource" uid="uid://2a503x4mj13d" path="res://Resources/Upgrades/Species/increase_1.tres" id="2_grpx6"]
 [ext_resource type="Resource" uid="uid://1hv7i7cmfraj" path="res://Resources/Movement Behaviours/base.tres" id="2_x7v2v"]
 [ext_resource type="Script" uid="uid://duwvt65xb45i1" path="res://Scripts/Resources/Fish Properties/fish_species_resource.gd" id="3_rc6mh"]
 
@@ -17,4 +19,5 @@ deceleration = 2.0
 max_speed = 4.0
 rotation_speed = 2.0
 click_value = 50.0
+available_upgrades = Array[ExtResource("1_rc6mh")]([ExtResource("2_grpx6")])
 metadata/_custom_type_script = "uid://duwvt65xb45i1"

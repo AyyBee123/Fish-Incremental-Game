@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://2a503x4mj13d"]
 
-[ext_resource type="Script" uid="uid://ch11dx2xy25xy" path="res://Scripts/Resources/Upgrades/upgrade_resource.gd" id="1_1gt3a"]
-[ext_resource type="Script" uid="uid://dhywr74ip3xwy" path="res://Scripts/Resources/Upgrades/click_increase.gd" id="1_vqc3u"]
+[ext_resource type="Script" uid="uid://dhywr74ip3xwy" path="res://Scripts/Resources/Upgrades/click_increase.gd" id="1_4r4gb"]
+[ext_resource type="Script" uid="uid://ch11dx2xy25xy" path="res://Scripts/Resources/Upgrades/upgrade_resource.gd" id="2_4sw4o"]
 
 [sub_resource type="Resource" id="Resource_1gt3a"]
-script = ExtResource("1_vqc3u")
+script = ExtResource("1_4r4gb")
 metadata/_custom_type_script = "uid://dhywr74ip3xwy"
 
 [resource]
-script = ExtResource("1_1gt3a")
+script = ExtResource("2_4sw4o")
 id = "I1"
 upgrade_name = "Click increase 1"
 description = "Increases money from clicking {species_name} by 10%."

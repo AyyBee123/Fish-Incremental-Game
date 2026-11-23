@@ -2,7 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bpdryhbrd1ri5" path="res://Scenes/Fish/glassfish.tscn" id="1_3mdru"]
 [ext_resource type="Texture2D" uid="uid://cwrosw741plpd" path="res://Assets/Screenshots/glassfish.png" id="1_15oo2"]
+[ext_resource type="Script" uid="uid://ch11dx2xy25xy" path="res://Scripts/Resources/Upgrades/upgrade_resource.gd" id="1_jhxe4"]
 [ext_resource type="Resource" uid="uid://1hv7i7cmfraj" path="res://Resources/Movement Behaviours/base.tres" id="2_15oo2"]
+[ext_resource type="Resource" uid="uid://2a503x4mj13d" path="res://Resources/Upgrades/Species/increase_1.tres" id="2_pbdkh"]
 [ext_resource type="Script" uid="uid://duwvt65xb45i1" path="res://Scripts/Resources/Fish Properties/fish_species_resource.gd" id="3_jhxe4"]
 
 [resource]
@@ -17,4 +19,5 @@ max_speed = 1.0
 arrival_distance = 0.1
 rotation_speed = 1.0
 click_value = 10.0
+available_upgrades = Array[ExtResource("1_jhxe4")]([ExtResource("2_pbdkh")])
 metadata/_custom_type_script = "uid://duwvt65xb45i1"
