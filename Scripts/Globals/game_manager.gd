@@ -118,7 +118,7 @@ func get_global_click_bonus(clicked_fish: Fish) -> float:
 	for upgrade_id: String in SaveManager.game_data.purchased_global_upgrades:
 		var upgrade: UpgradeResource = get_global_upgrade(upgrade_id)
 		
-		if upgrade and upgrade.effect:
+		if upgrade and upgrade.effect and upgrade.effect.has_method("apply_on_click"):
 			bonus += upgrade.effect.apply_on_click(clicked_fish, fish_manager)
 	
 	return bonus
