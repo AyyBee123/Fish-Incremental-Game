@@ -1,4 +1,5 @@
 shader_type spatial;
+stencil_mode write, 1;
 
 #define USE_ALPHA 0
 #define USE_ALPHA_CUTOFF 0

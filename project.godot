@@ -101,7 +101,7 @@ outline_color={
 }
 outline_width={
 "type": "float",
-"value": 2.0
+"value": 1.5
 }
 specular_smoothness={
 "type": "float",

@@ -4,10 +4,9 @@
 [ext_resource type="Script" uid="uid://bi2d20nlwc4cg" path="res://Scripts/Fish/fish.gd" id="2_smpd3"]
 [ext_resource type="Material" uid="uid://dwq2kgsopqdwr" path="res://Shaders/Materials/rainbow_material.tres" id="2_ue2al"]
 [ext_resource type="Shader" uid="uid://dk5rywv3a3emn" path="res://Shaders/rainbow_fish.gdshader" id="5_smpd3"]
-[ext_resource type="Shader" uid="uid://dq0glnlgr0syt" path="res://Shaders/highlight.gdshader" id="6_5qokl"]
+[ext_resource type="Material" uid="uid://bwgyfsrvq5ra5" path="res://Shaders/Materials/outline_material.tres" id="6_smpd3"]
 [ext_resource type="Script" uid="uid://b4r1wfoo4xosf" path="res://Scripts/Fish/fish_name_label.gd" id="7_5qokl"]
 [ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="7_cpfia"]
-[ext_resource type="Shader" uid="uid://6j4g8rb6srij" path="res://Shaders/outline.gdshader" id="7_e0teb"]
 [ext_resource type="Shader" uid="uid://c1fj4ewss4ptt" path="res://Shaders/cel-shader-base.gdshader" id="7_smpd3"]
 
 [sub_resource type="Gradient" id="Gradient_drabq"]
@@ -48,18 +47,9 @@ shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8i4ll"]
-render_priority = 2
-shader = ExtResource("6_5qokl")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qovlt"]
-render_priority = 1
-next_pass = SubResource("ShaderMaterial_8i4ll")
-shader = ExtResource("7_e0teb")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cpfia"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_qovlt")
+next_pass = ExtResource("6_smpd3")
 shader = ExtResource("5_smpd3")
 shader_parameter/color = Color(0, 0, 0, 1)
 shader_parameter/specular = Color(0, 0, 0, 0.5019608)
@@ -121,11 +111,11 @@ height = 5.1058273
 [node name="Rainbowfish" unique_id=1487464950 instance=ExtResource("1_nrrsb")]
 script = ExtResource("2_smpd3")
 
-[node name="Armature" parent="." index="0" unique_id=737885988]
+[node name="Armature" parent="." index="0" unique_id=1210374933]
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(730474771) index="0" unique_id=749198503]
+[node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1200269309) index="0" unique_id=1342267674]
 unique_name_in_owner = true
 cast_shadow = 0
 surface_material_override/0 = ExtResource("2_ue2al")

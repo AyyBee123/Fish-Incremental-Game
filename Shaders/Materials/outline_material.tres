@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bwgyfsrvq5ra5"]
+
+[ext_resource type="Shader" uid="uid://dq0glnlgr0syt" path="res://Shaders/highlight.gdshader" id="1_2no45"]
+[ext_resource type="Shader" uid="uid://6j4g8rb6srij" path="res://Shaders/outline.gdshader" id="2_tplwr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_umlju"]
+render_priority = 2
+shader = ExtResource("1_2no45")
+
+[resource]
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_umlju")
+shader = ExtResource("2_tplwr")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
