@@ -63,10 +63,6 @@ func get_click_value() -> float:
 	return GameManager.get_fish_click_value(fish_res)
 
 
-func set_selected(value: bool) -> void:
-	%Body.set_instance_shader_parameter("is_highlighted", value)
-
-
 func trigger_click_behaviour() -> void:
 	if click_tween and click_tween.is_running():
 		click_tween.kill()

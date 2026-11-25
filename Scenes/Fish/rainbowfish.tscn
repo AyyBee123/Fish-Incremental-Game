@@ -111,11 +111,11 @@ height = 5.1058273
 [node name="Rainbowfish" unique_id=1487464950 instance=ExtResource("1_nrrsb")]
 script = ExtResource("2_smpd3")
 
-[node name="Armature" parent="." index="0" unique_id=1210374933]
+[node name="Armature" parent="." index="0" unique_id=88311706]
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1200269309) index="0" unique_id=1342267674]
+[node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1580053294) index="0" unique_id=695398573]
 unique_name_in_owner = true
 cast_shadow = 0
 surface_material_override/0 = ExtResource("2_ue2al")

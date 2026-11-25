@@ -81,10 +81,10 @@ height = 4.679533
 [node name="Glassfish" unique_id=262562074 instance=ExtResource("1_t8l6p")]
 script = ExtResource("2_nubsu")
 
-[node name="Armature" parent="." index="0" unique_id=559389571]
+[node name="Armature" parent="." index="0" unique_id=377404612]
 unique_name_in_owner = true
 
-[node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1977844104) index="0" unique_id=1553083249]
+[node name="Body" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1849447842) index="0" unique_id=1665682391]
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 cast_shadow = 0

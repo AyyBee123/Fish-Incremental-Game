@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://do4r5cj3jy0yd" path="res://Scripts/Managers/click_manager.gd" id="3_4djwm"]
 [ext_resource type="Script" uid="uid://c4h23ba2xi8rn" path="res://Scripts/Managers/instance_save_manager.gd" id="3_05nrt"]
 [ext_resource type="PackedScene" uid="uid://cnveierx5pplm" path="res://Scenes/Click/click_circle.tscn" id="4_jhcuh"]
+[ext_resource type="PackedScene" uid="uid://d2joa3cwapjsq" path="res://Scenes/Misc/indicator.tscn" id="4_juw1u"]
 [ext_resource type="Script" uid="uid://cprdwv7dve5p8" path="res://Scripts/Click/click_radius.gd" id="5_h7ht6"]
 [ext_resource type="Script" uid="uid://sqkqedln3r3o" path="res://Scripts/Aquarium/aquarium_ui.gd" id="6_2bmw5"]
 [ext_resource type="FontFile" uid="uid://cktsncv23dr1s" path="res://Fonts/Font.ttf" id="6_4djwm"]
@@ -25,7 +26,6 @@ glow_enabled = true
 render_priority = 1
 shader = ExtResource("2_1hoif")
 shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/outline_width = 2.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_bx8n8"]
 material = SubResource("ShaderMaterial_5iqjx")
@@ -61,6 +61,11 @@ mesh = SubResource("QuadMesh_bx8n8")
 
 [node name="Aquarium Model" parent="." unique_id=457526443 instance=ExtResource("2_4djwm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
+
+[node name="Indicator" parent="." unique_id=435607918 instance=ExtResource("4_juw1u")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 1000, 0)
+visible = false
 
 [node name="Instance Save Manager" type="Node" parent="." unique_id=1231781495]
 unique_name_in_owner = true
