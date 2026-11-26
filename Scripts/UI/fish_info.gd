@@ -66,9 +66,14 @@ func _on_species_upgrade_pressed(fish: Fish, upgrade: UpgradeResource) -> void:
 		populate_upgrades(fish)
 
 
-func _on_close_button_pressed() -> void:
+func close() -> void:
 	%AnimationPlayer.play("close")
 	AudioManager.popup_reversed_high_pitch.play()
+
+
+func _on_close_button_pressed() -> void:
+	get_tree().current_scene.deselect_fish()
+	close()
 
 
 func _on_sell_button_pressed() -> void:

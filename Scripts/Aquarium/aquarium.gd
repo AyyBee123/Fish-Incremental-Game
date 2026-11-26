@@ -97,7 +97,6 @@ func select_fish(fish: Fish) -> void:
 	if selected_fish == fish:
 		return
 	
-	
 	if not selected_fish:
 		fish_info = Preloads.FISH_INFO.instantiate()
 		ui.add_child(fish_info)
@@ -112,7 +111,7 @@ func select_fish(fish: Fish) -> void:
 func deselect_fish() -> void:
 	indicator.hide()
 	if fish_info:
-		fish_info._on_close_button_pressed()
+		fish_info.close()
 	selected_fish = null
 
 
