@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 		displayed_money = lerpf(displayed_money, SaveManager.game_data.money, 1.0 - exp(-25.0 * delta))
 	
 	if selected_fish:
-		indicator.global_position = selected_fish.global_position + Vector3.UP * 3.0
+		indicator.global_position = selected_fish.get_node("%NameLabel").global_position + Vector3.UP * 1.2
 	
 	income_label.text = "+$%s / sec" % Utils.format_number_two_decimals(GameManager.passive_income_per_second)
 	if GameManager.passive_income_per_second <= 0:
@@ -97,14 +97,14 @@ func select_fish(fish: Fish) -> void:
 	if selected_fish == fish:
 		return
 	
-	indicator.show()
-	indicator.global_position = fish.global_position + Vector3.UP * 2.0
 	
 	if not selected_fish:
 		fish_info = Preloads.FISH_INFO.instantiate()
 		ui.add_child(fish_info)
 	
 	selected_fish = fish
+	
+	indicator.show()
 	
 	fish_info.display_info(fish)
 

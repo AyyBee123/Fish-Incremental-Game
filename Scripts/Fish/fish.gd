@@ -6,6 +6,7 @@ var fish_res: FishInstanceResource
 @onready var animation_tree: AnimationTree = %AnimationTree
 @onready var aquarium: Aquarium = get_tree().current_scene
 @onready var armature: Node3D = %Armature
+@onready var body: MeshInstance3D = %Body
 
 var original_scale: Vector3
 var click_tween: Tween
