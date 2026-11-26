@@ -1,8 +1,10 @@
 extends Node
 
 @export var available_fish: Array[FishSpeciesResource]
+@export var global_upgrades: Array[UpgradeResource]
 
 var aquarium_prices: Array = [25000, 100000, 500000, 1000000, 10000000]
+var passive_income_per_second: float = 0.0
 
 var capacity_upgrade_increases: Array[int] = [5, 10, 15, 25, 40]
 var capacity_upgrade_prices: Array[Array] = [
@@ -13,8 +15,6 @@ var capacity_upgrade_prices: Array[Array] = [
 	[1000000.0, 2000000.0, 3500000.0, 6000000.0, 10000000.0], # Aquarium 4
 	[1000000.0, 2000000.0, 3500000.0, 6000000.0, 10000000.0] # Aquarium 5
 ]
-
-@export var global_upgrades: Array[UpgradeResource]
 
 
 func _process(delta: float) -> void:
@@ -132,6 +132,7 @@ func get_species_upgrade(upgrade_id: String, species_upgrades: Array[UpgradeReso
 	for upgrade: UpgradeResource in species_upgrades:
 		if upgrade.id == upgrade_id:
 			return upgrade
+	
 	return null
 
 
@@ -139,6 +140,7 @@ func get_global_upgrade(upgrade_id: String) -> UpgradeResource:
 	for upgrade: UpgradeResource in global_upgrades:
 		if upgrade.id == upgrade_id:
 			return upgrade
+	
 	return null
 
 
@@ -154,6 +156,8 @@ func purchase_species_upgrade(fish: FishInstanceResource, upgrade: UpgradeResour
 	SaveManager.game_data.money -= upgrade.price
 	var species_data: SpeciesSaveData = get_species_save_data(species)
 	species_data.purchased_upgrades.append(upgrade.id)
+	
+	passive_income_per_second = get_passive_income_per_second()
 	
 	return true
 
@@ -180,6 +184,7 @@ func add_fish_to_aquarium(fish_instance: FishInstanceResource, aquarium_res: Aqu
 	data.fish = fish_instance
 	data.position = position
 	aquarium_res.fish.append(data)
+	passive_income_per_second = get_passive_income_per_second()
 
 
 func set_resolution(width: int, height: int) -> void:

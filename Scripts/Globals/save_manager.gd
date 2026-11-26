@@ -9,6 +9,7 @@ var game_data: GameDataResource
 
 func _ready() -> void:
 	load_game()
+	GameManager.passive_income_per_second = GameManager.get_passive_income_per_second()
 
 
 func save_game() -> void:

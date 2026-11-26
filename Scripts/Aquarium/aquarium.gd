@@ -8,6 +8,7 @@ var aquarium_res: AquariumResource
 @onready var fish_manager: Node = %"Fish Manager"
 @onready var click_manager: Node = %"Click Manager"
 @onready var indicator: Node3D = %Indicator
+@onready var income_label: Label = %IncomeLabel
 
 var selected_fish: Fish
 var fish_info: FishInfo
@@ -52,6 +53,8 @@ func _process(delta: float) -> void:
 	
 	if selected_fish:
 		indicator.global_position = selected_fish.global_position + Vector3.UP * 3.0
+	
+	income_label.text = "+$%s / sec" % Utils.format_number_two_decimals(GameManager.passive_income_per_second)
 
 
 func switch_aquarium(new_aquarium: AquariumResource) -> void:

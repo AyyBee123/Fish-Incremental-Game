@@ -13,30 +13,36 @@ script = ExtResource("1_a6cw8")
 
 [node name="Cash" type="AudioStreamPlayer" parent="." unique_id=2061051350]
 stream = ExtResource("2_88uku")
+volume_db = 2.0
 bus = &"SFX"
 
 [node name="Popup" type="AudioStreamPlayer" parent="." unique_id=2140748435]
 stream = ExtResource("3_85on0")
+volume_db = -8.0
 pitch_scale = 0.95
 bus = &"SFX"
 
 [node name="PopupHighPitch" type="AudioStreamPlayer" parent="." unique_id=1729662390]
 stream = ExtResource("3_85on0")
+volume_db = -8.0
 pitch_scale = 1.5
 bus = &"SFX"
 
 [node name="PopupReversed" type="AudioStreamPlayer" parent="." unique_id=1720119685]
 stream = ExtResource("4_85on0")
+volume_db = -8.0
 pitch_scale = 0.95
 bus = &"SFX"
 
 [node name="PopupReversedHighPitch" type="AudioStreamPlayer" parent="." unique_id=91937874]
 stream = ExtResource("4_85on0")
+volume_db = -8.0
 pitch_scale = 1.5
 bus = &"SFX"
 
 [node name="Button" type="AudioStreamPlayer" parent="." unique_id=1601933661]
 stream = ExtResource("4_v1en5")
+volume_db = 2.0
 bus = &"SFX"
 
 [node name="Click" type="AudioStreamPlayer" parent="." unique_id=705464177]
@@ -46,7 +52,10 @@ bus = &"SFX"
 
 [node name="Pause" type="AudioStreamPlayer" parent="." unique_id=732781062]
 stream = ExtResource("5_hfdkt")
+volume_db = -8.0
 bus = &"SFX"
 
 [node name="PauseReversed" type="AudioStreamPlayer" parent="." unique_id=687817114]
 stream = ExtResource("7_v1en5")
+volume_db = -8.0
+bus = &"SFX"

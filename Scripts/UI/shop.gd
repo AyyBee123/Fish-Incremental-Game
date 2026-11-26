@@ -159,6 +159,8 @@ func buy_upgrade(upgrade: UpgradeResource) -> void:
 	SaveManager.save_game()
 	populate_upgrade_shop()
 	AudioManager.cash.play()
+	
+	GameManager.passive_income_per_second = GameManager.get_passive_income_per_second()
 
 
 func _on_category_view_visibility_changed() -> void:

@@ -26,6 +26,7 @@ Preloads="*uid://b4iebdw2llybd"
 GameManager="*uid://ksxwepasqjrq"
 SaveManager="*uid://d3xva8mntkhrh"
 AudioManager="*uid://chb0uox6rh2dy"
+SignalBus="*uid://dbfaj11nq0don"
 
 [display]
 
