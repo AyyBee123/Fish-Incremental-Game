@@ -55,6 +55,10 @@ func _process(delta: float) -> void:
 		indicator.global_position = selected_fish.global_position + Vector3.UP * 3.0
 	
 	income_label.text = "+$%s / sec" % Utils.format_number_two_decimals(GameManager.passive_income_per_second)
+	if GameManager.passive_income_per_second <= 0:
+		income_label.hide()
+	else:
+		income_label.show()
 
 
 func switch_aquarium(new_aquarium: AquariumResource) -> void:
