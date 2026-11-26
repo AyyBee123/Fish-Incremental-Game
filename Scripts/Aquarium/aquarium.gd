@@ -111,6 +111,8 @@ func select_fish(fish: Fish) -> void:
 
 func deselect_fish() -> void:
 	indicator.hide()
+	if fish_info:
+		fish_info._on_close_button_pressed()
 	selected_fish = null
 
 

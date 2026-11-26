@@ -5,11 +5,6 @@ extends Control
 @onready var species_container: HBoxContainer = %SpeciesContainer
 
 
-func _process(_delta: float) -> void:
-	if get_tree().current_scene is Aquarium and get_tree().current_scene.selected_fish == null:
-		queue_free()
-
-
 func display_info(fish: Fish) -> void:
 	AudioManager.popup_high_pitch.play()
 	var date = Time.get_datetime_dict_from_unix_time(fish.fish_res.purchase_timestamp)
@@ -24,29 +19,29 @@ func display_info(fish: Fish) -> void:
 
 func populate_upgrades(fish: Fish) -> void:
 	var species = fish.fish_res.species
-
+	
 	# clear existing entries
 	for child in purchased_container.get_children():
 		child.queue_free()
-
+	
 	for child in species_container.get_children():
 		child.queue_free()
-
+	
 	# purchased upgrades
 	var species_data: SpeciesSaveData = GameManager.get_species_save_data(species)
-
+	
 	for upgrade_id: String in species_data.purchased_upgrades:
 		var upgrade: UpgradeResource = GameManager.get_species_upgrade(upgrade_id, species.available_upgrades)
-
+		
 		if upgrade == null:
 			continue
-
+		
 		var button: FishUpgradeButton = Preloads.FISH_UPGRADE_BUTTON.instantiate()
 		button.upgrade_name = upgrade.upgrade_name
 		button.description = upgrade.description
 		button.price = upgrade.price
 		button.disabled = true
-
+		
 		purchased_container.add_child(button)
 	
 	# available upgrades
@@ -72,14 +67,10 @@ func _on_species_upgrade_pressed(fish: Fish, upgrade: UpgradeResource) -> void:
 
 
 func _on_close_button_pressed() -> void:
-	get_tree().current_scene.deselect_fish()
-	queue_free()
+	%AnimationPlayer.play("close")
+	AudioManager.popup_reversed_high_pitch.play()
 
 
 func _on_sell_button_pressed() -> void:
 	if get_tree().current_scene is Aquarium:
 		get_tree().current_scene.sell_fish()
-
-
-func _exit_tree() -> void:
-	AudioManager.popup_reversed_high_pitch.play()
