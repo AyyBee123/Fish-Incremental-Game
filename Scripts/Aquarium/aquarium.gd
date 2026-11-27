@@ -136,7 +136,6 @@ func sell_fish() -> void:
 	fish_manager.remove_child(fish)
 	fish.queue_free()
 	
-	
 	SaveManager.game_data.money += sell_price
 	SaveManager.save_game()
 	
