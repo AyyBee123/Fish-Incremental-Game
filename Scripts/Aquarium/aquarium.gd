@@ -108,9 +108,13 @@ func select_fish(fish: Fish) -> void:
 	fish_info.display_info(fish)
 
 
-func deselect_fish() -> void:
+func deselect_fish(is_selling: bool = false) -> void:
 	indicator.hide()
 	if fish_info:
+		if is_selling:
+			AudioManager.cash.play()
+		else:
+			AudioManager.popup_reversed_high_pitch.play()
 		fish_info.close()
 	selected_fish = null
 
@@ -121,24 +125,24 @@ func sell_fish() -> void:
 
 	var fish: Fish = selected_fish
 	var fish_resource: FishInstanceResource = fish.fish_res
-
-	# count fish across all aquariums
-	var total_fish: int = 0
-	for aquarium: AquariumResource in SaveManager.game_data.owned_aquariums:
-		total_fish += aquarium.fish.size()
 	
-	if total_fish <= 1:
+	if get_total_fish_count() <= 1:
 		return
 	
 	var sell_price: float = GameManager.get_fish_sell_price(fish_resource)
 	
-	deselect_fish()
+	deselect_fish(true)
 	
 	fish_manager.remove_child(fish)
 	fish.queue_free()
 	
+	
 	SaveManager.game_data.money += sell_price
 	SaveManager.save_game()
+	
+	AudioManager.cash.play()
+	
+	GameManager.passive_income_per_second = GameManager.get_passive_income_per_second()
 	
 	update_capacity_label()
 

@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://do0asy6knwv4f" path="res://Assets/UI/Sell Button Pressed.png" id="6_5thxd"]
 [ext_resource type="Texture2D" uid="uid://c5mjiqvhfjqjq" path="res://Assets/UI/Sell Button Hover.png" id="7_7ko2i"]
 [ext_resource type="BitMap" uid="uid://08f7pth3hsfl" path="res://Assets/UI/Masks/Sell Button_click_mask.res" id="8_ao17w"]
+[ext_resource type="Texture2D" uid="uid://h0obkgwq68xl" path="res://Assets/UI/Sell Button Disabled.png" id="9_7ko2i"]
 
 [sub_resource type="Animation" id="Animation_5thxd"]
 length = 0.001
@@ -297,10 +298,12 @@ custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 
 [node name="SellButton" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1206853051]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("5_pa3fb")
 texture_pressed = ExtResource("6_5thxd")
 texture_hover = ExtResource("7_7ko2i")
+texture_disabled = ExtResource("9_7ko2i")
 texture_click_mask = ExtResource("8_ao17w")
 
 [node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/SellButton" unique_id=1371444367]

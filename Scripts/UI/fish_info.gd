@@ -3,6 +3,7 @@ extends Control
 
 @onready var purchased_container: HBoxContainer = %PurchasedContainer
 @onready var species_container: HBoxContainer = %SpeciesContainer
+@onready var sell_button: TextureButton = %SellButton
 
 
 func display_info(fish: Fish) -> void:
@@ -13,6 +14,8 @@ func display_info(fish: Fish) -> void:
 	%NameLabel.text = fish.fish_res.fish_name
 	%SpeciesLabel.text = fish.fish_res.species.species_name
 	%DateLabel.text = formatted_date
+	
+	sell_button.disabled = get_tree().current_scene.get_total_fish_count() <= 1
 	
 	populate_upgrades(fish)
 
@@ -68,11 +71,11 @@ func _on_species_upgrade_pressed(fish: Fish, upgrade: UpgradeResource) -> void:
 
 func close() -> void:
 	%AnimationPlayer.play("close")
-	AudioManager.popup_reversed_high_pitch.play()
 
 
 func _on_close_button_pressed() -> void:
 	get_tree().current_scene.deselect_fish()
+	AudioManager.popup_reversed_high_pitch.play()
 	close()
 
 
